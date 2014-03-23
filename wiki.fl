@@ -1,0 +1,24 @@
+%option noyywrap
+
+%%
+
+%%
+void begin_html() { printf("<html><body>\n"); }
+void end_html() { printf("</body></html>\n"); }
+
+int main(int argc, char *argv[]) {
+	begin_html();
+	if(argc == 1) {
+		yyin = stdin;
+		yylex();
+	} else {
+		int i;
+		for(i=1; i<argc; i++) {
+			yyin = fopen(argv[i],"r");
+			yylex();
+			fclose(yyin);
+		}
+	}
+	end_html();
+	return 0;
+}
