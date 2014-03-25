@@ -1,6 +1,15 @@
 %option noyywrap
+%option yylineno
+
+%x PAGE TITLE AUTHOR DATE LINKINT LINKEXT NUMSEC
 
 %%
+
+"<page>"	{ BEGIN PAGE; }
+
+<PAGE>"<title>" { BEGIN TITLE; }
+
+<TITLE>[^<]+  { BEGIN PAGE; }
 
 %%
 void begin_html() { printf("<html><body>\n"); }
