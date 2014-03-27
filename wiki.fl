@@ -1,18 +1,49 @@
 %option noyywrap
 
-%x PAGE TITLE AUTHOR DATE LINKINT LINKEXT NUMSEC
+%x PAGE TITLE REVISION DATE AUTHOR LINKINT LINKEXT SECTION
 
 anything .|[\n\t\r]
 
 %%
 
-"<page>" { BEGIN PAGE; printf("BEGIN PAGE"); }
+"<page>" { BEGIN PAGE; }
 
-<PAGE>"</page>" { BEGIN INITIAL; printf("FIM PAGINA"); }
+<PAGE>{
+	"<title>" 		BEGIN TITLE;
+	"<revision>"	BEGIN REVISION;
+	"</page>"		BEGIN INITIAL; printf("FIM PAGINA");
+}
+
+<TITLE>{
+	[^<]+			printf("%s\n", yytext);
+	"</title>" 		BEGIN PAGE; printf("FIM TITULO");
+}
+
+<REVISION>{
+	"<timestamp>"	BEGIN DATE;
+	"<username>"	BEGIN AUTHOR;
+	==				BEGIN SECTION;
+	"</revision>"	BEGIN PAGE; printf("REVISAO FIM");
+}
+
+<DATE>{
+	[^<]+			printf("%s\n", yytext);
+	"</timestamp>" 	BEGIN REVISION; printf("FIM DATA");
+}
+
+<AUTHOR>{
+	[^<]+			printf("%s\n", yytext);
+	"</username>"	BEGIN REVISION; printf("FIM AUTOR");
+}
+
+<SECTION>{
+	[^=]+			printf("OK - %s\n", yytext);
+	== 				BEGIN REVISION; printf("FIM SECTION");
+}
 
 {anything}           {;} 
 
-<*><<EOF>> 	{ return 0; }
+<<EOF>> 	{ return 0; }
 
 %%
 void begin_html() { printf("<html><body>\n"); }

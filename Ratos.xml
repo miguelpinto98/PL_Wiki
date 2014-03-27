@@ -1,0 +1,236 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="pt">
+  <siteinfo>
+    <sitename>Wikipédia</sitename>
+    <base>http://pt.wikipedia.org/wiki/Wikip%C3%A9dia:P%C3%A1gina_principal</base>
+    <generator>MediaWiki 1.23wmf18</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Multimédia</namespace>
+      <namespace key="-1" case="first-letter">Especial</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Discussão</namespace>
+      <namespace key="2" case="first-letter">Usuário(a)</namespace>
+      <namespace key="3" case="first-letter">Usuário(a) Discussão</namespace>
+      <namespace key="4" case="first-letter">Wikipédia</namespace>
+      <namespace key="5" case="first-letter">Wikipédia Discussão</namespace>
+      <namespace key="6" case="first-letter">Ficheiro</namespace>
+      <namespace key="7" case="first-letter">Ficheiro Discussão</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki Discussão</namespace>
+      <namespace key="10" case="first-letter">Predefinição</namespace>
+      <namespace key="11" case="first-letter">Predefinição Discussão</namespace>
+      <namespace key="12" case="first-letter">Ajuda</namespace>
+      <namespace key="13" case="first-letter">Ajuda Discussão</namespace>
+      <namespace key="14" case="first-letter">Categoria</namespace>
+      <namespace key="15" case="first-letter">Categoria Discussão</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal Discussão</namespace>
+      <namespace key="102" case="first-letter">Anexo</namespace>
+      <namespace key="103" case="first-letter">Anexo Discussão</namespace>
+      <namespace key="104" case="first-letter">Livro</namespace>
+      <namespace key="105" case="first-letter">Livro Discussão</namespace>
+      <namespace key="446" case="first-letter">Ensino</namespace>
+      <namespace key="447" case="first-letter">Ensino Discussão</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Módulo</namespace>
+      <namespace key="829" case="first-letter">Módulo Discussão</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Rato-da-mata</title>
+    <ns>0</ns>
+    <id>518004</id>
+    <revision>
+      <id>35254879</id>
+      <parentid>35246873</parentid>
+      <timestamp>2013-04-03T15:24:22Z</timestamp>
+      <contributor>
+        <username>Legobot</username>
+        <id>1059193</id>
+      </contributor>
+      <minor/>
+      <comment>A migrar 1 interwikis, agora providenciados por [[Wikipedia:Wikidata|Wikidata]] em [[d:q306995]]</comment>
+      <text xml:space="preserve" bytes="994">{{Info/Taxonomia
+| nome = Rato-da-mata
+| cor =pink
+| reino = [[Animalia]]
+| filo = [[Chordata]]
+| classe = [[Mammalia]]
+| ordem = [[Rodentia]]
+| família = [[Cricetidae]]
+| género = ''[[Akodon]]''
+| espécie = '''''A. cursor'''''
+| binomial = ''Akodon cursor''
+| binomial_autoridade = Winge, 1887
+}}
+O '''rato-da-mata''' (''Akodon cursor'') é uma espécie de [[roedor]] silvestre brasileiro que habita a [[Mata Atlântica]], estendo-se do Paraná (Sudeste) até a Paraíba (Nordeste).
+
+Geneticistas da [[Universidade Federal do Espírito Santo]] realizaram estudos de variabilidade genética e cariotípica e sugerem que existem distinção genética entre as populações do nordeste e sudeste. No momento, não existem evidências de se tratar de mais de uma espécie, mas acredita-se que este seja um caso de uma espécie em pleno processo de especiação.
+
+{{Esboço-roedor}}
+
+{{DEFAULTSORT:Rato Da Mata}}
+[[Categoria:Ratos]]
+[[Categoria:Akodon]]
+[[Categoria:Espécies descritas em 1887]]</text>
+      <sha1>k8syjhf4nisl6y25nr3nhoo47o4c5hk</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>Rato-do-mato-laranja</title>
+    <ns>0</ns>
+    <id>787000</id>
+    <revision>
+      <id>35259777</id>
+      <parentid>35006082</parentid>
+      <timestamp>2013-04-03T21:01:43Z</timestamp>
+      <contributor>
+        <username>Legobot</username>
+        <id>1059193</id>
+      </contributor>
+      <minor/>
+      <comment>A migrar 1 interwikis, agora providenciados por [[Wikipedia:Wikidata|Wikidata]] em [[d:q1765813]]</comment>
+      <text xml:space="preserve" bytes="822">{{Info/Taxonomia
+| nome = Rato-do-mato-laranja
+| cor = pink
+| estado = NT
+| reino = [[Animalia]]
+| filo = [[Chordata]]
+| classe = [[Mammalia]]
+| ordem = [[Rodentia]]
+| família = [[Cricetidae]]
+| género = ''[[Rhagomys]]''
+| espécie = '''''R. rufescens'''''
+| binomial = ''Rhagomys rufescens''
+| binomial_autoridade = ([[Oldfield Thomas|Thomas]], 1886)
+}}
+O '''rato-do-mato-laranja''' (''Rhagomys rufescens'') é uma espécie de [[rato]] [[brasil]]eira, ameaçada de extinção.
+
+== {{Ligações externas}} ==
+* {{Link||2=http://www.revistapesquisa.fapesp.br/?art=3115&amp;bd=1&amp;pg=2&amp;lg= |3=Revista FAPESP de Dezembro 2006 - Edição 130}}
+
+{{Animais brasileiros em perigo crítico}}
+
+{{esboço-roedor}}
+
+{{DEFAULTSORT:Rato Do Mato Laranja}}
+[[Categoria:Ratos]]
+[[Categoria:Rhagomys]]
+[[Categoria:Espécies descritas em 1886]]</text>
+      <sha1>3cwwdatbdpxzynisgfcmztln1ua49fo</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>Rato-preto</title>
+    <ns>0</ns>
+    <id>190830</id>
+    <revision>
+      <id>37686845</id>
+      <parentid>36881725</parentid>
+      <timestamp>2013-12-21T03:47:43Z</timestamp>
+      <contributor>
+        <ip>201.8.208.222</ip>
+      </contributor>
+      <comment>Inclui Norte Brasileiro, visto que o termo GABIRU, para se denominar estes grandes ratos pretos, são no Norte também denominados.</comment>
+      <text xml:space="preserve" bytes="3197">{{Sem-fontes|data=maio de 2012| angola=| arte=| Brasil=| ciência=| geografia=| música=| Portugal=| sociedade=|1=|2=|3=|4=|5=|6=}}
+:'''Nota:''' ''Gabiru redireciona aqui. Se procura pelo futebolista, consulte [[Adriano Gabiru]].''
+{{Info/Taxonomia
+| cor = pink
+| nome = Rato-preto
+| estado = lc
+| imagem =Rattus rattus04.jpg
+| imagem_legenda = Rato-preto
+| reino = [[Animalia]]
+| filo = [[Chordata]]
+| classe = [[Mammalia]]
+| ordem = [[Rodentia]]
+| família = [[Muridae]]
+| subfamília = [[Murinae]]
+| género = ''[[Rattus]]''
+| espécie = '''''R. rattus'''''
+| binomial = ''Rattus rattus''
+| binomial_autoridade = [[Carolus Linnaeus|Linnaeus]], 1758
+| mapa = Rattus rattus.jpg
+}}
+O '''rato-preto''' (''Rattus rattus'') é uma espécie de [[ratos]], também conhecida como '''rato-de-telhado''', '''rato-caseiro''' ou '''rato-inglês''' e no Norte Brasileiro assim como também no [[Região Nordeste do Brasil|Nordeste brasileiro]], como '''gabiru''' ou '''rato-de-couro'''{{Carece de fontes|data=Setembro de 2009}}. A espécie é originária do Sudeste da [[Ásia]], e depois passou a ser encontrado na [[Europa]] por volta do [[século VIII]], na [[África]] no [[século XVI]] e na [[América do Norte]] no [[século XVII]]. Na [[América do Sul]], chegou junto com as expedições dos primeiros exploradores, tendo seu primeiro registro em [[1544]], no [[Peru]].
+
+Seu refúgio em barcos e também a urbanização de seu ''habitat'', eliminando os possíveis predadores de sua espécie, são alguns dos fatores que têm contribuído para sua proliferação, tornando-os verdadeiros comensais humanos.
+
+O rato-preto é encontrado sempre em grupo, formado por 1 macho e 2 ou 3 fêmeas. Seu abrigo, onde também guarda seu alimento, é construído com o material que encontrar. Os ninhos são geralmente acima do solo nos sótãos, forros das casas, arbustos, sacarias, frestas de muros, armazéns, porões de navios e nas áreas portuárias.
+
+Sua gestação é de 21 dias, e a fêmea fica grávida novamente no mesmo dia que nasce a primeira ninhada. Os filhotes que nascem são desmamados após três semanas, e sua maturidade sexual, fase em que já atingiu todo seu desenvolvimento, é observada aos três meses de idade.
+
+Em áreas urbanas este rato possui hábitos noturnos. Mede cerca de 40&amp;nbsp;cm, possuindo [[cauda]] maior que o comprimento da cabeça e corpo, orelhas longas quase sem pêlos e pés sem membranas interdigitais. As suas fezes são afiladas e são visiveis nas zonas onde habita.
+
+A sua alimentação diária é baseada em cerca de 15 a 30 g de legumes, frutas, cereais, raízes e pequenos insetos. Também consomem cerca de 15 a 30 ml de água por dia.
+
+O rato-preto pode ser um perigo para a saúde pública visto que está associado a doenças perigosas como [[peste bubónica]], [[tifo]] e [[toxoplasmose]], por exemplo.
+
+Gabiru em gíria também pode significar indivíduo desajeitado ou ainda finório, patife ou velhaco.
+[[Imagem:Roofrat hagenbeck 01.jpg|thumb|left|290px]]
+[[Imagem:Rattusrattusskull.png|left|thumb]]
+
+== {{ver também}} ==
+* [[Rato (animal)|Outros ratos]]
+
+{{DEFAULTSORT:Rato Preto}}
+[[Categoria:Ratos]]
+[[Categoria:Espécies descritas em 1758]]</text>
+      <sha1>p7xebl0fosye3ipfjv9isyf2cals5ae</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>Rato explosivo</title>
+    <ns>0</ns>
+    <id>4085566</id>
+    <revision>
+      <id>37024393</id>
+      <parentid>36772268</parentid>
+      <timestamp>2013-10-01T19:24:24Z</timestamp>
+      <contributor>
+        <username>Viniciusmc</username>
+        <id>651827</id>
+      </contributor>
+      <text xml:space="preserve" bytes="4028">'''Rato explosivo''',&lt;ref name=&quot;Bull2009&quot;/&gt; também conhecido como '''rato bomba''',&lt;ref name=&quot;milhist&quot;/&gt; foi uma arma desenvolvida pela [[Special Operations Executive|Executiva de Operações Especiais Britânica]] (SOE) durante a [[Segunda Guerra Mundial]] para uso contra a [[Alemanha Nazi|Alemanha]]. Carcaças de [[rato]] eram preenchidas com [[Explosivo plástico|explosivos plásticos]], e seriam espalhadas próximo a [[caldeira]]s alemãs na expectativa de que fossem descartadas no fogo, provocando uma imensa explosão.
+
+Os ratos explosivos jamais entraram em ação, pois o primeiro carregamento acabou sendo interceptado pelos alemães. A busca resultante por mais armadilhas, no entanto, consumiu recursos inimigos o suficiente para a SOE concluir que a operação foi um sucesso.
+
+== Desenvolvimento ==
+Durante a II Guerra Mundial, a Executiva de Operações Especiais Britânica adquiriu cerca de cem [[roedores]] para experimentos médicos. Os animais foram então sacrificados, e explosivos plásticos costurados em suas carcaças.&lt;ref name=&quot;guard&quot;/&gt; 
+
+A idéia, desenvolvida em [[1941]],&lt;ref name=&quot;History - World Wars: British Special Operations Executive (SOE): Tools and Gadgets Gallery&quot;/&gt; era de que quando o rato morto fosse visto próximo à [[caldeira]] de uma [[locomotiva]], [[fábrica]], [[usina]] ou instalações similares, o alimentador de [[Forno|fornalha]] se livrasse da descoberta desagradável atirando-a ao fogo, fazendo com que a armadilha se ativasse.&lt;ref name=&quot;Bull2009&quot;/&gt;&lt;ref name=guard/&gt;&lt;ref name=&quot;Carter2002&quot;/&gt;
+
+Cada animal era capaz de comportar apenas uma pequena quantidade de explosivos, mas seu impacto numa caldeira a vapor altamente pressurizada poderia causar uma [[explosão]] devastadora.&lt;ref name=guard/&gt; O rato explosivo também poderia ser equipado com uma [[bomba]] de [[pavio]] longo.&lt;ref name=milhist/&gt;
+
+== História operacional ==
+O primeiro carregamento de carcaças foi interceptado pelos alemães, e como resultado o plano foi abandonado. Os ratos foram exibidos nas principais instituições de ensino militares da Alemanha, enquanto buscas por outras armadilhas do tipo eram conduzidas. A conclusão da SOE foi de que &quot;o aborrecimento causado a eles foi um sucesso muito maior para nós do que se os ratos tivessem sido, de fato, usados&quot;.&lt;ref name=guard/&gt;
+
+== Referências ==
+{{reflist|2|refs=
+
+&lt;ref name=&quot;Bull2009&quot;&gt;{{cite book|author=Stephen Bull|title=Special Ops, 1939-1945: A Manual of Covert Warfare and Training|url=http://books.google.com/books?id=ciJWB94-Vc4C&amp;pg=PA160|accessdate=20 de julho de 2013|date=1 de outubro de 2009|publisher=MBI Publishing Company|isbn=978-0-7603-3751-6|page=160}}&lt;/ref&gt;
+
+&lt;ref name=&quot;Carter2002&quot;&gt;{{cite book|author=Ian Carter|title=Railways and Culture in Britain: The Epitome of Modernity|url=http://books.google.com/books?id=8dPXhX288TYC&amp;pg=PA233|accessdate=20 de julho de 2013|date=5 Janeiro de 2002|publisher=Manchester University Press|isbn=978-0-7190-5966-7|page=233}}&lt;/ref&gt;
+
+&lt;ref name=&quot;guard&quot;&gt;{{cite web|author=Richard Norton-Taylor |url=http://www.guardian.co.uk/uk/1999/oct/27/richardnortontaylor |title=How exploding rats went down a bomb - and helped British boffins win the second world war &amp;#124; UK news |publisher=The Guardian |date= |accessdate=20 de julho de 2013}}&lt;/ref&gt;
+
+&lt;ref name=&quot;History - World Wars: British Special Operations Executive (SOE): Tools and Gadgets Gallery&quot;&gt;{{cite web|url=http://www.bbc.co.uk/history/worldwars/wwtwo/soe_gallery_05.shtml |title=History - World Wars: British Special Operations Executive (SOE): Tools and Gadgets Gallery |publisher=BBC |date=1 de janeiro de 1970 |accessdate=20 de julho de 2013}}&lt;/ref&gt;
+
+&lt;ref name=&quot;milhist&quot;&gt;{{cite web|author= |url=http://www.military-history.org/articles/weapons-technology/back-to-the-drawing-board-exploding-rats.htm |title=Back to the Drawing Board — EXPLODING RATS! |publisher=Military-history.org |date=15 de fevereiro de 2012 |accessdate=20 de julho de 2013}}&lt;/ref&gt;
+}}
+
+[[Categoria:Special Operations Executive]]
+[[Categoria:Ratos]]</text>
+      <sha1>1j140gl3iaud5key8k1lm8pn9zlpqv1</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>
