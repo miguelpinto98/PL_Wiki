@@ -70,7 +70,10 @@
         <id>76240</id>
       </contributor>
       <comment>xxxxx</comment>
-      <text xml:space="preserve" bytes="146">xxxx</text>
+      <text xml:space="preserve" bytes="146">
+      == TESTE ==
+      
+      </text>
       <sha1>2h86sbf1jhmrkdmh8kb2ur9udo3j4ea</sha1>
       <model>wikitext</model>
       <format>text/x-wiki</format>
