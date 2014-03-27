@@ -1,22 +1,25 @@
 %option noyywrap
-%option yylineno
 
 %x PAGE TITLE AUTHOR DATE LINKINT LINKEXT NUMSEC
 
+anything .|[\n\t\r]
+
 %%
 
-"<page>"	{ BEGIN PAGE; }
+"<page>" { BEGIN PAGE; printf("BEGIN PAGE"); }
 
-<PAGE>"<title>" { BEGIN TITLE; }
+<PAGE>"</page>" { BEGIN INITIAL; printf("FIM PAGINA"); }
 
-<TITLE>[^<]+  { BEGIN PAGE; }
+{anything}           {;} 
+
+<*><<EOF>> 	{ return 0; }
 
 %%
 void begin_html() { printf("<html><body>\n"); }
 void end_html() { printf("</body></html>\n"); }
 
-int main(int argc, char* argv[]) {
-	begin_html();
+int main(int argc, char *argv[]) {
+	//begin_html();
 	if(argc == 1) {
 		yyin = stdin;
 		yylex();
@@ -28,6 +31,6 @@ int main(int argc, char* argv[]) {
 			fclose(yyin);
 		}
 	}
-	end_html();
+	//end_html();
 	return 0;
 }
