@@ -6,7 +6,7 @@
 
 %x PAGE TITLE REVISION DATE AUTHOR LINKINT LINKEXT SECTION SUBSECTION
 
-anything .|[\n\t\r]
+trash .|[\n\t\r]
 
 %%
 
@@ -27,10 +27,11 @@ anything .|[\n\t\r]
 
 <REVISION>{
 	.				;
-	[\n\r\t]			;
+	[\n\r\t]		;
 	"<timestamp>"	BEGIN DATE;
 	"<username>"	BEGIN AUTHOR;
-	==  			BEGIN SECTION;
+	\=\=			BEGIN SECTION;
+	\[\[			BEGIN LINKINT;
 	"</revision>"	BEGIN PAGE; //printf("REVISAO FIM");
 }
 
@@ -44,13 +45,18 @@ anything .|[\n\t\r]
 	"</username>"	BEGIN REVISION; //printf("FIM AUTOR");
 }
 
-<SECTION>{
-	[^=]*			printf("%s\n", yytext);
+<SECTION>{			
+	[^=]+			printf("%s\n", yytext);
 	== 				BEGIN REVISION; //printf("FIM SECTION");
 }
 
+<LINKINT>{
+	[^:\]]*
+	trash			BEGIN REVISION;
+}
 
-{anything}           {;} 
+
+{trash}           {;} 
 
 <<EOF>> 	{ return 0; }
 
