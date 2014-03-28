@@ -1,49 +1,54 @@
+%{
+	int n=0;
+%}
+
 %option noyywrap
 
-%x PAGE TITLE REVISION DATE AUTHOR LINKINT LINKEXT SECTION
+%x PAGE TITLE REVISION DATE AUTHOR LINKINT LINKEXT SECTION SUBSECTION
 
 anything .|[\n\t\r]
 
 %%
 
-"<page>" { BEGIN PAGE; }
+"<page>" { BEGIN PAGE; printf("***** Artigo %d ******\n", ++n);}
 
 <PAGE>{
 	"<title>" 		BEGIN TITLE;
 	"<revision>"	BEGIN REVISION;
 	.				;
-	[\n\t]			;
+	[\n\t\r]			;
 	"</page>"		BEGIN INITIAL; //printf("FIM PAGINA");
 }
 
 <TITLE>{
-	[^<]+			printf("%s\n", yytext);
+	[^<]*			printf("%s\n", yytext);
 	"</title>" 		BEGIN PAGE; //printf("FIM TITULO");
 }
 
 <REVISION>{
 	.				;
-	[\n]			;
+	[\n\r\t]			;
 	"<timestamp>"	BEGIN DATE;
 	"<username>"	BEGIN AUTHOR;
-	==  				BEGIN SECTION;
+	==  			BEGIN SECTION;
 	"</revision>"	BEGIN PAGE; //printf("REVISAO FIM");
 }
 
 <DATE>{
-	[^<]+			printf("%s\n", yytext);
+	[^<]*			printf("%s\n", yytext);
 	"</timestamp>" 	BEGIN REVISION; //printf("FIM DATA");
 }
 
 <AUTHOR>{
-	[^<]+			printf("%s\n", yytext);
+	[^<]*			printf("%s\n", yytext);
 	"</username>"	BEGIN REVISION; //printf("FIM AUTOR");
 }
 
 <SECTION>{
-	[^=]+			printf("%s\n", yytext);
+	[^=]*			printf("%s\n", yytext);
 	== 				BEGIN REVISION; //printf("FIM SECTION");
 }
+
 
 {anything}           {;} 
 

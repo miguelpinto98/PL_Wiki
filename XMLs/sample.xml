@@ -1,0 +1,79 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.8/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.8/ http://www.mediawiki.org/xml/export-0.8.xsd" version="0.8" xml:lang="pt">
+  <siteinfo>
+    <sitename>Wikipédia</sitename>
+    <base>http://pt.wikipedia.org/wiki/Wikip%C3%A9dia:P%C3%A1gina_principal</base>
+    <generator>MediaWiki 1.23wmf19</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Multimédia</namespace>
+      <namespace key="-1" case="first-letter">Especial</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Discussão</namespace>
+      <namespace key="2" case="first-letter">Usuário(a)</namespace>
+      <namespace key="3" case="first-letter">Usuário(a) Discussão</namespace>
+      <namespace key="4" case="first-letter">Wikipédia</namespace>
+      <namespace key="5" case="first-letter">Wikipédia Discussão</namespace>
+      <namespace key="6" case="first-letter">Ficheiro</namespace>
+      <namespace key="7" case="first-letter">Ficheiro Discussão</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki Discussão</namespace>
+      <namespace key="10" case="first-letter">Predefinição</namespace>
+      <namespace key="11" case="first-letter">Predefinição Discussão</namespace>
+      <namespace key="12" case="first-letter">Ajuda</namespace>
+      <namespace key="13" case="first-letter">Ajuda Discussão</namespace>
+      <namespace key="14" case="first-letter">Categoria</namespace>
+      <namespace key="15" case="first-letter">Categoria Discussão</namespace>
+      <namespace key="100" case="first-letter">Portal</namespace>
+      <namespace key="101" case="first-letter">Portal Discussão</namespace>
+      <namespace key="102" case="first-letter">Anexo</namespace>
+      <namespace key="103" case="first-letter">Anexo Discussão</namespace>
+      <namespace key="104" case="first-letter">Livro</namespace>
+      <namespace key="105" case="first-letter">Livro Discussão</namespace>
+      <namespace key="446" case="first-letter">Ensino</namespace>
+      <namespace key="447" case="first-letter">Ensino Discussão</namespace>
+      <namespace key="710" case="first-letter">TimedText</namespace>
+      <namespace key="711" case="first-letter">TimedText talk</namespace>
+      <namespace key="828" case="first-letter">Módulo</namespace>
+      <namespace key="829" case="first-letter">Módulo Discussão</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Observatório Astronômico de Andrushivka</title>
+    <ns>0</ns>
+    <id>3976375</id>
+    <revision>
+      <id>38216571</id>
+      <parentid>35422386</parentid>
+      <timestamp>2014-02-20T00:36:46Z</timestamp>
+      <contributor>
+        <username>CommonsDelinker</username>
+        <id>124230</id>
+      </contributor>
+      <minor/>
+      <comment>Removendo &quot;Andrushivka_Astronomical_Observatory_main_1.jpg&quot;, por ter sido apagado no Commons por [[:commons:User:Jameslwoodward|Jameslwoodward]]: Per [[commons:Commons:Deletion requests/File:Andrushivka Astronomical Observatory main 1.jpg]]</comment>
+      <text xml:space="preserve" bytes="830">
+O '''Observatório Astronômico Andrushivka''' fica localizado na [[Ucrânia]], é o único no país privado, e que já descobriu mais de noventa [[asteroides]] desde 2003.&lt;ref name=&quot;mp_discs&quot;/&gt; Foi estabelecido em 2001&lt;ref name=&quot;UVG&quot;&gt;{{cite web|url=http://ukraine-vacation-guide.com/publ/vacation_travel/andrushivka/5-1-0-138|title=Andrushivka|publisher=Ukraine Vacation Guide}}&lt;/ref&gt; e tem como fundador e diretor [[Yuri Ivashchenko]].
+
+
+Sua descoberta recente foi o asteroide denominado em homenagem a [[Wikipédia]], o [[274301 Wikipédia]].
+
+
+== Referências ==
+{{Reflist|2|refs=
+&lt;ref name=&quot;mp_discs&quot;&gt;{{cite web|url=http://www.minorplanetcenter.net/iau/lists/MPDiscsNum.html
+|title=Minor Planet Discoverers
+|author=Minor Planet Center
+|pub=
+|date=January 30, 2013
+}}&lt;/ref&gt;
+}}
+
+
+[[Category:Wikipedia]]
+[[Category:Astronomia]]</text>
+      <sha1>ngksdaq2vph22tpxffn62ku64lgk8jl</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>
