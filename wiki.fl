@@ -1,5 +1,5 @@
 %{
-	int n=0, count=0;
+	int n=0, count=0, ext=0;
 %}
 
 %option noyywrap
@@ -21,7 +21,7 @@ trash .|[\n\t\r]
 	"<revision>"	BEGIN REVISION;
 	.				;
 	[\n\t\r]			;
-	"</page>"		BEGIN INITIAL; printf("LINKINT %d\n",count); //printf("FIM PAGINA");
+	"</page>"		BEGIN INITIAL; printf("LINKINT %d - LINKEXT %d\n",count,ext); //printf("FIM PAGINA");
 }
 
 <TITLE>{
@@ -38,6 +38,7 @@ trash .|[\n\t\r]
 	\=\=\=			;
 	\[\[[^:\|\]]*/\]\]	printf("LI %s\n",yytext+2);	count++;
 	\[\[[^:\|\]]*/\|	printf("LIB %s\n",yytext+2); count++;
+	\[http:\\\w+[^\s]/\s 	printf("LE %s\n",yytext);	ext++;
 	"</revision>"	BEGIN PAGE; //printf("REVISAO FIM");
 }
 
@@ -55,7 +56,6 @@ trash .|[\n\t\r]
 	[^=]*			printf("S %s\n", yytext);
 	== 				BEGIN REVISION; //printf("FIM SECTION");
 }
-
 
 
 {trash}           {;} 
