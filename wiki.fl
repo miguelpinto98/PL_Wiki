@@ -13,7 +13,7 @@ trash .|[\n\t\r]
 "<page>" {
 	BEGIN PAGE; 
 	printf("************** Artigo %d *****************\n", ++n);
-	count=0;
+	count=0; ext=0;
 }
 
 <PAGE>{
@@ -36,10 +36,10 @@ trash .|[\n\t\r]
 	"<username>"	BEGIN AUTHOR;
 	\=\=			BEGIN SECTION;
 	\=\=\=			;
-	\[\[[^:\|\]]*/\]\]	printf("LI %s\n",yytext+2);	count++;
-	\[\[[^:\|\]]*/\|	printf("LIB %s\n",yytext+2); count++;
-	\[http:\\\w+[^\s]/\s 	printf("LE %s\n",yytext);	ext++;
-	"</revision>"	BEGIN PAGE; //printf("REVISAO FIM");
+	\[\[[^:\|\]]+/\]\]	printf("LI %s\n",yytext+2);	count++;
+	\[\[[^:\|\]]+/\|	printf("LIB %s\n",yytext+2); count++;
+	"http://"		BEGIN LINKEXT;
+	"</revision>"	BEGIN PAGE;
 }
 
 <DATE>{
@@ -57,6 +57,9 @@ trash .|[\n\t\r]
 	== 				BEGIN REVISION; //printf("FIM SECTION");
 }
 
+<LINKEXT>{
+	[a-zA-Z0-9/\.\-\_\?\=\&\;\+\-]+	printf("LEXT %s\n", yytext); ext++; BEGIN REVISION;
+}
 
 {trash}           {;} 
 
