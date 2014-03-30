@@ -58,7 +58,7 @@ trash .|[\n\t\r]
 }
 
 <LINKEXT>{
-	[a-zA-Z0-9/\.\-\_\?\=\&\;\+\-]+	printf("LEXT %s\n", yytext); ext++; BEGIN REVISION;
+	[a-zA-Z0-9/\.\-\_\?\=\&\;\+\-\%]+	printf("LEXT %s\n", yytext); ext++; BEGIN REVISION;
 }
 
 {trash}           {;} 
