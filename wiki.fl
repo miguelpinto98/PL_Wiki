@@ -1,5 +1,8 @@
 %{
+	#include "struct.h"
+	#include "linkedlist/linkedlist.h"
 	int n=0, count=0, ext=0;
+	LinkedList lpags;
 %}
 
 %option noyywrap
@@ -9,6 +12,7 @@
 trash .|[\n\t\r]
 
 %%
+	Pagina pag = inicializaPagina();
 
 "<page>" {
 	BEGIN PAGE; 
@@ -25,7 +29,7 @@ trash .|[\n\t\r]
 }
 
 <TITLE>{
-	[^<]*			printf("%s\n", yytext);
+	[^<]*			printf("%s\n", yytext); insereTitulo(pag,yytext);
 	"</title>" 		BEGIN PAGE; //printf("FIM TITULO");
 }
 
@@ -43,12 +47,12 @@ trash .|[\n\t\r]
 }
 
 <DATE>{
-	[^<]*			printf("%s\n", yytext);
+	[^<]*			printf("%s\n", yytext); insereData(pag,yytext);
 	"</timestamp>" 	BEGIN REVISION; //printf("FIM DATA");
 }
 
 <AUTHOR>{
-	[^<]*			printf("%s\n", yytext);
+	[^<]*			printf("%s\n", yytext); insereAutor(pag,yytext);
 	"</username>"	BEGIN REVISION; //printf("FIM AUTOR");
 }
 
@@ -78,6 +82,7 @@ int main(int argc, char *argv[]) {
 		int i;
 		for(i=1; i<argc; i++) {
 			yyin = fopen(argv[i],"r");
+			lpags = createLinkedList(NULL,NULL);
 			yylex();
 			fclose(yyin);
 		}
