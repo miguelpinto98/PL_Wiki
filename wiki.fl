@@ -16,53 +16,50 @@ trash .|[\n\t\r]
 
 "<page>" {
 	BEGIN PAGE; 
-	printf("************** Artigo %d *****************\n", ++n);
-	count=0; ext=0;
 }
 
 <PAGE>{
 	"<title>" 		BEGIN TITLE;
 	"<revision>"	BEGIN REVISION;
-	.				;
-	[\n\t\r]			;
-	"</page>"		BEGIN INITIAL; printf("LINKINT %d - LINKEXT %d\n",count,ext); //printf("FIM PAGINA");
+	{trash}			;
+	"</page>"		inserePaginaLL(lpags, pag); BEGIN INITIAL; //printf("************** Artigo %d *****************\n", ++n); printf("LINKINT %d - LINKEXT %d\n",count,ext); //printf("FIM PAGINA");
 }
 
 <TITLE>{
+	"Categoria:".*	BEGIN INITIAL;
 	[^<]*			printf("%s\n", yytext); insereTitulo(pag,yytext);
 	"</title>" 		BEGIN PAGE; //printf("FIM TITULO");
 }
 
 <REVISION>{
-	.				;
-	[\n\r\t]		;
+	{trash}			;
 	"<timestamp>"	BEGIN DATE;
 	"<username>"	BEGIN AUTHOR;
 	\=\=			BEGIN SECTION;
 	\=\=\=			;
-	\[\[[^:\|\]]+/\]\]	printf("LI %s\n",yytext+2);	count++;
-	\[\[[^:\|\]]+/\|	printf("LIB %s\n",yytext+2); count++;
+	\[\[[^:\|\]]+/\]\]	insereLinkInt(pag,yytext+2); //printf("LI %s\n",yytext+2); count++;
+	\[\[[^:\|\]]+/\|	insereLinkInt(pag,yytext+2); //printf("LIB %s\n",yytext+2); count++;
 	"http://"		BEGIN LINKEXT;
 	"</revision>"	BEGIN PAGE;
 }
 
 <DATE>{
-	[^<]*			printf("%s\n", yytext); insereData(pag,yytext);
+	[^<]*			insereData(pag,yytext); //printf("%s\n", yytext);
 	"</timestamp>" 	BEGIN REVISION; //printf("FIM DATA");
 }
 
 <AUTHOR>{
-	[^<]*			printf("%s\n", yytext); insereAutor(pag,yytext);
+	[^<]*			insereAutor(pag,yytext); //printf("%s\n", yytext);
 	"</username>"	BEGIN REVISION; //printf("FIM AUTOR");
 }
 
 <SECTION>{			
-	[^=]*			printf("S %s\n", yytext);
+	[^=]*			insereSeccao(pag,yytext); //printf("S %s\n", yytext);
 	== 				BEGIN REVISION; //printf("FIM SECTION");
 }
 
 <LINKEXT>{
-	[a-zA-Z0-9/\.\-\_\?\=\&\;\+\-\%]+	printf("LEXT %s\n", yytext); ext++; BEGIN REVISION;
+	[a-zA-Z0-9/\.\-\_\?\=\&\;\+\-\%]+	insereLinkExt(pag,yytext); ext++; BEGIN REVISION; //printf("LEXT %s\n", yytext); 
 }
 
 {trash}           {;} 
@@ -86,6 +83,7 @@ int main(int argc, char *argv[]) {
 			yylex();
 			fclose(yyin);
 		}
+		imprimeLL(lpags);
 	}
 	//end_html();
 	return 0;

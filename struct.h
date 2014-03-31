@@ -15,9 +15,15 @@ typedef struct sPagina {
 	LinkedList linkext;
 } *Pagina, NPagina;
 
-Pagina inicializaPagina();
-void insereTitulo(Pagina, char*);
-void insereData(Pagina, char*);
-void insereAutor(Pagina, char*);
+Pagina inicializaPagina() ;
+void insereTitulo(Pagina, char*) ;
+void insereData(Pagina, char*) ;
+void insereAutor(Pagina, char*) ;
+void insereSeccao(Pagina, char*) ;
+void insereLinkInt(Pagina, char*) ;
+void insereLinkExt(Pagina, char*) ;
+
+void inserePaginaLL(LinkedList, Pagina) ;
+void imprimeLL(LinkedList) ;
 
 #endif

@@ -25,3 +25,33 @@ void insereData(Pagina pag, char *date) {
 void insereAutor(Pagina pag, char *autor) {
 	pag->autor = strdup(autor);
 }
+
+void insereSeccao(Pagina pag, char* sec) {
+	tailInsertLinkedList(pag->seccoes, strdup(sec));
+}
+
+void insereLinkInt(Pagina pag, char* url) {
+	tailInsertLinkedList(pag->linkint, strdup(url));
+}
+
+void insereLinkExt(Pagina pag, char* url) {
+	tailInsertLinkedList(pag->linkext, strdup(url));
+}
+
+void inserePaginaLL(LinkedList lpags, Pagina pag) {
+	pushLinkedList(lpags, pag);
+}
+
+void imprimeLL(LinkedList lpags) {
+	LinkedList aux = lpags;
+	Pagina res = NULL;
+
+	while(aux->elems) {
+		res = aux->elems->data;
+		printf("%s\n", res->titulo);
+
+		aux->elems = aux->elems->next;
+	}
+
+	printf("NUM: %d\n", lpags->nrelems);
+}
