@@ -23,7 +23,7 @@ void insereSeccao(Pagina, char*) ;
 void insereLinkInt(Pagina, char*) ;
 void insereLinkExt(Pagina, char*) ;
 
-void inserePaginaLL(LinkedList, Pagina) ;
-void imprimeLL(LinkedList) ;
+/* Outro Módulo */
+void criaFicheiroHTML(Pagina) ;
 
 #endif

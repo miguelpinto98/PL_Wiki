@@ -13,6 +13,7 @@ trash .|[\n\t\r]
 
 %%
 	Pagina pag = inicializaPagina();
+	system("mkdir -p pages; cp -R html/ pages");
 
 "<page>" {
 	BEGIN PAGE; 
@@ -22,11 +23,11 @@ trash .|[\n\t\r]
 	"<title>" 		BEGIN TITLE;
 	"<revision>"	BEGIN REVISION;
 	{trash}			;
-	"</page>"		inserePaginaLL(lpags, pag); BEGIN INITIAL; //printf("************** Artigo %d *****************\n", ++n); printf("LINKINT %d - LINKEXT %d\n",count,ext); //printf("FIM PAGINA");
+	"</page>"		criaFicheiroHTML(pag); pag = inicializaPagina(); BEGIN INITIAL; //printf("************** Artigo %d *****************\n", ++n); printf("LINKINT %d - LINKEXT %d\n",count,ext); //printf("FIM PAGINA");
 }
 
 <TITLE>{
-	"Categoria:".*	BEGIN INITIAL;
+	.*:.*	BEGIN INITIAL;
 	[^<]*			printf("%s\n", yytext); insereTitulo(pag,yytext);
 	"</title>" 		BEGIN PAGE; //printf("FIM TITULO");
 }
@@ -79,11 +80,11 @@ int main(int argc, char *argv[]) {
 		int i;
 		for(i=1; i<argc; i++) {
 			yyin = fopen(argv[i],"r");
+
 			lpags = createLinkedList(NULL,NULL);
 			yylex();
 			fclose(yyin);
 		}
-		imprimeLL(lpags);
 	}
 	//end_html();
 	return 0;
