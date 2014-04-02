@@ -4,7 +4,7 @@ CCC = gcc
 FILE = xWiki
 
 $(FILE): $(SRC:.c=.o)
-	flex wiki.fl
+	flex parserXML.fl
 	$(CCC) -o $(FILE) $(CCFLAGS) $(SRC)
 
 clean:
