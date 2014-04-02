@@ -1,5 +1,5 @@
-#ifndef __STRUCT
-#define __STRUCT
+#ifndef __AUXSTRUCT
+#define __AUXSTRUCT
 
 #include <stdlib.h>
 #include <stdio.h>

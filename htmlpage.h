@@ -6,7 +6,7 @@
 #include <string.h>
 #include <ctype.h>
 #include "linkedlist/linkedlist.h"
-#include "struct.h"
+#include "auxstruct.h"
 
 void criaFicheiroHTML(Pagina) ;
 void criaIndexHTML(LinkedList) ;

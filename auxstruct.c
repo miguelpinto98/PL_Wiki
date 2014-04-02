@@ -1,4 +1,4 @@
-#include "struct.h"
+#include "auxstruct.h"
 
 Pagina inicializaPagina() {
 	Pagina res = NULL;
@@ -18,8 +18,14 @@ void insereTitulo(Pagina pag, char *tit) {
 	pag->titulo = strdup(tit);
 }
 
+char *verificaData(char *data) {
+	data[10]=' ';
+	data[19]='\0';
+	return data;
+}
+
 void insereData(Pagina pag, char *date) {
-	pag->data = strdup(date);
+	pag->data = verificaData(strdup(date));
 }
 
 void insereAutor(Pagina pag, char *autor) {
@@ -43,7 +49,7 @@ char verificaMaiuscula(char c){
 		return toupper(c);
 
 	return c;
-}	
+}
 
 int comparaTitulos(void* tit1, void* tit2){
 	char * s1 = strdup(tit1);
@@ -69,5 +75,3 @@ LinkedList iniciaIndiceTitulo() {
 void insereTituloIndice(LinkedList lpages, char *tit) {
 	ordInsertLinkedList(lpages, tit);
 }
-
-/* *************************************************** */
