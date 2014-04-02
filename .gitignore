@@ -2,3 +2,5 @@
 lex.yy.c
 
 pages/*
+
+*.o

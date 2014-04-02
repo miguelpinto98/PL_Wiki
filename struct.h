@@ -27,7 +27,6 @@ LinkedList iniciaIndiceTitulo();
 void insereTituloIndice(LinkedList, char *);
 
 /* Outro Módulo */
-void criaFicheiroHTML(Pagina) ;
-void criaIndexHTML(LinkedList) ;
+
 
 #endif

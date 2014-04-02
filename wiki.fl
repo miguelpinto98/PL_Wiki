@@ -1,8 +1,9 @@
 %{
 	#include "struct.h"
+	#include "htmlpage.h"
 	#include "linkedlist/linkedlist.h"
-	int n=0, count=0, ext=0;
 	LinkedList lpags;
+	Pagina pag;
 %}
 
 %option noyywrap
@@ -12,7 +13,6 @@
 trash .|[\n\t\r]
 
 %%
-	Pagina pag = NULL;
 	system("mkdir -p pages; cp -R html/ pages");
 
 "<page>" {
@@ -46,26 +46,26 @@ trash .|[\n\t\r]
 
 <DATE>{
 	[^<]*			insereData(pag,yytext); //printf("%s\n", yytext);
-	"</timestamp>" 	BEGIN REVISION; //printf("FIM DATA");
+	"</timestamp>" 	BEGIN REVISION;
 }
 
 <AUTHOR>{
 	[^<]*			insereAutor(pag,yytext); //printf("%s\n", yytext);
-	"</username>"	BEGIN REVISION; //printf("FIM AUTOR");
+	"</username>"	BEGIN REVISION; 
 }
 
 <SECTION>{			
 	[^=]*			insereSeccao(pag,yytext); //printf("S %s\n", yytext);
-	== 				BEGIN REVISION; //printf("FIM SECTION");
+	== 				BEGIN REVISION; 
 }
 
 <LINKEXT>{
-	[a-zA-Z0-9/\.\-\_\?\=\&\;\+\-\%]+	insereLinkExt(pag,yytext); ext++; BEGIN REVISION; //printf("LEXT %s\n", yytext); 
+	[a-zA-Z0-9/\.\-\_\?\=\&\;\+\-\%]+	insereLinkExt(pag,yytext); BEGIN REVISION; //printf("LEXT %s\n", yytext); 
 }
 
-{trash}           {;} 
+{trash}           	{;} 
 
-<<EOF>> 	{ return 0; }
+<<EOF>> 			{ return 0; }
 
 %%
 int main(int argc, char *argv[]) {

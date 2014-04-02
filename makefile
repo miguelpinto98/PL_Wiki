@@ -1,5 +1,8 @@
-V=wiki
+SRC = htmlpage.c linkedlist/linkedlist.c struct.c lex.yy.c
+CCFLAGS = -O2 -Wextra
+CCC = gcc
+FILE = xWiki
 
-$V: $V.fl
-	flex $V.fl
-	cc -o $V linkedlist/linkedlist.c lex.yy.c struct.c
+$(FILE): $(SRC:.c=.o)
+	flex wiki.fl
+	$(CCC) -o $(FILE) $(CCFLAGS) $(SRC)
