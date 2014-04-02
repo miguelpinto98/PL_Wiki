@@ -71,7 +71,7 @@ void criaContentPanel4(Pagina pag, FILE *fp) {
 }
 
 void closeFooter(FILE *fp) {
-	fputs("</div></div><div class=\"row\"><div id=\"footer\" class=\"col-xs-12\">2013 - 2014 Programação de Linguagens.</br></br></div></div></div></body></html>",fp);
+	fputs("</div></div><div class=\"row\"><br><div id=\"footer\" class=\"col-xs-12\">2013 - 2014 Programação de Linguagens.</br></br></div></div></div></body></html>",fp);
 }
 
 void criaPagina(Pagina pag, FILE *fp) {
@@ -112,7 +112,7 @@ void criaIndexPages(LinkedElem pages, FILE *fp) {
 		fprintf(fp,"<li><a href=\"#tab%c\" data-toggle=\"tab\">%c</a></li>", c, c);
 		c++;
 	}
-	fputs("<li><a href=\"#tab1\" data-toggle=\"tab\">Outros</a></li></ul></div></br><div class=\"widget-content nopadding\"><div class=\"tab-content\"><div id=\"tabA\" class=\"tab-pane active\"><ul>",fp);
+	fputs("<li><a href=\"#tab1\" data-toggle=\"tab\">Outros</a></li></ul></div></br><div class=\"widget-content padding\" style=\"height:100%\"><div class=\"tab-content\"><div id=\"tabA\" class=\"tab-pane active\"><ul>",fp);
 	
 	ant='A';
 	c = 'A';
