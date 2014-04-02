@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 #include "linkedlist/linkedlist.h"
 
 typedef struct sPagina {
@@ -22,8 +23,11 @@ void insereAutor(Pagina, char*) ;
 void insereSeccao(Pagina, char*) ;
 void insereLinkInt(Pagina, char*) ;
 void insereLinkExt(Pagina, char*) ;
+LinkedList iniciaIndiceTitulo();
+void insereTituloIndice(LinkedList, char *);
 
 /* Outro Módulo */
 void criaFicheiroHTML(Pagina) ;
+void criaIndexHTML(LinkedList) ;
 
 #endif

@@ -12,24 +12,24 @@
 trash .|[\n\t\r]
 
 %%
-	Pagina pag = inicializaPagina();
+	Pagina pag = NULL;
 	system("mkdir -p pages; cp -R html/ pages");
 
 "<page>" {
-	BEGIN PAGE; 
+	BEGIN PAGE; pag = inicializaPagina();
 }
 
 <PAGE>{
 	"<title>" 		BEGIN TITLE;
 	"<revision>"	BEGIN REVISION;
 	{trash}			;
-	"</page>"		criaFicheiroHTML(pag); pag = inicializaPagina(); BEGIN INITIAL; //printf("************** Artigo %d *****************\n", ++n); printf("LINKINT %d - LINKEXT %d\n",count,ext); //printf("FIM PAGINA");
+	"</page>"		criaFicheiroHTML(pag); insereTituloIndice(lpags,pag->titulo); BEGIN INITIAL;
 }
 
 <TITLE>{
 	.*:.*	BEGIN INITIAL;
 	[^<]*			printf("%s\n", yytext); insereTitulo(pag,yytext);
-	"</title>" 		BEGIN PAGE; //printf("FIM TITULO");
+	"</title>" 		BEGIN PAGE;
 }
 
 <REVISION>{
@@ -68,11 +68,7 @@ trash .|[\n\t\r]
 <<EOF>> 	{ return 0; }
 
 %%
-void begin_html() { printf("<html><body>\n"); }
-void end_html() { printf("</body></html>\n"); }
-
 int main(int argc, char *argv[]) {
-	//begin_html();
 	if(argc == 1) {
 		yyin = stdin;
 		yylex();
@@ -81,11 +77,11 @@ int main(int argc, char *argv[]) {
 		for(i=1; i<argc; i++) {
 			yyin = fopen(argv[i],"r");
 
-			lpags = createLinkedList(NULL,NULL);
+			lpags = iniciaIndiceTitulo();
 			yylex();
 			fclose(yyin);
 		}
+		criaIndexHTML(lpags);
 	}
-	//end_html();
 	return 0;
 }

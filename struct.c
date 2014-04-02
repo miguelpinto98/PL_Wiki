@@ -38,6 +38,35 @@ void insereLinkExt(Pagina pag, char* url) {
 	tailInsertLinkedList(pag->linkext, strdup(url));
 }
 
+char maiuscula(char* c){
+	if(c[0] > 97) 
+		return c[0]+'A'-'a';
+	else
+		return c[0];
+}
+
+int comparaTitulos(void* tit1, void* tit2){
+	char * str1 = strdup(tit1);
+	str1[0] = maiuscula(str1);
+	
+	char * str2 = strdup(tit2);
+	str2[0] = maiuscula(str2);
+    
+    return strcmp( str1, str2 );
+}
+
+void* getChar(void* tit){
+	return strdup(tit);
+}
+
+LinkedList iniciaIndiceTitulo() {
+	return createLinkedList(getChar, comparaTitulos);
+}
+
+void insereTituloIndice(LinkedList lpages, char *tit) {
+	ordInsertLinkedList(lpages, tit);
+}
+
 /* *************************************************** */
 
 void criaHeader(char *tit, FILE *fp) {
@@ -50,18 +79,18 @@ void criaHeader(char *tit, FILE *fp) {
 	fputs("</head>",fp);
 }
 
-void openContent(Pagina pag, FILE *fp) {
+void openContent(FILE *fp) {
 	fputs("<body data-color=\"blue\" class=\"flat\"><div id=\"wrapper\"><div id=\"header\"><h1>",fp);
 	fputs("<a href=\"index.html\"></a></h1>	<a id=\"menu-trigger\" href=\"index.html#\"><i class=\"fa fa-bars\"></i></a>",fp);
 	fputs("</div><div id=\"sidebar\"><ul><li class=\"active\"><a href=\"index.html\"><i class=\"fa fa-book\"></i> <span>Índice</span></a></li>",fp);
 	fputs("<li><a href=\"enunciado.html\"><i class=\"fa fa-file\"></i> <span>Enunciado</span></a></li><li><a href=\"relatorio.html\"><i class=\"fa fa-paste\"></i> <span>Relatório</span></a></li>",fp);
 	fputs("<li><a href=\"grupo.html\"><i class=\"fa fa-group\"></i> <span>Grupo</span></a></li></ul></div><div id=\"content\">",fp);
-	fprintf(fp, "<div id=\"content-header\"><a href=\"https://pt.wikipedia.org/%s\" ><h1> %s </h1></a></div><div id=\"breadcrumb\">", pag->titulo, pag->titulo);
-	fputs("<a class=\"tip-bottom\"><i class=\"fa fa-home\" style=\"margin-bottom:3px\"></i> WikiCenas</a><a href=\"index.html\" title=\"Ir para o índice\">Índice</a>",fp);
-	fprintf(fp, "<a href=\"https://pt.wikipedia.org/%s\" class=\"current\"> %s </a></div><div class=\"container-fluid\"><br/>", pag->titulo, pag->titulo);
 }
 
 void criaContentPanel1(Pagina pag, FILE *fp){
+	fprintf(fp, "<div id=\"content-header\"><a href=\"https://pt.wikipedia.org/%s\" ><h1> %s </h1></a></div><div id=\"breadcrumb\">", pag->titulo, pag->titulo);
+	fputs("<a class=\"tip-bottom\"><i class=\"fa fa-home\" style=\"margin-bottom:3px\"></i> WikiCenas</a><a href=\"index.html\" title=\"Ir para o índice\">Índice</a>",fp);
+	fprintf(fp, "<a href=\"https://pt.wikipedia.org/%s\" class=\"current\"> %s </a></div><div class=\"container-fluid\"><br/>", pag->titulo, pag->titulo);
 	fputs("<div class=\"row\"><div class=\"col-xs-12 col-sm-6 col-lg-6\"><div class=\"widget-box\"><div class=\"widget-title\"><h5>Informações Relevantes</h5></div>",fp);
 	fputs("<div class=\"widget-content nopadding\"><ul class=\"recent-posts\"><li style=\"font-size:12px; color:#3498db;\">Título:",fp);
 	fprintf(fp, "<span style=\"color:black;\"> %s</span></li><li style=\"font-size:12px; color:#3498db;\">Autor da última revisão:", pag->titulo);
@@ -114,7 +143,7 @@ void closeFooter(FILE *fp) {
 
 void criaPagina(Pagina pag, FILE *fp) {
 	criaHeader(pag->titulo, fp);
-	openContent(pag,fp);
+	openContent(fp);
 	criaContentPanel1(pag,fp);
 	criaContentPanel2(pag,fp);
 	criaContentPanel3(pag,fp);
@@ -132,6 +161,76 @@ void criaFicheiroHTML(Pagina pag) {
  	fp = fopen(path, "w");
 	if(fp) {
 		criaPagina(pag,fp);
+		fclose(fp);
+	}
+}
+
+void criaNumPagina(int num, FILE *fp) {
+	fputs("<div id=\"content-header\"><h1>Índice</h1></div><div id=\"breadcrumb\"><a class=\"tip-bottom\"><i class=\"fa fa-home\" style=\"margin-bottom:3px\"></i> WikiCenas</a>",fp);
+	fputs("<a class=\"current\">Índice</a></div><div class=\"row\"><div class=\"col-xs-12\"><div class=\"widget-box\"><div class=\"widget-title\"><h5>Artigos Processados</h5>",fp);
+	fprintf(fp, "<span title=\"Número total de artigos processados\" class=\"label label-info tip-left\"> %d </span></div></div></div></div>",num );
+}
+
+void criaIndexPages(LinkedElem pages, FILE *fp) {
+	LinkedElem aux = pages;
+	fputs("<div class=\"row\"><div class=\"col-xs-12\"><div class=\"widget-box widget-messages\"><div class=\"widget-title\"><ul class=\"nav nav-tabs pull-left\"><li><a href=\"#tabA\" data-toggle=\"tab\">A</a></li>",fp);
+	char c = 'B', ant='z';
+	while(c<='Z') {
+		fprintf(fp,"<li><a href=\"#tab%c\" data-toggle=\"tab\">%c</a></li>", c, c);
+		c++;
+	}
+	fputs("<li class=\"active\"><a href=\"#tab1\" data-toggle=\"tab\">Outros</a></li></ul></div></br><div class=\"widget-content nopadding\"><div class=\"tab-content\"><div id=\"tab1\" class=\"tab-pane active\"><ul>",fp);
+	ant='1';
+	c = 'A';
+	while(aux) {
+		char *tit = aux->data;
+		int num = 0;
+		c = tit[0];
+
+		if(isdigit(c) && !num) {
+			c = '1';  
+			num=1;
+		}
+
+		if(c>90) {
+			c = '1';
+		}
+
+		if(c!=ant) {
+			
+			fprintf(fp, "</div></ul><div id=\"tab%c\" class=\"tab-pane\"><ul>",c);
+		} 
+			fprintf(fp, "<li><a href=\"%s.html\"> %s </a></li>", tit,tit);
+			ant = c;
+ 
+
+		aux = aux->next;
+	}
+	fputs("</div></ul></div></div></div></div></div><div class=\"white-backdrop\">",fp);
+    fputs("<script src=\"assets/js/jquery.min.js\"></script><script src=\"assets/js/jquery-ui.custom.js\"></script><script src=\"assets/js/bootstrap.min.js\"></script>",fp);
+}
+
+void geraIndex(LinkedList lpages, FILE *fp) {
+	criaHeader("index",fp);
+	openContent(fp);
+	criaNumPagina(lpages->nrelems, fp);
+	criaIndexPages(lpages->elems,fp);
+/*
+	LinkedElem aux = lpages->elems;
+	while(aux) {
+		printf("AA %s\n", aux->data );
+		aux=aux->next;
+	}
+*/
+	closeFooter(fp);
+}
+
+void criaIndexHTML(LinkedList lpages) {
+	FILE *fp = NULL;
+ 	fp = fopen("pages/index.html", "w");
+
+	if(fp) {
+		geraIndex(lpages,fp);
 		fclose(fp);
 	}
 }
