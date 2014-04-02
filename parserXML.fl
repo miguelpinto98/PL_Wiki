@@ -70,18 +70,22 @@ trash .|[\n\t\r]
 %%
 int main(int argc, char *argv[]) {
 	if(argc == 1) {
-		yyin = stdin;
-		yylex();
+		printf("Necessário passar como argumento página/s XML a analisar!");
 	} else {
 		int i;
 		for(i=1; i<argc; i++) {
 			yyin = fopen(argv[i],"r");
 
-			lpags = iniciaIndiceTitulo();
-			yylex();
-			fclose(yyin);
+			if(yyin) {
+				lpags = iniciaIndiceTitulo();
+				yylex();
+				fclose(yyin);
+			} else {
+				printf("Não foi possível ler o ficheiro %s seleccionado!\n", argv[i]);
+			}
 		}
-		criaIndexHTML(lpags);
+		if(lpags)
+			criaIndexHTML(lpags);
 	}
 	return 0;
 }
