@@ -38,21 +38,24 @@ void insereLinkExt(Pagina pag, char* url) {
 	tailInsertLinkedList(pag->linkext, strdup(url));
 }
 
-char maiuscula(char* c){
-	if(c[0] > 97) 
-		return c[0]+'A'-'a';
-	else
-		return c[0];
-}
+char verificaMaiuscula(char c){
+	if(islower(c))
+		return toupper(c);
+
+	return c;
+}	
 
 int comparaTitulos(void* tit1, void* tit2){
-	char * str1 = strdup(tit1);
-	str1[0] = maiuscula(str1);
+	char * s1 = strdup(tit1);
+	s1[0] = verificaMaiuscula(s1[0]);
 	
-	char * str2 = strdup(tit2);
-	str2[0] = maiuscula(str2);
-    
-    return strcmp( str1, str2 );
+	char * s2 = strdup(tit2);
+	s2[0] = verificaMaiuscula(s2[0]);
+ 	
+	if(isdigit(s1[0]) || isdigit(s2[0]))
+		return strcmp(s2,s1);
+
+    return strcmp(s1,s2);
 }
 
 void* getChar(void* tit){
@@ -173,37 +176,30 @@ void criaNumPagina(int num, FILE *fp) {
 
 void criaIndexPages(LinkedElem pages, FILE *fp) {
 	LinkedElem aux = pages;
-	fputs("<div class=\"row\"><div class=\"col-xs-12\"><div class=\"widget-box widget-messages\"><div class=\"widget-title\"><ul class=\"nav nav-tabs pull-left\"><li><a href=\"#tabA\" data-toggle=\"tab\">A</a></li>",fp);
-	char c = 'B', ant='z';
+	fputs("<div class=\"row\"><div class=\"col-xs-12\"><div class=\"widget-box widget-messages\"><div class=\"widget-title\"><ul class=\"nav nav-tabs pull-left\"><li class=\"active\"><a href=\"#tabA\" data-toggle=\"tab\">A</a></li>",fp);
+	char c = 'B', ant;
 	while(c<='Z') {
 		fprintf(fp,"<li><a href=\"#tab%c\" data-toggle=\"tab\">%c</a></li>", c, c);
 		c++;
 	}
-	fputs("<li class=\"active\"><a href=\"#tab1\" data-toggle=\"tab\">Outros</a></li></ul></div></br><div class=\"widget-content nopadding\"><div class=\"tab-content\"><div id=\"tab1\" class=\"tab-pane active\"><ul>",fp);
-	ant='1';
+	fputs("<li><a href=\"#tab1\" data-toggle=\"tab\">Outros</a></li></ul></div></br><div class=\"widget-content nopadding\"><div class=\"tab-content\"><div id=\"tabA\" class=\"tab-pane active\"><ul>",fp);
+	
+	ant='A';
 	c = 'A';
 	while(aux) {
 		char *tit = aux->data;
-		int num = 0;
 		c = tit[0];
 
-		if(isdigit(c) && !num) {
-			c = '1';  
-			num=1;
-		}
-
-		if(c>90) {
+		if(c<65 || c>90)
 			c = '1';
-		}
 
 		if(c!=ant) {
 			
 			fprintf(fp, "</div></ul><div id=\"tab%c\" class=\"tab-pane\"><ul>",c);
 		} 
-			fprintf(fp, "<li><a href=\"%s.html\"> %s </a></li>", tit,tit);
-			ant = c;
- 
-
+		
+		fprintf(fp, "<li><a href=\"%s.html\"> %s </a></li>", tit,tit);
+		ant = c;
 		aux = aux->next;
 	}
 	fputs("</div></ul></div></div></div></div></div><div class=\"white-backdrop\">",fp);
@@ -215,13 +211,6 @@ void geraIndex(LinkedList lpages, FILE *fp) {
 	openContent(fp);
 	criaNumPagina(lpages->nrelems, fp);
 	criaIndexPages(lpages->elems,fp);
-/*
-	LinkedElem aux = lpages->elems;
-	while(aux) {
-		printf("AA %s\n", aux->data );
-		aux=aux->next;
-	}
-*/
 	closeFooter(fp);
 }
 
