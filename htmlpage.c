@@ -20,7 +20,7 @@ void openContent(FILE *fp) {
 
 void criaContentPanel1(Pagina pag, FILE *fp){
 	fprintf(fp, "<div id=\"content-header\"><a href=\"https://pt.wikipedia.org/wiki/%s\" ><h1> %s </h1></a></div><div id=\"breadcrumb\">", pag->titulo, pag->titulo);
-	fputs("<a class=\"tip-bottom\"><i class=\"fa fa-home\" style=\"margin-bottom:3px\"></i> WikiCenas</a><a href=\"index.html\" title=\"Ir para o índice\">Índice</a>",fp);
+	fputs("<a class=\"tip-bottom\"><i class=\"fa fa-home\" style=\"margin-bottom:3px\"></i> Plikipedia</a><a href=\"index.html\" title=\"Ir para o índice\">Índice</a>",fp);
 	fprintf(fp, "<a href=\"https://pt.wikipedia.org/wiki/%s\" class=\"current\"> %s </a></div><div class=\"container-fluid\"><br/>", pag->titulo, pag->titulo);
 	fputs("<div class=\"row\"><div class=\"col-xs-12 col-sm-6 col-lg-6\"><div class=\"widget-box\"><div class=\"widget-title\"><h5>Informações Relevantes</h5></div>",fp);
 	fputs("<div class=\"widget-content nopadding\"><ul class=\"recent-posts\"><li style=\"font-size:12px; color:#3498db;\">Título:",fp);
@@ -47,7 +47,7 @@ void imprimeLinks(LinkedList link, FILE *fp, int tipo){
 
 void criaContentPanel2(Pagina pag, FILE *fp){
 	fputs("<div class=\"row\"><div class=\"col-xs-12\"><div class=\"widget-box\"><div class=\"widget-title\"><h5>Links Internos</h5>",fp);
-	fprintf(fp, "<span title=\"Número total de links internos\" class=\"label label-info tip-left\"> %d </span></div><div class=\"widget-content\"><ul>", pag->linkint->nrelems);
+	fprintf(fp, "<span title=\"Número total de links internos\" class=\"label label-info tip-left\" style=\"height:23px; width: 36px; margin-top: 7px;\"> %d </span></div><div class=\"widget-content\"><ul>", pag->linkint->nrelems);
 	/* Imprime Links Internos */
 	imprimeLinks(pag->linkint,fp,1);
 	fputs("</ul></div></div></div></div>",fp);
@@ -56,7 +56,7 @@ void criaContentPanel2(Pagina pag, FILE *fp){
 
 void criaContentPanel3(Pagina pag, FILE *fp){
 	fputs("<div class=\"row\"><div class=\"col-xs-12\"><div class=\"widget-box\"><div class=\"widget-title\"><h5>Links Externos</h5>",fp);
-	fprintf(fp, "<span title=\"Número total de links externos\" class=\"label label-info tip-left\"> %d </span></div><div class=\"widget-content\"><ul>", pag->linkext->nrelems);
+	fprintf(fp, "<span title=\"Número total de links externos\" class=\"label label-info tip-left\" style=\"height:23px; width: 36px; margin-top: 7px;\"> %d </span></div><div class=\"widget-content\"><ul>", pag->linkext->nrelems);
 	/* Imprime Links Externos */
 	imprimeLinks(pag->linkext,fp,2);
 	fputs("</ul></div></div></div></div>",fp);
@@ -64,7 +64,7 @@ void criaContentPanel3(Pagina pag, FILE *fp){
 
 void criaContentPanel4(Pagina pag, FILE *fp) {
 	fputs("<div class=\"row\"><div class=\"col-xs-12\"><div class=\"widget-box\"><div class=\"widget-title\"><h5>Secções</h5>",fp);
-	fprintf(fp, "<span title=\"Número total de secções\" class=\"label label-info tip-left\"> %d </span></div><div class=\"widget-content\"><ul>", pag->seccoes->nrelems);
+	fprintf(fp, "<span title=\"Número total de secções\" class=\"label label-info tip-left\" style=\"height:23px; width: 36px; margin-top: 7px;\"> %d </span></div><div class=\"widget-content\"><ul>", pag->seccoes->nrelems);
 	/* Imprime Links Externos */
 	imprimeLinks(pag->seccoes,fp,3);
 	fputs("</ul></div></div></div></div>",fp);
@@ -99,7 +99,7 @@ void criaFicheiroHTML(Pagina pag) {
 }
 
 void criaNumPagina(int num, FILE *fp) {
-	fputs("<div id=\"content-header\"><h1>Índice</h1></div><div id=\"breadcrumb\"><a class=\"tip-bottom\"><i class=\"fa fa-home\" style=\"margin-bottom:3px\"></i> WikiCenas</a>",fp);
+	fputs("<div id=\"content-header\"><h1>Índice</h1></div><div id=\"breadcrumb\"><a class=\"tip-bottom\"><i class=\"fa fa-home\" style=\"margin-bottom:3px\"></i> Plikipedia</a>",fp);
 	fputs("<a class=\"current\">Índice</a></div><div class=\"row\"><div class=\"col-xs-12\"><div class=\"widget-box\"><div class=\"widget-title\"><h5>Artigos Processados</h5>",fp);
 	fprintf(fp, "<span title=\"Número total de artigos processados\" class=\"label label-info tip-left\"> %d </span></div></div></div></div>",num );
 }
