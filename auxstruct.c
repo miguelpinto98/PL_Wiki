@@ -53,9 +53,9 @@ char verificaMaiuscula(char c){
 
 int comparaTitulos(void* tit1, void* tit2){
 	char * s1 = strdup(tit1);
-	s1[0] = verificaMaiuscula(s1[0]);
-	
 	char * s2 = strdup(tit2);
+
+	s1[0] = verificaMaiuscula(s1[0]);
 	s2[0] = verificaMaiuscula(s2[0]);
  	
 	if(isdigit(s1[0]) || isdigit(s2[0]))
