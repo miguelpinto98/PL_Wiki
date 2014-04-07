@@ -59,7 +59,8 @@
 }
 
 <SECTION2>{
-	[^=]*			insereSeccao(1,pag,yytext); //printf("SS %s\n", yytext);
+	[^=\&]+			insereSeccao(1,pag,yytext); //printf("SS %s\n", yytext);
+	.|[\n\t\r]		;
 	=\=\= 			BEGIN REVISION; 
 }
 
