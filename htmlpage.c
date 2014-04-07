@@ -14,7 +14,7 @@ void openContent(FILE *fp) {
 	fputs("<body data-color=\"blue\" class=\"flat\"><div id=\"wrapper\"><div id=\"header\"><h1>",fp);
 	fputs("<a href=\"index.html\"></a></h1>	<a id=\"menu-trigger\" href=\"index.html#\"><i class=\"fa fa-bars\"></i></a>",fp);
 	fputs("</div><div id=\"sidebar\"><ul><li class=\"active\"><a href=\"index.html\"><i class=\"fa fa-book\"></i> <span>Índice</span></a></li>",fp);
-	fputs("<li><a href=\"enunciado.html\"><i class=\"fa fa-file\"></i> <span>Enunciado</span></a></li><li><a href=\"relatorio.html\"><i class=\"fa fa-paste\"></i> <span>Relatório</span></a></li>",fp);
+	fputs("<li><a href=\"enunciado.html\"><i class=\"fa fa-file\"></i> <span>Enunciado</span></a></li>",fp);
 	fputs("<li><a href=\"grupo.html\"><i class=\"fa fa-group\"></i> <span>Grupo</span></a></li></ul></div><div id=\"content\">",fp);
 }
 
@@ -42,12 +42,16 @@ void imprimeLinks(LinkedList link, FILE *fp, int tipo){
 			char *res = strdup(aux->data);
 
 			if(res[0]=='1' && res[1]=='X' && res[2]=='1')
-				fprintf(fp, "<li> >> %s </li>",(res+3));
+				fprintf(fp, "<i> > %s </i><br>",(res+3));
 			else {
 				if(res[0]=='2' && res[1]=='X' && res[2]=='2')
-					fprintf(fp, "<li> >>>> %s </li>",(res+3));
-				else
-					fprintf(fp, "<li> %s </li>",aux->data);
+					fprintf(fp, " >> %s <br>",(res+3));
+				else {
+					if(res[0]=='3' && res[1]=='X' && res[2]=='3')
+						fprintf(fp, " >>> %s <br>",(res+3));
+					else
+						fprintf(fp, "<b> %s </b><br>",aux->data);
+				}
 			}
 		}
 		aux=aux->next;

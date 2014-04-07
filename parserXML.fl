@@ -8,11 +8,11 @@
 
 %option noyywrap
 
-%x PAGE TITLE REVISION DATE AUTHOR LINKINT LINKEXT SECTION SUBSECTION SUBSUBSECTION
+%x PAGE TITLE REVISION DATE AUTHOR LINKINT LINKEXT SECTION1 SECTION2 SECTION3 SECTION4
 
 %%
 "<page>" {
-	BEGIN PAGE; pag = inicializaPagina();
+	BEGIN PAGE; 	pag = inicializaPagina();
 }
 
 <PAGE>{
@@ -23,7 +23,7 @@
 }
 
 <TITLE>{
-	.*:.*	BEGIN INITIAL;
+	.*:.*			BEGIN INITIAL;
 	[^<]*			insereTitulo(pag,yytext); printf("%s\n", yytext);
 	"</title>" 		BEGIN PAGE;
 }
@@ -32,10 +32,10 @@
 	.|[\n\t\r]		;
 	"<timestamp>"	BEGIN DATE;
 	"<username>"	BEGIN AUTHOR;
-	\=\=			BEGIN SECTION;
-	\=\=\=			BEGIN SUBSECTION;
-	\=\=\=\=		BEGIN SUBSUBSECTION;
-	\=\=\=\=\=		;
+	\=\=			BEGIN SECTION1;
+	\=\=\=			BEGIN SECTION2;
+	\=\=\=\=		BEGIN SECTION3;
+	\=\=\=\=\=		BEGIN SECTION4;
 	\[\[[^:\|\]]+/\]\]	insereLinkInt(pag,yytext+2); //printf("LI %s\n",yytext+2); count++;
 	\[\[[^:\|\]]+/\|	insereLinkInt(pag,yytext+2); //printf("LIB %s\n",yytext+2); count++;
 	"http://"		BEGIN LINKEXT;
@@ -43,28 +43,34 @@
 }
 
 <DATE>{
-	[^<]*			insereData(pag,yytext); //printf("%s\n", yytext);
+	[^<]*			insereData(pag,yytext);
 	"</timestamp>" 	BEGIN REVISION;
 }
 
 <AUTHOR>{
-	[^<]*			insereAutor(pag,yytext); //printf("%s\n", yytext);
+	[^<]*			insereAutor(pag,yytext);
 	"</username>"	BEGIN REVISION; 
 }
 
-<SECTION>{			
-	[^=]*			insereSeccao(0,pag,yytext); //printf("S %s\n", yytext);
+<SECTION1>{
+	.|[\n\t\r]		BEGIN REVISION;
+	[^=\n]*			insereSeccao(0,pag,yytext); //printf("S %s\n", yytext);
 	\=\= 			BEGIN REVISION; 
 }
 
-<SUBSECTION>{
+<SECTION2>{
 	[^=]*			insereSeccao(1,pag,yytext); //printf("SS %s\n", yytext);
 	=\=\= 			BEGIN REVISION; 
 }
 
-<SUBSUBSECTION>{
+<SECTION3>{
 	[^=]*			insereSeccao(2,pag,yytext); //printf("SSS %s\n", yytext);
 	=\=\=\= 		BEGIN REVISION; 
+}
+
+<SECTION4>{
+	[^=]*			insereSeccao(3,pag,yytext); //printf("SSS %s\n", yytext);
+	=\=\=\=\= 		BEGIN REVISION; 
 }
 
 <LINKEXT>{

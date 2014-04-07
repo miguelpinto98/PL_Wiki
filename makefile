@@ -1,7 +1,7 @@
 SRC = htmlpage.c linkedlist/linkedlist.c auxstruct.c 
 CCFLAGS = -O2 -Wextra
 CCC = gcc
-FILE = xWiki
+FILE = PLIKIPEDIA
 
 $(FILE): $(SRC:.c=.o)
 	flex parserXML.fl

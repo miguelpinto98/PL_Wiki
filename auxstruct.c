@@ -58,6 +58,17 @@ void insereSeccao(int tipo, Pagina pag, char* sec) {
 
 				tailInsertLinkedList(pag->seccoes, strdup(aux));
 				pag->seccoes->nrelems--;
+			} else {
+				if (tipo==2) {
+					char aux[x+4];
+
+					strcpy(aux,"3X3");
+					strcat(aux,res);
+					aux[x+4] = '\0';
+
+					tailInsertLinkedList(pag->seccoes, strdup(aux));
+					pag->seccoes->nrelems--;
+				}
 			}
 		}
 	}
