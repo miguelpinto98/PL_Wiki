@@ -18,26 +18,26 @@
 <PAGE>{
 	"<title>" 		BEGIN TITLE;
 	"<revision>"	BEGIN REVISION;
-	.|[\n\t\r]			;
+	.|[\n\t]		;
 	"</page>"		criaFicheiroHTML(pag); insereTituloIndice(lpags,pag->titulo); BEGIN INITIAL;
 }
 
 <TITLE>{
 	.*:.*			BEGIN INITIAL;
-	[^<]*			insereTitulo(pag,yytext); printf("%s\n", yytext);
+	[^<]*			insereTitulo(pag,yytext); //printf("%s\n", yytext);
 	"</title>" 		BEGIN PAGE;
 }
 
 <REVISION>{
-	.|[\n\t\r]		;
+	.|[\n\t]		;
 	"<timestamp>"	BEGIN DATE;
 	"<username>"	BEGIN AUTHOR;
 	\=\=			BEGIN SECTION1;
 	\=\=\=			BEGIN SECTION2;
 	\=\=\=\=		BEGIN SECTION3;
 	\=\=\=\=\=		BEGIN SECTION4;
-	\[\[[^:\|\]]+/\]\]	insereLinkInt(pag,yytext+2); //printf("LI %s\n",yytext+2); count++;
-	\[\[[^:\|\]]+/\|	insereLinkInt(pag,yytext+2); //printf("LIB %s\n",yytext+2); count++;
+	\[\[[^:\|\]]+/\]\]	insereLinkInt(pag,yytext+2);
+	\[\[[^:\|\]]+/\|	insereLinkInt(pag,yytext+2); 
 	"http://"		BEGIN LINKEXT;
 	"</revision>"	BEGIN PAGE;
 }
@@ -53,32 +53,32 @@
 }
 
 <SECTION1>{
-	.|[\n\t\r]		BEGIN REVISION;
-	[^=\n]*			insereSeccao(0,pag,yytext); //printf("S %s\n", yytext);
+	.|[\n\t]		BEGIN REVISION;
+	[^=\n]*			insereSeccao(0,pag,yytext); 
 	\=\= 			BEGIN REVISION; 
 }
 
 <SECTION2>{
-	[^=\&]+			insereSeccao(1,pag,yytext); //printf("SS %s\n", yytext);
-	.|[\n\t\r]		;
+	[^=\&]+			insereSeccao(1,pag,yytext);
+	.|[\n\t]		;
 	=\=\= 			BEGIN REVISION; 
 }
 
 <SECTION3>{
-	[^=]*			insereSeccao(2,pag,yytext); //printf("SSS %s\n", yytext);
+	[^=]*			insereSeccao(2,pag,yytext); 
 	=\=\=\= 		BEGIN REVISION; 
 }
 
 <SECTION4>{
-	[^=]*			insereSeccao(3,pag,yytext); //printf("SSS %s\n", yytext);
+	[^=]*			insereSeccao(3,pag,yytext);
 	=\=\=\=\= 		BEGIN REVISION; 
 }
 
 <LINKEXT>{
-	[a-zA-Z0-9/\.\-\_\?\=\&\;\+\-\%]+	insereLinkExt(pag,yytext); BEGIN REVISION; //printf("LEXT %s\n", yytext); 
+	[a-zA-Z0-9/\.\-\_\?\=\&\;\+\-\%]+	insereLinkExt(pag,yytext); BEGIN REVISION; 
 }
 
-.|[\n\t\r]			{;}
+.|[\n\t]			{ ; }
 
 <<EOF>> 			{ return 0; }
 
