@@ -50,7 +50,7 @@ void imprimeLinks(LinkedList link, FILE *fp, int tipo){
 					if(res[0]=='3' && res[1]=='X' && res[2]=='3')
 						fprintf(fp, " >>> %s <br>",(res+3));
 					else
-						fprintf(fp, "<b> %s </b><br>",aux->data);
+						fprintf(fp, "<p></p><b> %s </b><br>",aux->data);
 				}
 			}
 		}
