@@ -8,13 +8,9 @@
 
 %option noyywrap
 
-%x PAGE TITLE REVISION DATE AUTHOR LINKINT LINKEXT SECTION SUBSECTION
-
-trash .|[\n\t\r]
+%x PAGE TITLE REVISION DATE AUTHOR LINKINT LINKEXT SECTION SUBSECTION SUBSUBSECTION
 
 %%
-	system("mkdir -p pages; cp -R html/ pages");
-
 "<page>" {
 	BEGIN PAGE; pag = inicializaPagina();
 }
@@ -22,22 +18,24 @@ trash .|[\n\t\r]
 <PAGE>{
 	"<title>" 		BEGIN TITLE;
 	"<revision>"	BEGIN REVISION;
-	{trash}			;
+	.|[\n\t\r]			;
 	"</page>"		criaFicheiroHTML(pag); insereTituloIndice(lpags,pag->titulo); BEGIN INITIAL;
 }
 
 <TITLE>{
 	.*:.*	BEGIN INITIAL;
-	[^<]*			printf("%s\n", yytext); insereTitulo(pag,yytext);
+	[^<]*			insereTitulo(pag,yytext); printf("%s\n", yytext);
 	"</title>" 		BEGIN PAGE;
 }
 
 <REVISION>{
-	{trash}			;
+	.|[\n\t\r]		;
 	"<timestamp>"	BEGIN DATE;
 	"<username>"	BEGIN AUTHOR;
 	\=\=			BEGIN SECTION;
-	\=\=\=			;
+	\=\=\=			BEGIN SUBSECTION;
+	\=\=\=\=		BEGIN SUBSUBSECTION;
+	\=\=\=\=\=		;
 	\[\[[^:\|\]]+/\]\]	insereLinkInt(pag,yytext+2); //printf("LI %s\n",yytext+2); count++;
 	\[\[[^:\|\]]+/\|	insereLinkInt(pag,yytext+2); //printf("LIB %s\n",yytext+2); count++;
 	"http://"		BEGIN LINKEXT;
@@ -55,15 +53,25 @@ trash .|[\n\t\r]
 }
 
 <SECTION>{			
-	[^=]*			insereSeccao(pag,yytext); //printf("S %s\n", yytext);
-	== 				BEGIN REVISION; 
+	[^=]*			insereSeccao(0,pag,yytext); //printf("S %s\n", yytext);
+	\=\= 			BEGIN REVISION; 
+}
+
+<SUBSECTION>{
+	[^=]*			insereSeccao(1,pag,yytext); //printf("SS %s\n", yytext);
+	=\=\= 			BEGIN REVISION; 
+}
+
+<SUBSUBSECTION>{
+	[^=]*			insereSeccao(2,pag,yytext); //printf("SSS %s\n", yytext);
+	=\=\=\= 		BEGIN REVISION; 
 }
 
 <LINKEXT>{
 	[a-zA-Z0-9/\.\-\_\?\=\&\;\+\-\%]+	insereLinkExt(pag,yytext); BEGIN REVISION; //printf("LEXT %s\n", yytext); 
 }
 
-{trash}           	{;} 
+.|[\n\t\r]			{;}
 
 <<EOF>> 			{ return 0; }
 
@@ -73,6 +81,8 @@ int main(int argc, char *argv[]) {
 		printf("Necessário passar como argumento página/s XML a analisar!");
 	} else {
 		int i;
+		system("mkdir -p pages; cp -R html/ pages");
+
 		for(i=1; i<argc; i++) {
 			yyin = fopen(argv[i],"r");
 

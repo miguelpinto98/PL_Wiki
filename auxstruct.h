@@ -20,7 +20,7 @@ Pagina inicializaPagina() ;
 void insereTitulo(Pagina, char*) ;
 void insereData(Pagina, char*) ;
 void insereAutor(Pagina, char*) ;
-void insereSeccao(Pagina, char*) ;
+void insereSeccao(int,Pagina, char*) ;
 void insereLinkInt(Pagina, char*) ;
 void insereLinkExt(Pagina, char*) ;
 LinkedList iniciaIndiceTitulo();

@@ -38,8 +38,18 @@ void imprimeLinks(LinkedList link, FILE *fp, int tipo){
 			fprintf(fp, "<li><a href=\"https://pt.wikipedia.org/wiki/%s\" class=\"current\"> %s </a></li>",aux->data,aux->data);
 		if(tipo==2)
 			fprintf(fp, "<li><a href=\"http://%s\" class=\"current\"> %s </a></li>",aux->data,aux->data);
-		if(tipo==3)
-			fprintf(fp, "<li> %s </li>",aux->data);
+		if(tipo==3) {
+			char *res = strdup(aux->data);
+
+			if(res[0]=='1' && res[1]=='X' && res[2]=='1')
+				fprintf(fp, "<li> >> %s </li>",(res+3));
+			else {
+				if(res[0]=='2' && res[1]=='X' && res[2]=='2')
+					fprintf(fp, "<li> >>>> %s </li>",(res+3));
+				else
+					fprintf(fp, "<li> %s </li>",aux->data);
+			}
+		}
 		aux=aux->next;
 	}
 

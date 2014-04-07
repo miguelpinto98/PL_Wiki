@@ -32,8 +32,35 @@ void insereAutor(Pagina pag, char *autor) {
 	pag->autor = strdup(autor);
 }
 
-void insereSeccao(Pagina pag, char* sec) {
-	tailInsertLinkedList(pag->seccoes, strdup(sec));
+void insereSeccao(int tipo, Pagina pag, char* sec) {
+	char *res = strdup(sec);
+	int x = strlen(res);
+
+	if(tipo==0)
+		tailInsertLinkedList(pag->seccoes, res);
+	else {
+		if(tipo==1) {
+			char aux[x+4];
+
+			strcpy(aux,"1X1");
+			strcat(aux,res);
+			aux[x+4] = '\0';
+
+			tailInsertLinkedList(pag->seccoes, strdup(aux));
+			pag->seccoes->nrelems--;
+		} else {
+			if (tipo==2) {
+				char aux[x+4];
+
+				strcpy(aux,"2X2");
+				strcat(aux,res);
+				aux[x+4] = '\0';
+
+				tailInsertLinkedList(pag->seccoes, strdup(aux));
+				pag->seccoes->nrelems--;
+			}
+		}
+	}
 }
 
 void insereLinkInt(Pagina pag, char* url) {

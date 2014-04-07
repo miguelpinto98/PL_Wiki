@@ -1,11 +1,11 @@
-SRC = htmlpage.c linkedlist/linkedlist.c auxstruct.c lex.yy.c
+SRC = htmlpage.c linkedlist/linkedlist.c auxstruct.c 
 CCFLAGS = -O2 -Wextra
 CCC = gcc
 FILE = xWiki
 
 $(FILE): $(SRC:.c=.o)
 	flex parserXML.fl
-	$(CCC) -o $(FILE) $(CCFLAGS) $(SRC)
+	$(CCC) -o $(FILE) $(CCFLAGS) lex.yy.c $(SRC)
 
 clean:
-	rm -f *.o 
+	rm -f *.o lex.yy.c
