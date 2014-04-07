@@ -11,7 +11,7 @@ void criaHeader(char *tit, FILE *fp) {
 }
 
 void openContent(FILE *fp) {
-	fputs("<body data-color=\"blue\" class=\"flat\"><div id=\"wrapper\"><div id=\"header\"><h1>",fp);
+	fputs("<body data-color=\"blue\" class=\"flat\"><div id=\"wrapper\" style=\"min-height:760px;\"><div id=\"header\"><h1>",fp);
 	fputs("<a href=\"index.html\"></a></h1>	<a id=\"menu-trigger\" href=\"index.html#\"><i class=\"fa fa-bars\"></i></a>",fp);
 	fputs("</div><div id=\"sidebar\"><ul><li class=\"active\"><a href=\"index.html\"><i class=\"fa fa-book\"></i> <span>Índice</span></a></li>",fp);
 	fputs("<li><a href=\"relatorio.html\"><i class=\"fa fa-file\"></i> <span>Relatório</span></a></li>",fp);
@@ -20,7 +20,7 @@ void openContent(FILE *fp) {
 
 void criaContentPanel1(Pagina pag, FILE *fp){
 	fprintf(fp, "<div id=\"content-header\"><a href=\"https://pt.wikipedia.org/wiki/%s\" ><h1> %s </h1></a></div><div id=\"breadcrumb\">", pag->titulo, pag->titulo);
-	fputs("<a class=\"tip-bottom\"><i class=\"fa fa-home\" style=\"margin-bottom:3px\"></i> Plikipedia</a><a href=\"index.html\" title=\"Ir para o índice\">Índice</a>",fp);
+	fputs("<a class=\"tip-bottom\"><i class=\"fa fa-home\" style=\"margin-bottom:3px\"></i> Plikipédia</a><a href=\"index.html\" title=\"Ir para o índice\">Índice</a>",fp);
 	fprintf(fp, "<a href=\"https://pt.wikipedia.org/wiki/%s\" class=\"current\"> %s </a></div><div class=\"container-fluid\"><br/>", pag->titulo, pag->titulo);
 	fputs("<div class=\"row\"><div class=\"col-xs-12 col-sm-6 col-lg-6\"><div class=\"widget-box\"><div class=\"widget-title\"><h5>Informações Relevantes</h5></div>",fp);
 	fputs("<div class=\"widget-content nopadding\"><ul class=\"recent-posts\"><li style=\"font-size:12px; color:#3498db;\">Título:",fp);
@@ -113,9 +113,9 @@ void criaFicheiroHTML(Pagina pag) {
 }
 
 void criaNumPagina(int num, FILE *fp) {
-	fputs("<div id=\"content-header\"><h1>Índice</h1></div><div id=\"breadcrumb\"><a class=\"tip-bottom\"><i class=\"fa fa-home\" style=\"margin-bottom:3px\"></i> Plikipedia</a>",fp);
+	fputs("<div id=\"content-header\"><h1>Índice</h1></div><div id=\"breadcrumb\"><a class=\"tip-bottom\"><i class=\"fa fa-home\" style=\"margin-bottom:3px\"></i> Plikipédia</a>",fp);
 	fputs("<a class=\"current\">Índice</a></div><div class=\"row\"><div class=\"col-xs-12\"><div class=\"widget-box\"><div class=\"widget-title\"><h5>Artigos Processados</h5>",fp);
-	fprintf(fp, "<span title=\"Número total de artigos processados\" class=\"label label-info tip-left\"> %d </span></div></div></div></div>",num );
+	fprintf(fp, "<span title=\"Número total de artigos processados\" class=\"label label-info tip-left\" style=\"height:23px; width: 36px; margin-top: 7px;\"> %d </span></div></div></div></div>",num );
 }
 
 void criaIndexPages(LinkedElem pages, FILE *fp) {
@@ -126,7 +126,7 @@ void criaIndexPages(LinkedElem pages, FILE *fp) {
 		fprintf(fp,"<li><a href=\"#tab%c\" data-toggle=\"tab\">%c</a></li>", c, c);
 		c++;
 	}
-	fputs("<li><a href=\"#tab1\" data-toggle=\"tab\">Outros</a></li></ul></div></br><div class=\"widget-content padding\" style=\"height:100%\"><div class=\"tab-content\"><div id=\"tabA\" class=\"tab-pane active\"><ul>",fp);
+	fputs("<li><a href=\"#tab1\" data-toggle=\"tab\">Outros</a></li></ul></div></br><div class=\"widget-content padding\" style=\"min-height: 330px; height:100%\"><div class=\"tab-content\"><div id=\"tabA\" class=\"tab-pane active\"><ul>",fp);
 	
 	ant='A';
 	c = 'A';
@@ -151,7 +151,7 @@ void criaIndexPages(LinkedElem pages, FILE *fp) {
 }
 
 void geraIndex(LinkedList lpages, FILE *fp) {
-	criaHeader("index",fp);
+	criaHeader("Plikipédia",fp);
 	openContent(fp);
 	criaNumPagina(lpages->nrelems, fp);
 	criaIndexPages(lpages->elems,fp);
