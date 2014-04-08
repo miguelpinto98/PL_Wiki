@@ -114,7 +114,7 @@ void criaFicheiroHTML(Pagina pag) {
 
 void criaNumPagina(int num, FILE *fp) {
 	fputs("<div id=\"content-header\"><h1>Índice</h1></div><div id=\"breadcrumb\"><a class=\"tip-bottom\"><i class=\"fa fa-home\" style=\"margin-bottom:3px\"></i> Plikipédia</a>",fp);
-	fputs("<a class=\"current\">Índice</a></div><div class=\"row\"><div class=\"col-xs-12\"><div class=\"widget-box\"><div class=\"widget-title\"><h5>Artigos Processados</h5>",fp);
+	fputs("<a class=\"current\">Índice</a></div><div class=\"row\"><div class=\"col-xs-12\"><div class=\"widget-box\"><div class=\"widget-title\"><h5>Páginas Processadas</h5>",fp);
 	fprintf(fp, "<span title=\"Número total de artigos processados\" class=\"label label-info tip-left\" style=\"height:23px; width: 36px; margin-top: 7px;\"> %d </span></div></div></div></div>",num );
 }
 
