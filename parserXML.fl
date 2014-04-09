@@ -24,7 +24,7 @@
 
 <TITLE>{
 	.*:.*			BEGIN INITIAL;
-	[^<]*			insereTitulo(pag,yytext); //printf("%s\n", yytext);
+	[^<]*			insereTitulo(pag,yytext); printf("%s\n", yytext);
 	"</title>" 		BEGIN PAGE;
 }
 
