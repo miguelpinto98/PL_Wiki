@@ -59,7 +59,7 @@
 }
 
 <SECTION2>{
-	[^=\&]+			insereSeccao(1,pag,yytext);
+	[^=]+			insereSeccao(1,pag,yytext);
 	.|[\n\t]		;
 	=\=\= 			BEGIN REVISION; 
 }
@@ -88,13 +88,13 @@ int main(int argc, char *argv[]) {
 		printf("Necessário passar como argumento página/s XML a analisar!");
 	} else {
 		int i;
+		
 		system("mkdir -p pages; cp -R html/ pages");
-
+		lpags = iniciaIndiceTitulo();
 		for(i=1; i<argc; i++) {
 			yyin = fopen(argv[i],"r");
 
 			if(yyin) {
-				lpags = iniciaIndiceTitulo();
 				yylex();
 				fclose(yyin);
 			} else {
