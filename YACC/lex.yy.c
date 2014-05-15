@@ -747,7 +747,7 @@ YY_RULE_SETUP
 case 3:
 YY_RULE_SETUP
 #line 7 "config.l"
-{ yylval.i=atoi(yytext+4);		return N;}
+{ yylval.i=atoi(yytext+3);		return N;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
