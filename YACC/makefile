@@ -1,8 +1,7 @@
-config: y.tab.c lex.yy.c
-	cc -o config y.tab.c -lm
-
-y.tab.c: config.y
-	yacc config.y
-
-lex.yy.c: config.l
+config: config.l config.y
 	flex config.l
+	yacc -d config.y
+	gcc lex.yy.c y.tab.c -o config
+
+clean:
+	rm lex.yy.c y.tab.c config

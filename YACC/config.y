@@ -1,47 +1,54 @@
 %{
-#include <stdio.h>
-#include <string.h>
+	#include <stdio.h>
+	#include <string.h>
+	
+	int yyerror(char *s);
+    
+    extern FILE* yyin;
+    extern int yylineno;
 %}
 
-%token NPROVAS N TITULO
+%token INT STRING
+%token TITULO NPROVAS NN
+
 %union {
 	char* s;
 	int i;
 }
 
-%type <s> TITULO
-%type <i> NPROVAS N
+%type <s> STRING
+%type <i> INT
 
 %start z
 
 %%
-z: linhas '$'							{printf("Fim de ficheiro\n");}
+z: linhas '$'						{ printf("Fim de ficheiro\n"); }
 
+linhas : linhas linhaC '\n'			{ printf("Linha ABC\n"); }
+       | 
+       ;	
 
-linhas: linhas linhaC '\n'				{printf("NOVA LINHA\n");}
-      | 
-      ;	
-
-
-linhaC: TITULO					{printf("T - %s", $1);}
-      | NPROVAS 				{printf("P - %d", $1);}
-      | N 						{printf("N - %d", $1);}			
-      ;
-
-
+linhaC : TITULO STRING				{printf("T - %s", $2);}
+       | NPROVAS INT  				{printf("P - %d", $2);}
+       | NN INT						{printf("N - %d", $2);}	
+       | STRING 						
+       | INT 						
+       ;
 
 %%
 
-
-#include "lex.yy.c"
-
-int yyerror() {
-	fprintf(stderr,"Erro Sintatico - %s\n",yytext);
-	return 0;
+int yyerror(char *s) {
+    fprintf(stderr, "! %s\n", s);
+    return 0;
 }
 
 int main(){
-	yyparse();
+	FILE *file = fopen("exemplo.txt", "r");
+	
+	if(file) {
+		yyin = file;
+		yyparse();
+	}
 	return 0;
 }
 
