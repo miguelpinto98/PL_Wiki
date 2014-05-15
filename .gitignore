@@ -1,0 +1,10 @@
+
+YACC/lex.yy.c
+
+YACC/config
+
+YACC/lex.yy.o
+
+YACC/y.tab.c
+
+YACC/y.tab.h
