@@ -8,3 +8,13 @@ YACC/lex.yy.o
 YACC/y.tab.c
 
 YACC/y.tab.h
+
+YACC/config
+
+*.l
+
+*.c
+
+YACC/config.l
+
+YACC/lex.yy.c
