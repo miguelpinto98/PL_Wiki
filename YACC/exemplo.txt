@@ -1,4 +1,3 @@
 =titulo= VII Torneio COMmapa 2014
 =nprovas= 8
-=N= 6
-=campos= First name; Surname; Time; Short; Long
+=N= 5

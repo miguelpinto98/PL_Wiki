@@ -4,41 +4,39 @@
 	
 	int yyerror(char *s);
     
+    extern int yylex();
     extern FILE* yyin;
     extern int yylineno;
 %}
 
 %token INT STRING
-%token TITULO NPROVAS NN
+%token TITULO NPROVAS NN END
 
 %union {
 	char* s;
-	int i;
+	int n;
 }
 
 %type <s> STRING
-%type <i> INT
+%type <n> INT
 
-%start z
+%start linhas
 
 %%
-z: linhas '$'						{ printf("Fim de ficheiro\n"); }
 
-linhas : linhas linhaC '\n'			{ printf("Linha ABC\n"); }
-       | 
+linhas : linhas linhaC				{ ; }
+       |
        ;	
 
-linhaC : TITULO STRING				{printf("T - %s", $2);}
-       | NPROVAS INT  				{printf("P - %d", $2);}
-       | NN INT						{printf("N - %d", $2);}	
-       | STRING 						
-       | INT 						
+linhaC : TITULO STRING				{ printf("%s\n", $2); }
+       | NPROVAS INT  				{ printf("%d\n", $2); }
+       | NN INT						{ printf("%d\n", $2); }
        ;
 
 %%
 
 int yyerror(char *s) {
-    fprintf(stderr, "! %s\n", s);
+    fprintf(stderr, "%d! %s\n", yylineno, s);
     return 0;
 }
 

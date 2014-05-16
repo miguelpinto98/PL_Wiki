@@ -10,22 +10,24 @@
 
 %%
 
-=titulo=				{ return TITULO; }
+"=titulo="				{ return TITULO; }
 
-=nprovas=				{ return NPROVAS; }
+"=nprovas="				{ return NPROVAS; }
 
-=N=					{ return NN; }
+"=N="					{ return NN; }
 
-[ a-zA-Z0-9]+				{ 	if(isdigit(atoi(yytext))==0) {
-									yylval.s = strdup(yytext);
-									return STRING;
-								} else {
-							  		yylval.i = atoi(yytext);
-							  		return INT;
-								}
-							}
+[ a-zA-Z0-9]+ {
+	//printf("%c\n",yytext[1] ); 
+	if(isdigit(yytext[1])!=0) {
+		yylval.n = atoi(yytext);
+		return INT;
+	} else {
+		yylval.s=strdup(yytext+1); 
+		return STRING;
+	}
+}
 
-\n 						BEGIN INITIAL;
+[\t\n]					;
 
 . 						{ yyerror("Unknown character"); }
 
