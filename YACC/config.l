@@ -16,6 +16,10 @@
 
 "=N="					{ return NN; }
 
+"=campos="				{ return CAMPOS; }
+
+;						{ return ';'; }
+
 [ a-zA-Z0-9]+ {
 	//printf("%c\n",yytext[1] ); 
 	if(isdigit(yytext[1])!=0) {
@@ -29,6 +33,6 @@
 
 [\t\n]					;
 
-. 						{ yyerror("Unknown character"); }
+. 						{ printf("%c\n",*yytext); yyerror("Unknown character");  }
 
 %%

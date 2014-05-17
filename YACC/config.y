@@ -10,7 +10,7 @@
 %}
 
 %token INT STRING
-%token TITULO NPROVAS NN END
+%token TITULO NPROVAS NN CAMPOS
 
 %union {
 	char* s;
@@ -20,18 +20,23 @@
 %type <s> STRING
 %type <n> INT
 
-%start linhas
+%start config
 
 %%
 
-linhas : linhas linhaC				{ ; }
+config : config linha				{ ; }
        |
        ;	
 
-linhaC : TITULO STRING				{ printf("%s\n", $2); }
+linha : TITULO STRING				{ printf("%s\n", $2); }
        | NPROVAS INT  				{ printf("%d\n", $2); }
        | NN INT						{ printf("%d\n", $2); }
+       | CAMPOS value				
        ;
+
+value : value ';' STRING 			{ printf("%s\n", $3);}
+	  | STRING 						{ printf("%s\n", $1);}
+	  ;
 
 %%
 
