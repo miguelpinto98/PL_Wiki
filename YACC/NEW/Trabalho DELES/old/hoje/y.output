@@ -1,0 +1,1638 @@
+Terminals which are not used
+
+   BEGIN_ELEM
+   END_ELEM
+   BEGIN_PATH
+   END_PATH
+   BEGIN_FORMAT
+   END_FORMAT
+   BEGIN_SIZE
+   END_SIZE
+   BEGIN_SCALE
+   END_SCALE
+   BEGIN_SEC
+   END_SEC
+   BEGIN_CITEREF
+   END_CITEREF
+
+
+State 39 conflicts: 1 shift/reduce
+
+
+Grammar
+
+    0 $accept: Report $end
+
+    1 Report: BEGIN_REPORT FrontMatter Body BackMatter END_REPORT
+
+    2 FrontMatter: BEGIN_FM Title Subtitle Authors Date Institution Keywords Abstract Aknow Toc Lof Lot END_FM
+
+    3 Title: BEGIN_TITLE text END_TITLE
+
+    4 Subtitle: BEGIN_SUBTITLE text END_SUBTITLE
+
+    5 Author: BEGIN_AUTHOR Name Number Mail END_AUTHOR
+
+    6 Authors: Author
+    7        | Authors Author
+
+    8 Name: BEGIN_NAME text END_NAME
+
+    9 Number: BEGIN_NUMBER text END_NUMBER
+   10       | /* empty */
+
+   11 Mail: BEGIN_MAIL text END_MAIL
+   12     | /* empty */
+
+   13 Date: BEGIN_DATE text END_DATE
+   14     | TODAY
+
+   15 Institution: BEGIN_INST text END_INST
+
+   16 Keywords: KEYWORDS Words KEYWORDS
+   17         | /* empty */
+
+   18 Words: text
+   19      | Words text
+
+   20 Abstract: BEGIN_ABS Paragraphs END_ABS
+
+   21 Aknow: BEGIN_AKN Paragraphs END_AKN
+
+   22 Paragraphs: Paragraph
+   23           | Paragraphs Paragraph
+
+   24 Paragraph: BEGIN_PARA Paragraph_Elems END_PARA
+
+   25 Paragraph_Elems: Paragraph_Elem
+   26                | Paragraph_Elems Paragraph_Elem
+
+   27 Paragraph_Elem: text
+   28               | BEGIN_FOOTNOTE text END_FOOTNOTE
+   29               | BEGIN_REF text END_REF
+   30               | BEGIN_XREF text END_XREF
+   31               | BEGIN_CITREF text END_CITREF
+   32               | BEGIN_ITERM text END_ITERM
+   33               | BEGIN_BOLD text END_BOLD
+   34               | BEGIN_ITALIC text END_ITALIC
+   35               | BEGIN_UNDERLINE text END_UNDERLINE
+   36               | BEGIN_INLINECODE text END_INLINECODE
+   37               | BEGIN_ACRONYM text END_ACRONYM
+
+   38 Toc: INDEX
+   39    | /* empty */
+
+   40 Lof: INDEX_F
+   41    | /* empty */
+
+   42 Lot: INDEX_T
+   43    | /* empty */
+
+   44 BackMatter: BEGIN_BACKMATTER Paragraphs END_BACKMATTER
+
+   45 Body: BEGIN_BODY Chapters END_BODY
+   46     | /* empty */
+
+   47 Chapters: Chapter
+   48         | Chapters Chapter
+
+   49 Chapter: BEGIN_CHAP Title Elems END_CHAP
+
+   50 Elems: Elem
+   51      | Elems Elem
+
+   52 Elem: Paragraph
+   53     | Summary
+   54     | Codeblock
+   55     | BEGIN_LIST List END_LIST
+   56     | Figure
+   57     | Table
+
+   58 Table: BEGIN_TABLE TRowList END_TABLE
+
+   59 TRowList: TRowList BEGIN_ROW TRow END_ROW
+   60         | BEGIN_ROW TRow END_ROW
+   61         | /* empty */
+
+   62 TRow: BEGIN_CELL text END_CELL
+   63     | TRow BEGIN_CELL text END_CELL
+
+   64 Summary: BEGIN_SUMMARY text END_SUMMARY
+
+   65 Codeblock: BEGIN_CODEBLOCK text END_CODEBLOCK
+
+   66 List: text
+   67     | List text
+
+   68 text: TEXT
+
+   69 Figure: BEGIN_FIG Graphic FCaption END_FIG
+
+   70 Graphic: BEGIN_GRAPH text END_GRAPH
+
+   71 FCaption: BEGIN_CAPTION text END_CAPTION
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256)
+BEGIN_REPORT (258) 1
+END_REPORT (259) 1
+BEGIN_FM (260) 2
+END_FM (261) 2
+BEGIN_TITLE (262) 3
+END_TITLE (263) 3
+BEGIN_SUBTITLE (264) 4
+END_SUBTITLE (265) 4
+BEGIN_DATE (266) 13
+END_DATE (267) 13
+TODAY (268) 14
+BEGIN_AUTHOR (269) 5
+END_AUTHOR (270) 5
+BEGIN_NAME (271) 8
+END_NAME (272) 8
+BEGIN_NUMBER (273) 9
+END_NUMBER (274) 9
+BEGIN_MAIL (275) 11
+END_MAIL (276) 11
+BEGIN_ABS (277) 20
+END_ABS (278) 20
+BEGIN_AKN (279) 21
+END_AKN (280) 21
+BEGIN_BODY (281) 45
+END_BODY (282) 45
+BEGIN_CHAP (283) 49
+END_CHAP (284) 49
+BEGIN_PARA (285) 24
+END_PARA (286) 24
+BEGIN_ELEM (287)
+END_ELEM (288)
+BEGIN_FIG (289) 69
+END_FIG (290) 69
+BEGIN_GRAPH (291) 70
+END_GRAPH (292) 70
+BEGIN_CAPTION (293) 71
+END_CAPTION (294) 71
+BEGIN_PATH (295)
+END_PATH (296)
+BEGIN_FORMAT (297)
+END_FORMAT (298)
+BEGIN_SIZE (299)
+END_SIZE (300)
+BEGIN_TABLE (301) 58
+END_TABLE (302) 58
+KEYWORDS (303) 16
+BEGIN_ROW (304) 59 60
+END_ROW (305) 59 60
+BEGIN_CELL (306) 62 63
+END_CELL (307) 62 63
+END_LIST (308) 55
+END_CODEBLOCK (309) 65
+BEGIN_INST (310) 15
+END_INST (311) 15
+INDEX (312) 38
+INDEX_F (313) 40
+INDEX_T (314) 42
+BEGIN_SCALE (315)
+END_SCALE (316)
+BEGIN_SEC (317)
+END_SEC (318)
+BEGIN_LIST (319) 55
+BEGIN_CODEBLOCK (320) 65
+BEGIN_SUMMARY (321) 64
+END_SUMMARY (322) 64
+BEGIN_BACKMATTER (323) 44
+END_BACKMATTER (324) 44
+BEGIN_FOOTNOTE (325) 28
+END_FOOTNOTE (326) 28
+BEGIN_REF (327) 29
+END_REF (328) 29
+BEGIN_XREF (329) 30
+END_XREF (330) 30
+BEGIN_CITEREF (331)
+END_CITEREF (332)
+BEGIN_ITERM (333) 32
+END_ITERM (334) 32
+BEGIN_BOLD (335) 33
+END_BOLD (336) 33
+BEGIN_ITALIC (337) 34
+END_ITALIC (338) 34
+BEGIN_UNDERLINE (339) 35
+END_UNDERLINE (340) 35
+BEGIN_INLINECODE (341) 36
+END_INLINECODE (342) 36
+BEGIN_ACRONYM (343) 37
+END_CITREF (344) 31
+BEGIN_CITREF (345) 31
+END_ACRONYM (346) 37
+TEXT (347) 68
+
+
+Nonterminals, with rules where they appear
+
+$accept (93)
+    on left: 0
+Report (94)
+    on left: 1, on right: 0
+FrontMatter (95)
+    on left: 2, on right: 1
+Title (96)
+    on left: 3, on right: 2 49
+Subtitle (97)
+    on left: 4, on right: 2
+Author (98)
+    on left: 5, on right: 6 7
+Authors (99)
+    on left: 6 7, on right: 2 7
+Name (100)
+    on left: 8, on right: 5
+Number (101)
+    on left: 9 10, on right: 5
+Mail (102)
+    on left: 11 12, on right: 5
+Date (103)
+    on left: 13 14, on right: 2
+Institution (104)
+    on left: 15, on right: 2
+Keywords (105)
+    on left: 16 17, on right: 2
+Words (106)
+    on left: 18 19, on right: 16 19
+Abstract (107)
+    on left: 20, on right: 2
+Aknow (108)
+    on left: 21, on right: 2
+Paragraphs (109)
+    on left: 22 23, on right: 20 21 23 44
+Paragraph (110)
+    on left: 24, on right: 22 23 52
+Paragraph_Elems (111)
+    on left: 25 26, on right: 24 26
+Paragraph_Elem (112)
+    on left: 27 28 29 30 31 32 33 34 35 36 37, on right: 25 26
+Toc (113)
+    on left: 38 39, on right: 2
+Lof (114)
+    on left: 40 41, on right: 2
+Lot (115)
+    on left: 42 43, on right: 2
+BackMatter (116)
+    on left: 44, on right: 1
+Body (117)
+    on left: 45 46, on right: 1
+Chapters (118)
+    on left: 47 48, on right: 45 48
+Chapter (119)
+    on left: 49, on right: 47 48
+Elems (120)
+    on left: 50 51, on right: 49 51
+Elem (121)
+    on left: 52 53 54 55 56 57, on right: 50 51
+Table (122)
+    on left: 58, on right: 57
+TRowList (123)
+    on left: 59 60 61, on right: 58 59
+TRow (124)
+    on left: 62 63, on right: 59 60 63
+Summary (125)
+    on left: 64, on right: 53
+Codeblock (126)
+    on left: 65, on right: 54
+List (127)
+    on left: 66 67, on right: 55 67
+text (128)
+    on left: 68, on right: 3 4 8 9 11 13 15 18 19 27 28 29 30 31 32
+    33 34 35 36 37 62 63 64 65 66 67 70 71
+Figure (129)
+    on left: 69, on right: 56
+Graphic (130)
+    on left: 70, on right: 69
+FCaption (131)
+    on left: 71, on right: 69
+
+
+state 0
+
+    0 $accept: . Report $end
+
+    BEGIN_REPORT  shift, and go to state 1
+
+    Report  go to state 2
+
+
+state 1
+
+    1 Report: BEGIN_REPORT . FrontMatter Body BackMatter END_REPORT
+
+    BEGIN_FM  shift, and go to state 3
+
+    FrontMatter  go to state 4
+
+
+state 2
+
+    0 $accept: Report . $end
+
+    $end  shift, and go to state 5
+
+
+state 3
+
+    2 FrontMatter: BEGIN_FM . Title Subtitle Authors Date Institution Keywords Abstract Aknow Toc Lof Lot END_FM
+
+    BEGIN_TITLE  shift, and go to state 6
+
+    Title  go to state 7
+
+
+state 4
+
+    1 Report: BEGIN_REPORT FrontMatter . Body BackMatter END_REPORT
+
+    BEGIN_BODY  shift, and go to state 8
+
+    $default  reduce using rule 46 (Body)
+
+    Body  go to state 9
+
+
+state 5
+
+    0 $accept: Report $end .
+
+    $default  accept
+
+
+state 6
+
+    3 Title: BEGIN_TITLE . text END_TITLE
+
+    TEXT  shift, and go to state 10
+
+    text  go to state 11
+
+
+state 7
+
+    2 FrontMatter: BEGIN_FM Title . Subtitle Authors Date Institution Keywords Abstract Aknow Toc Lof Lot END_FM
+
+    BEGIN_SUBTITLE  shift, and go to state 12
+
+    Subtitle  go to state 13
+
+
+state 8
+
+   45 Body: BEGIN_BODY . Chapters END_BODY
+
+    BEGIN_CHAP  shift, and go to state 14
+
+    Chapters  go to state 15
+    Chapter   go to state 16
+
+
+state 9
+
+    1 Report: BEGIN_REPORT FrontMatter Body . BackMatter END_REPORT
+
+    BEGIN_BACKMATTER  shift, and go to state 17
+
+    BackMatter  go to state 18
+
+
+state 10
+
+   68 text: TEXT .
+
+    $default  reduce using rule 68 (text)
+
+
+state 11
+
+    3 Title: BEGIN_TITLE text . END_TITLE
+
+    END_TITLE  shift, and go to state 19
+
+
+state 12
+
+    4 Subtitle: BEGIN_SUBTITLE . text END_SUBTITLE
+
+    TEXT  shift, and go to state 10
+
+    text  go to state 20
+
+
+state 13
+
+    2 FrontMatter: BEGIN_FM Title Subtitle . Authors Date Institution Keywords Abstract Aknow Toc Lof Lot END_FM
+
+    BEGIN_AUTHOR  shift, and go to state 21
+
+    Author   go to state 22
+    Authors  go to state 23
+
+
+state 14
+
+   49 Chapter: BEGIN_CHAP . Title Elems END_CHAP
+
+    BEGIN_TITLE  shift, and go to state 6
+
+    Title  go to state 24
+
+
+state 15
+
+   45 Body: BEGIN_BODY Chapters . END_BODY
+   48 Chapters: Chapters . Chapter
+
+    END_BODY    shift, and go to state 25
+    BEGIN_CHAP  shift, and go to state 14
+
+    Chapter  go to state 26
+
+
+state 16
+
+   47 Chapters: Chapter .
+
+    $default  reduce using rule 47 (Chapters)
+
+
+state 17
+
+   44 BackMatter: BEGIN_BACKMATTER . Paragraphs END_BACKMATTER
+
+    BEGIN_PARA  shift, and go to state 27
+
+    Paragraphs  go to state 28
+    Paragraph   go to state 29
+
+
+state 18
+
+    1 Report: BEGIN_REPORT FrontMatter Body BackMatter . END_REPORT
+
+    END_REPORT  shift, and go to state 30
+
+
+state 19
+
+    3 Title: BEGIN_TITLE text END_TITLE .
+
+    $default  reduce using rule 3 (Title)
+
+
+state 20
+
+    4 Subtitle: BEGIN_SUBTITLE text . END_SUBTITLE
+
+    END_SUBTITLE  shift, and go to state 31
+
+
+state 21
+
+    5 Author: BEGIN_AUTHOR . Name Number Mail END_AUTHOR
+
+    BEGIN_NAME  shift, and go to state 32
+
+    Name  go to state 33
+
+
+state 22
+
+    6 Authors: Author .
+
+    $default  reduce using rule 6 (Authors)
+
+
+state 23
+
+    2 FrontMatter: BEGIN_FM Title Subtitle Authors . Date Institution Keywords Abstract Aknow Toc Lof Lot END_FM
+    7 Authors: Authors . Author
+
+    BEGIN_DATE    shift, and go to state 34
+    TODAY         shift, and go to state 35
+    BEGIN_AUTHOR  shift, and go to state 21
+
+    Author  go to state 36
+    Date    go to state 37
+
+
+state 24
+
+   49 Chapter: BEGIN_CHAP Title . Elems END_CHAP
+
+    BEGIN_PARA       shift, and go to state 27
+    BEGIN_FIG        shift, and go to state 38
+    BEGIN_TABLE      shift, and go to state 39
+    BEGIN_LIST       shift, and go to state 40
+    BEGIN_CODEBLOCK  shift, and go to state 41
+    BEGIN_SUMMARY    shift, and go to state 42
+
+    Paragraph  go to state 43
+    Elems      go to state 44
+    Elem       go to state 45
+    Table      go to state 46
+    Summary    go to state 47
+    Codeblock  go to state 48
+    Figure     go to state 49
+
+
+state 25
+
+   45 Body: BEGIN_BODY Chapters END_BODY .
+
+    $default  reduce using rule 45 (Body)
+
+
+state 26
+
+   48 Chapters: Chapters Chapter .
+
+    $default  reduce using rule 48 (Chapters)
+
+
+state 27
+
+   24 Paragraph: BEGIN_PARA . Paragraph_Elems END_PARA
+
+    BEGIN_FOOTNOTE    shift, and go to state 50
+    BEGIN_REF         shift, and go to state 51
+    BEGIN_XREF        shift, and go to state 52
+    BEGIN_ITERM       shift, and go to state 53
+    BEGIN_BOLD        shift, and go to state 54
+    BEGIN_ITALIC      shift, and go to state 55
+    BEGIN_UNDERLINE   shift, and go to state 56
+    BEGIN_INLINECODE  shift, and go to state 57
+    BEGIN_ACRONYM     shift, and go to state 58
+    BEGIN_CITREF      shift, and go to state 59
+    TEXT              shift, and go to state 10
+
+    Paragraph_Elems  go to state 60
+    Paragraph_Elem   go to state 61
+    text             go to state 62
+
+
+state 28
+
+   23 Paragraphs: Paragraphs . Paragraph
+   44 BackMatter: BEGIN_BACKMATTER Paragraphs . END_BACKMATTER
+
+    BEGIN_PARA      shift, and go to state 27
+    END_BACKMATTER  shift, and go to state 63
+
+    Paragraph  go to state 64
+
+
+state 29
+
+   22 Paragraphs: Paragraph .
+
+    $default  reduce using rule 22 (Paragraphs)
+
+
+state 30
+
+    1 Report: BEGIN_REPORT FrontMatter Body BackMatter END_REPORT .
+
+    $default  reduce using rule 1 (Report)
+
+
+state 31
+
+    4 Subtitle: BEGIN_SUBTITLE text END_SUBTITLE .
+
+    $default  reduce using rule 4 (Subtitle)
+
+
+state 32
+
+    8 Name: BEGIN_NAME . text END_NAME
+
+    TEXT  shift, and go to state 10
+
+    text  go to state 65
+
+
+state 33
+
+    5 Author: BEGIN_AUTHOR Name . Number Mail END_AUTHOR
+
+    BEGIN_NUMBER  shift, and go to state 66
+
+    $default  reduce using rule 10 (Number)
+
+    Number  go to state 67
+
+
+state 34
+
+   13 Date: BEGIN_DATE . text END_DATE
+
+    TEXT  shift, and go to state 10
+
+    text  go to state 68
+
+
+state 35
+
+   14 Date: TODAY .
+
+    $default  reduce using rule 14 (Date)
+
+
+state 36
+
+    7 Authors: Authors Author .
+
+    $default  reduce using rule 7 (Authors)
+
+
+state 37
+
+    2 FrontMatter: BEGIN_FM Title Subtitle Authors Date . Institution Keywords Abstract Aknow Toc Lof Lot END_FM
+
+    BEGIN_INST  shift, and go to state 69
+
+    Institution  go to state 70
+
+
+state 38
+
+   69 Figure: BEGIN_FIG . Graphic FCaption END_FIG
+
+    BEGIN_GRAPH  shift, and go to state 71
+
+    Graphic  go to state 72
+
+
+state 39
+
+   58 Table: BEGIN_TABLE . TRowList END_TABLE
+
+    BEGIN_ROW  shift, and go to state 73
+
+    BEGIN_ROW  [reduce using rule 61 (TRowList)]
+    $default   reduce using rule 61 (TRowList)
+
+    TRowList  go to state 74
+
+
+state 40
+
+   55 Elem: BEGIN_LIST . List END_LIST
+
+    TEXT  shift, and go to state 10
+
+    List  go to state 75
+    text  go to state 76
+
+
+state 41
+
+   65 Codeblock: BEGIN_CODEBLOCK . text END_CODEBLOCK
+
+    TEXT  shift, and go to state 10
+
+    text  go to state 77
+
+
+state 42
+
+   64 Summary: BEGIN_SUMMARY . text END_SUMMARY
+
+    TEXT  shift, and go to state 10
+
+    text  go to state 78
+
+
+state 43
+
+   52 Elem: Paragraph .
+
+    $default  reduce using rule 52 (Elem)
+
+
+state 44
+
+   49 Chapter: BEGIN_CHAP Title Elems . END_CHAP
+   51 Elems: Elems . Elem
+
+    END_CHAP         shift, and go to state 79
+    BEGIN_PARA       shift, and go to state 27
+    BEGIN_FIG        shift, and go to state 38
+    BEGIN_TABLE      shift, and go to state 39
+    BEGIN_LIST       shift, and go to state 40
+    BEGIN_CODEBLOCK  shift, and go to state 41
+    BEGIN_SUMMARY    shift, and go to state 42
+
+    Paragraph  go to state 43
+    Elem       go to state 80
+    Table      go to state 46
+    Summary    go to state 47
+    Codeblock  go to state 48
+    Figure     go to state 49
+
+
+state 45
+
+   50 Elems: Elem .
+
+    $default  reduce using rule 50 (Elems)
+
+
+state 46
+
+   57 Elem: Table .
+
+    $default  reduce using rule 57 (Elem)
+
+
+state 47
+
+   53 Elem: Summary .
+
+    $default  reduce using rule 53 (Elem)
+
+
+state 48
+
+   54 Elem: Codeblock .
+
+    $default  reduce using rule 54 (Elem)
+
+
+state 49
+
+   56 Elem: Figure .
+
+    $default  reduce using rule 56 (Elem)
+
+
+state 50
+
+   28 Paragraph_Elem: BEGIN_FOOTNOTE . text END_FOOTNOTE
+
+    TEXT  shift, and go to state 10
+
+    text  go to state 81
+
+
+state 51
+
+   29 Paragraph_Elem: BEGIN_REF . text END_REF
+
+    TEXT  shift, and go to state 10
+
+    text  go to state 82
+
+
+state 52
+
+   30 Paragraph_Elem: BEGIN_XREF . text END_XREF
+
+    TEXT  shift, and go to state 10
+
+    text  go to state 83
+
+
+state 53
+
+   32 Paragraph_Elem: BEGIN_ITERM . text END_ITERM
+
+    TEXT  shift, and go to state 10
+
+    text  go to state 84
+
+
+state 54
+
+   33 Paragraph_Elem: BEGIN_BOLD . text END_BOLD
+
+    TEXT  shift, and go to state 10
+
+    text  go to state 85
+
+
+state 55
+
+   34 Paragraph_Elem: BEGIN_ITALIC . text END_ITALIC
+
+    TEXT  shift, and go to state 10
+
+    text  go to state 86
+
+
+state 56
+
+   35 Paragraph_Elem: BEGIN_UNDERLINE . text END_UNDERLINE
+
+    TEXT  shift, and go to state 10
+
+    text  go to state 87
+
+
+state 57
+
+   36 Paragraph_Elem: BEGIN_INLINECODE . text END_INLINECODE
+
+    TEXT  shift, and go to state 10
+
+    text  go to state 88
+
+
+state 58
+
+   37 Paragraph_Elem: BEGIN_ACRONYM . text END_ACRONYM
+
+    TEXT  shift, and go to state 10
+
+    text  go to state 89
+
+
+state 59
+
+   31 Paragraph_Elem: BEGIN_CITREF . text END_CITREF
+
+    TEXT  shift, and go to state 10
+
+    text  go to state 90
+
+
+state 60
+
+   24 Paragraph: BEGIN_PARA Paragraph_Elems . END_PARA
+   26 Paragraph_Elems: Paragraph_Elems . Paragraph_Elem
+
+    END_PARA          shift, and go to state 91
+    BEGIN_FOOTNOTE    shift, and go to state 50
+    BEGIN_REF         shift, and go to state 51
+    BEGIN_XREF        shift, and go to state 52
+    BEGIN_ITERM       shift, and go to state 53
+    BEGIN_BOLD        shift, and go to state 54
+    BEGIN_ITALIC      shift, and go to state 55
+    BEGIN_UNDERLINE   shift, and go to state 56
+    BEGIN_INLINECODE  shift, and go to state 57
+    BEGIN_ACRONYM     shift, and go to state 58
+    BEGIN_CITREF      shift, and go to state 59
+    TEXT              shift, and go to state 10
+
+    Paragraph_Elem  go to state 92
+    text            go to state 62
+
+
+state 61
+
+   25 Paragraph_Elems: Paragraph_Elem .
+
+    $default  reduce using rule 25 (Paragraph_Elems)
+
+
+state 62
+
+   27 Paragraph_Elem: text .
+
+    $default  reduce using rule 27 (Paragraph_Elem)
+
+
+state 63
+
+   44 BackMatter: BEGIN_BACKMATTER Paragraphs END_BACKMATTER .
+
+    $default  reduce using rule 44 (BackMatter)
+
+
+state 64
+
+   23 Paragraphs: Paragraphs Paragraph .
+
+    $default  reduce using rule 23 (Paragraphs)
+
+
+state 65
+
+    8 Name: BEGIN_NAME text . END_NAME
+
+    END_NAME  shift, and go to state 93
+
+
+state 66
+
+    9 Number: BEGIN_NUMBER . text END_NUMBER
+
+    TEXT  shift, and go to state 10
+
+    text  go to state 94
+
+
+state 67
+
+    5 Author: BEGIN_AUTHOR Name Number . Mail END_AUTHOR
+
+    BEGIN_MAIL  shift, and go to state 95
+
+    $default  reduce using rule 12 (Mail)
+
+    Mail  go to state 96
+
+
+state 68
+
+   13 Date: BEGIN_DATE text . END_DATE
+
+    END_DATE  shift, and go to state 97
+
+
+state 69
+
+   15 Institution: BEGIN_INST . text END_INST
+
+    TEXT  shift, and go to state 10
+
+    text  go to state 98
+
+
+state 70
+
+    2 FrontMatter: BEGIN_FM Title Subtitle Authors Date Institution . Keywords Abstract Aknow Toc Lof Lot END_FM
+
+    KEYWORDS  shift, and go to state 99
+
+    $default  reduce using rule 17 (Keywords)
+
+    Keywords  go to state 100
+
+
+state 71
+
+   70 Graphic: BEGIN_GRAPH . text END_GRAPH
+
+    TEXT  shift, and go to state 10
+
+    text  go to state 101
+
+
+state 72
+
+   69 Figure: BEGIN_FIG Graphic . FCaption END_FIG
+
+    BEGIN_CAPTION  shift, and go to state 102
+
+    FCaption  go to state 103
+
+
+state 73
+
+   60 TRowList: BEGIN_ROW . TRow END_ROW
+
+    BEGIN_CELL  shift, and go to state 104
+
+    TRow  go to state 105
+
+
+state 74
+
+   58 Table: BEGIN_TABLE TRowList . END_TABLE
+   59 TRowList: TRowList . BEGIN_ROW TRow END_ROW
+
+    END_TABLE  shift, and go to state 106
+    BEGIN_ROW  shift, and go to state 107
+
+
+state 75
+
+   55 Elem: BEGIN_LIST List . END_LIST
+   67 List: List . text
+
+    END_LIST  shift, and go to state 108
+    TEXT      shift, and go to state 10
+
+    text  go to state 109
+
+
+state 76
+
+   66 List: text .
+
+    $default  reduce using rule 66 (List)
+
+
+state 77
+
+   65 Codeblock: BEGIN_CODEBLOCK text . END_CODEBLOCK
+
+    END_CODEBLOCK  shift, and go to state 110
+
+
+state 78
+
+   64 Summary: BEGIN_SUMMARY text . END_SUMMARY
+
+    END_SUMMARY  shift, and go to state 111
+
+
+state 79
+
+   49 Chapter: BEGIN_CHAP Title Elems END_CHAP .
+
+    $default  reduce using rule 49 (Chapter)
+
+
+state 80
+
+   51 Elems: Elems Elem .
+
+    $default  reduce using rule 51 (Elems)
+
+
+state 81
+
+   28 Paragraph_Elem: BEGIN_FOOTNOTE text . END_FOOTNOTE
+
+    END_FOOTNOTE  shift, and go to state 112
+
+
+state 82
+
+   29 Paragraph_Elem: BEGIN_REF text . END_REF
+
+    END_REF  shift, and go to state 113
+
+
+state 83
+
+   30 Paragraph_Elem: BEGIN_XREF text . END_XREF
+
+    END_XREF  shift, and go to state 114
+
+
+state 84
+
+   32 Paragraph_Elem: BEGIN_ITERM text . END_ITERM
+
+    END_ITERM  shift, and go to state 115
+
+
+state 85
+
+   33 Paragraph_Elem: BEGIN_BOLD text . END_BOLD
+
+    END_BOLD  shift, and go to state 116
+
+
+state 86
+
+   34 Paragraph_Elem: BEGIN_ITALIC text . END_ITALIC
+
+    END_ITALIC  shift, and go to state 117
+
+
+state 87
+
+   35 Paragraph_Elem: BEGIN_UNDERLINE text . END_UNDERLINE
+
+    END_UNDERLINE  shift, and go to state 118
+
+
+state 88
+
+   36 Paragraph_Elem: BEGIN_INLINECODE text . END_INLINECODE
+
+    END_INLINECODE  shift, and go to state 119
+
+
+state 89
+
+   37 Paragraph_Elem: BEGIN_ACRONYM text . END_ACRONYM
+
+    END_ACRONYM  shift, and go to state 120
+
+
+state 90
+
+   31 Paragraph_Elem: BEGIN_CITREF text . END_CITREF
+
+    END_CITREF  shift, and go to state 121
+
+
+state 91
+
+   24 Paragraph: BEGIN_PARA Paragraph_Elems END_PARA .
+
+    $default  reduce using rule 24 (Paragraph)
+
+
+state 92
+
+   26 Paragraph_Elems: Paragraph_Elems Paragraph_Elem .
+
+    $default  reduce using rule 26 (Paragraph_Elems)
+
+
+state 93
+
+    8 Name: BEGIN_NAME text END_NAME .
+
+    $default  reduce using rule 8 (Name)
+
+
+state 94
+
+    9 Number: BEGIN_NUMBER text . END_NUMBER
+
+    END_NUMBER  shift, and go to state 122
+
+
+state 95
+
+   11 Mail: BEGIN_MAIL . text END_MAIL
+
+    TEXT  shift, and go to state 10
+
+    text  go to state 123
+
+
+state 96
+
+    5 Author: BEGIN_AUTHOR Name Number Mail . END_AUTHOR
+
+    END_AUTHOR  shift, and go to state 124
+
+
+state 97
+
+   13 Date: BEGIN_DATE text END_DATE .
+
+    $default  reduce using rule 13 (Date)
+
+
+state 98
+
+   15 Institution: BEGIN_INST text . END_INST
+
+    END_INST  shift, and go to state 125
+
+
+state 99
+
+   16 Keywords: KEYWORDS . Words KEYWORDS
+
+    TEXT  shift, and go to state 10
+
+    Words  go to state 126
+    text   go to state 127
+
+
+state 100
+
+    2 FrontMatter: BEGIN_FM Title Subtitle Authors Date Institution Keywords . Abstract Aknow Toc Lof Lot END_FM
+
+    BEGIN_ABS  shift, and go to state 128
+
+    Abstract  go to state 129
+
+
+state 101
+
+   70 Graphic: BEGIN_GRAPH text . END_GRAPH
+
+    END_GRAPH  shift, and go to state 130
+
+
+state 102
+
+   71 FCaption: BEGIN_CAPTION . text END_CAPTION
+
+    TEXT  shift, and go to state 10
+
+    text  go to state 131
+
+
+state 103
+
+   69 Figure: BEGIN_FIG Graphic FCaption . END_FIG
+
+    END_FIG  shift, and go to state 132
+
+
+state 104
+
+   62 TRow: BEGIN_CELL . text END_CELL
+
+    TEXT  shift, and go to state 10
+
+    text  go to state 133
+
+
+state 105
+
+   60 TRowList: BEGIN_ROW TRow . END_ROW
+   63 TRow: TRow . BEGIN_CELL text END_CELL
+
+    END_ROW     shift, and go to state 134
+    BEGIN_CELL  shift, and go to state 135
+
+
+state 106
+
+   58 Table: BEGIN_TABLE TRowList END_TABLE .
+
+    $default  reduce using rule 58 (Table)
+
+
+state 107
+
+   59 TRowList: TRowList BEGIN_ROW . TRow END_ROW
+
+    BEGIN_CELL  shift, and go to state 104
+
+    TRow  go to state 136
+
+
+state 108
+
+   55 Elem: BEGIN_LIST List END_LIST .
+
+    $default  reduce using rule 55 (Elem)
+
+
+state 109
+
+   67 List: List text .
+
+    $default  reduce using rule 67 (List)
+
+
+state 110
+
+   65 Codeblock: BEGIN_CODEBLOCK text END_CODEBLOCK .
+
+    $default  reduce using rule 65 (Codeblock)
+
+
+state 111
+
+   64 Summary: BEGIN_SUMMARY text END_SUMMARY .
+
+    $default  reduce using rule 64 (Summary)
+
+
+state 112
+
+   28 Paragraph_Elem: BEGIN_FOOTNOTE text END_FOOTNOTE .
+
+    $default  reduce using rule 28 (Paragraph_Elem)
+
+
+state 113
+
+   29 Paragraph_Elem: BEGIN_REF text END_REF .
+
+    $default  reduce using rule 29 (Paragraph_Elem)
+
+
+state 114
+
+   30 Paragraph_Elem: BEGIN_XREF text END_XREF .
+
+    $default  reduce using rule 30 (Paragraph_Elem)
+
+
+state 115
+
+   32 Paragraph_Elem: BEGIN_ITERM text END_ITERM .
+
+    $default  reduce using rule 32 (Paragraph_Elem)
+
+
+state 116
+
+   33 Paragraph_Elem: BEGIN_BOLD text END_BOLD .
+
+    $default  reduce using rule 33 (Paragraph_Elem)
+
+
+state 117
+
+   34 Paragraph_Elem: BEGIN_ITALIC text END_ITALIC .
+
+    $default  reduce using rule 34 (Paragraph_Elem)
+
+
+state 118
+
+   35 Paragraph_Elem: BEGIN_UNDERLINE text END_UNDERLINE .
+
+    $default  reduce using rule 35 (Paragraph_Elem)
+
+
+state 119
+
+   36 Paragraph_Elem: BEGIN_INLINECODE text END_INLINECODE .
+
+    $default  reduce using rule 36 (Paragraph_Elem)
+
+
+state 120
+
+   37 Paragraph_Elem: BEGIN_ACRONYM text END_ACRONYM .
+
+    $default  reduce using rule 37 (Paragraph_Elem)
+
+
+state 121
+
+   31 Paragraph_Elem: BEGIN_CITREF text END_CITREF .
+
+    $default  reduce using rule 31 (Paragraph_Elem)
+
+
+state 122
+
+    9 Number: BEGIN_NUMBER text END_NUMBER .
+
+    $default  reduce using rule 9 (Number)
+
+
+state 123
+
+   11 Mail: BEGIN_MAIL text . END_MAIL
+
+    END_MAIL  shift, and go to state 137
+
+
+state 124
+
+    5 Author: BEGIN_AUTHOR Name Number Mail END_AUTHOR .
+
+    $default  reduce using rule 5 (Author)
+
+
+state 125
+
+   15 Institution: BEGIN_INST text END_INST .
+
+    $default  reduce using rule 15 (Institution)
+
+
+state 126
+
+   16 Keywords: KEYWORDS Words . KEYWORDS
+   19 Words: Words . text
+
+    KEYWORDS  shift, and go to state 138
+    TEXT      shift, and go to state 10
+
+    text  go to state 139
+
+
+state 127
+
+   18 Words: text .
+
+    $default  reduce using rule 18 (Words)
+
+
+state 128
+
+   20 Abstract: BEGIN_ABS . Paragraphs END_ABS
+
+    BEGIN_PARA  shift, and go to state 27
+
+    Paragraphs  go to state 140
+    Paragraph   go to state 29
+
+
+state 129
+
+    2 FrontMatter: BEGIN_FM Title Subtitle Authors Date Institution Keywords Abstract . Aknow Toc Lof Lot END_FM
+
+    BEGIN_AKN  shift, and go to state 141
+
+    Aknow  go to state 142
+
+
+state 130
+
+   70 Graphic: BEGIN_GRAPH text END_GRAPH .
+
+    $default  reduce using rule 70 (Graphic)
+
+
+state 131
+
+   71 FCaption: BEGIN_CAPTION text . END_CAPTION
+
+    END_CAPTION  shift, and go to state 143
+
+
+state 132
+
+   69 Figure: BEGIN_FIG Graphic FCaption END_FIG .
+
+    $default  reduce using rule 69 (Figure)
+
+
+state 133
+
+   62 TRow: BEGIN_CELL text . END_CELL
+
+    END_CELL  shift, and go to state 144
+
+
+state 134
+
+   60 TRowList: BEGIN_ROW TRow END_ROW .
+
+    $default  reduce using rule 60 (TRowList)
+
+
+state 135
+
+   63 TRow: TRow BEGIN_CELL . text END_CELL
+
+    TEXT  shift, and go to state 10
+
+    text  go to state 145
+
+
+state 136
+
+   59 TRowList: TRowList BEGIN_ROW TRow . END_ROW
+   63 TRow: TRow . BEGIN_CELL text END_CELL
+
+    END_ROW     shift, and go to state 146
+    BEGIN_CELL  shift, and go to state 135
+
+
+state 137
+
+   11 Mail: BEGIN_MAIL text END_MAIL .
+
+    $default  reduce using rule 11 (Mail)
+
+
+state 138
+
+   16 Keywords: KEYWORDS Words KEYWORDS .
+
+    $default  reduce using rule 16 (Keywords)
+
+
+state 139
+
+   19 Words: Words text .
+
+    $default  reduce using rule 19 (Words)
+
+
+state 140
+
+   20 Abstract: BEGIN_ABS Paragraphs . END_ABS
+   23 Paragraphs: Paragraphs . Paragraph
+
+    END_ABS     shift, and go to state 147
+    BEGIN_PARA  shift, and go to state 27
+
+    Paragraph  go to state 64
+
+
+state 141
+
+   21 Aknow: BEGIN_AKN . Paragraphs END_AKN
+
+    BEGIN_PARA  shift, and go to state 27
+
+    Paragraphs  go to state 148
+    Paragraph   go to state 29
+
+
+state 142
+
+    2 FrontMatter: BEGIN_FM Title Subtitle Authors Date Institution Keywords Abstract Aknow . Toc Lof Lot END_FM
+
+    INDEX  shift, and go to state 149
+
+    $default  reduce using rule 39 (Toc)
+
+    Toc  go to state 150
+
+
+state 143
+
+   71 FCaption: BEGIN_CAPTION text END_CAPTION .
+
+    $default  reduce using rule 71 (FCaption)
+
+
+state 144
+
+   62 TRow: BEGIN_CELL text END_CELL .
+
+    $default  reduce using rule 62 (TRow)
+
+
+state 145
+
+   63 TRow: TRow BEGIN_CELL text . END_CELL
+
+    END_CELL  shift, and go to state 151
+
+
+state 146
+
+   59 TRowList: TRowList BEGIN_ROW TRow END_ROW .
+
+    $default  reduce using rule 59 (TRowList)
+
+
+state 147
+
+   20 Abstract: BEGIN_ABS Paragraphs END_ABS .
+
+    $default  reduce using rule 20 (Abstract)
+
+
+state 148
+
+   21 Aknow: BEGIN_AKN Paragraphs . END_AKN
+   23 Paragraphs: Paragraphs . Paragraph
+
+    END_AKN     shift, and go to state 152
+    BEGIN_PARA  shift, and go to state 27
+
+    Paragraph  go to state 64
+
+
+state 149
+
+   38 Toc: INDEX .
+
+    $default  reduce using rule 38 (Toc)
+
+
+state 150
+
+    2 FrontMatter: BEGIN_FM Title Subtitle Authors Date Institution Keywords Abstract Aknow Toc . Lof Lot END_FM
+
+    INDEX_F  shift, and go to state 153
+
+    $default  reduce using rule 41 (Lof)
+
+    Lof  go to state 154
+
+
+state 151
+
+   63 TRow: TRow BEGIN_CELL text END_CELL .
+
+    $default  reduce using rule 63 (TRow)
+
+
+state 152
+
+   21 Aknow: BEGIN_AKN Paragraphs END_AKN .
+
+    $default  reduce using rule 21 (Aknow)
+
+
+state 153
+
+   40 Lof: INDEX_F .
+
+    $default  reduce using rule 40 (Lof)
+
+
+state 154
+
+    2 FrontMatter: BEGIN_FM Title Subtitle Authors Date Institution Keywords Abstract Aknow Toc Lof . Lot END_FM
+
+    INDEX_T  shift, and go to state 155
+
+    $default  reduce using rule 43 (Lot)
+
+    Lot  go to state 156
+
+
+state 155
+
+   42 Lot: INDEX_T .
+
+    $default  reduce using rule 42 (Lot)
+
+
+state 156
+
+    2 FrontMatter: BEGIN_FM Title Subtitle Authors Date Institution Keywords Abstract Aknow Toc Lof Lot . END_FM
+
+    END_FM  shift, and go to state 157
+
+
+state 157
+
+    2 FrontMatter: BEGIN_FM Title Subtitle Authors Date Institution Keywords Abstract Aknow Toc Lof Lot END_FM .
+
+    $default  reduce using rule 2 (FrontMatter)

@@ -1,0 +1,44 @@
+BREPORT
+BFM
+BTITLE
+Um relatório em HTML
+ETITLE
+BSUBTITLE
+Vamos aprender HTML
+ESUBTITLE
+BAUTHOR
+BNAME
+Serafim Pinto
+ENAME
+BNUMBER
+61056
+ENUMBER
+BMAIL
+smcp92@gmail.com
+EMAIL
+EAUTHOR
+BAUTHOR
+BNAME
+asda Pinto
+ENAME
+BNUMBER
+54654
+ENUMBER
+BMAIL
+asda@gmail.com
+EMAIL
+EAUTHOR
+TODAY
+BINST
+Universidade do Minho
+EINST
+KEYWORDS
+yacc
+flex
+PL
+LEI
+Engenharia
+Informatica
+:KEYWORDS
+EFM
+EREPORT

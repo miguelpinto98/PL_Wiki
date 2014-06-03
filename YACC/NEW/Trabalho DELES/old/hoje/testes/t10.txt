@@ -1,0 +1,178 @@
+BREPORT
+	BFM
+		BTITLE
+			Um relatório em HTML
+		ETITLE
+		BSUBTITLE
+			Vamos aprender HTML
+		ESUBTITLE
+	BAUTHOR
+		BNAME
+		Serafim Pinto
+		ENAME
+		BNUMBER
+		61056
+		ENUMBER
+		BMAIL
+		smcp92@gmail.com
+		EMAIL
+	EAUTHOR
+	BAUTHOR
+		BNAME
+		asda Pinto
+		ENAME
+		BNUMBER
+		54654
+		ENUMBER
+		BMAIL
+		asda@gmail.com
+		EMAIL
+	EAUTHOR
+			TODAY
+	BINST
+		Universidade do Minho
+	EINST
+		KEYWORDS
+			yacc
+			flex
+			PL
+			LEI
+			Engenharia
+			Informatica
+		:KEYWORDS
+	BABS
+		BPARA
+			çoqwbfçoqefjk
+			BBOLD
+				dsasdfassfd
+			EBOLD
+			çoqwbfçoqefjk
+		EPARA
+		BPARA
+			çkgjçkgçkug
+		EPARA
+		BPARA
+			çkvcukfxhfkxfkx
+		EPARA
+	EABS
+	BAKN
+		BPARA
+			lyfluyfjy
+		EPARA
+		BPARA
+			çukgfykhfçfk
+		EPARA
+	EAKN
+	INDEX
+	EFM
+	BBODY
+		BCHAP
+			BTITLE
+				Um capítulo para testar
+			ETITLE
+		BPARA
+			lyfluyfjy
+		EPARA
+		BPARA
+			çukgfykhfçfk
+		EPARA
+		ECHAP
+		BCHAP
+			BTITLE
+				Mais capítulo para testar
+			ETITLE
+		BPARA
+			lyfluyfjy
+		EPARA
+		BSUMMARY
+			dsfdf
+		ESUMMARY
+		BCODEBLOCK
+			dsfdf
+		ECODEBLOCK
+		BLIST
+items numa lista
+mais items numa lista
+mais items numa lista
+mais items numa lista
+		ELIST
+		BPARA
+			çukgfykhfçfk
+		EPARA
+		ECHAP
+		BCHAP
+			BTITLE
+				Um último para testar
+			ETITLE
+		BPARA
+			lyfluyfjy
+		EPARA
+		BFIG
+			BGRAPH
+				1.jpg
+			EGRAPH
+			BCAPTION
+				rei-deus-patrao
+			ECAPTION
+		EFIG
+		BPARA
+			çukgfykhfçfk
+		EPARA
+		BTABLE
+			BROW
+				BCELL
+					Dados
+				ECELL
+				BCELL
+					Mais dados
+				ECELL
+				BCELL
+					Teste
+				ECELL
+			EROW
+			BROW
+				BCELL
+					MAis dados
+				ECELL					
+				BCELL
+					TESTE
+				ECELL
+				BCELL
+					TESTE2
+				ECELL
+			EROW
+			BROW
+				BCELL
+					AInda mais dados
+				ECELL
+				BCELL
+					para variar
+				ECELL
+				BCELL
+					ok
+				ECELL
+			EROW
+			BROW
+				BCELL
+					amostra
+				ECELL
+				BCELL
+					amostra2
+				ECELL
+				BCELL
+					amostra4
+				ECELL
+			EROW
+		ETABLE
+		ECHAP
+	EBODY
+	BBM
+		BPARA
+			Exemplo de cenas
+		EPARA
+		BPARA
+			çukgfykhfçfk
+		EPARA
+	EBM
+
+EREPORT

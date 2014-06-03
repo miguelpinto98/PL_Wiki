@@ -1,0 +1,186 @@
+BREPORT
+	BFM
+		BTITLE
+			Report 2007
+		ETITLE
+		BSUBTITLE
+			Vamos escrever relatórios
+		ESUBTITLE
+	BAUTHOR
+		BNAME
+		Serafim Pinto
+		ENAME
+		BNUMBER
+		61056
+		ENUMBER
+		BMAIL
+		a61056@alunos.uminho.pt
+		EMAIL
+	EAUTHOR
+	BAUTHOR
+		BNAME
+		Daniel Araújo
+		ENAME
+		BNUMBER
+		61058
+		ENUMBER
+		BMAIL
+		a61058@alunos.uminho.pt
+		EMAIL
+	EAUTHOR
+	BAUTHOR
+		BNAME
+		Daniel Carvalho
+		ENAME
+		BNUMBER
+		61008
+		ENUMBER
+		BMAIL
+		a61008@alunos.uminho.pt
+		EMAIL
+	EAUTHOR
+			TODAY
+	BINST
+		Universidade do Minho
+	EINST
+		KEYWORDS
+			yacc
+			flex
+			PL
+			LEI
+			Engenharia
+			Informatica
+		:KEYWORDS
+	BABS
+		BPARA
+		Este relatório descreve o processo de desenvolvimento e o resultado obtido, como consequência da resolução do enunciado do trabalho prático número dois da Unidade Curricular Processamento de Linguagens. O enunciado aqui resolvido é sobre o "Report 2007: vamos escrever relatórios". Este documento trata de analisar e explicar os objectivos deste segundo trabalho. Assim, falaremos das decisões tomadas, os principais obstáculos encontrados e os resultados obtidos. Para além dos conhecimentos que já eram necessários para o primeiro projecto, foi necessário demonstrar conhecimentos sobre ferramentas
+		BITALIC
+			Flex e Yacc
+		EITALIC
+		, conhecimentos estes que se mostraram muito úteis e interessantes.
+		EPARA
+	EABS
+	BAKN
+		BPARA
+			Agradecer a Deus por tudo.
+		EPARA
+		BPARA
+			Agredecer pela oportunidade.
+		EPARA
+	EAKN
+	INDEX
+	EFM
+	BBODY
+		BCHAP
+			BTITLE
+				Introdução
+			ETITLE
+		BPARA
+			lyfluyfjy
+		EPARA
+		BPARA
+			çukgfykhfçfk
+		EPARA
+		ECHAP
+		BCHAP
+			BTITLE
+				Descrição das ferramentas utililizadas
+			ETITLE
+		BPARA
+			lyfluyfjy
+		EPARA
+		BSUMMARY
+			dsfdf
+		ESUMMARY
+		BCODEBLOCK{
+dsfdf
+		}
+		BLIST
+items numa lista
+mais items numa lista
+mais items numa lista
+mais items numa lista
+		ELIST
+		BPARA
+			çukgfykhfçfk
+		EPARA
+		ECHAP
+		BCHAP
+			BTITLE
+				Descrição da Linguagem desenvolvida
+			ETITLE
+		BPARA
+			lyfluyfjy
+		EPARA
+		BFIG
+			BGRAPH
+				1.jpg
+			EGRAPH
+			BCAPTION
+				rei-deus-patrao
+			ECAPTION
+		EFIG
+		BPARA
+			çukgfykhfçfk
+		EPARA
+		BTABLE
+			BROW
+				BCELL
+					Dados
+				ECELL
+				BCELL
+					Mais dados
+				ECELL
+				BCELL
+					Teste
+				ECELL
+			EROW
+			BROW
+				BCELL
+					MAis dados
+				ECELL					
+				BCELL
+					TESTE
+				ECELL
+				BCELL
+					TESTE2
+				ECELL
+			EROW
+			BROW
+				BCELL
+					AInda mais dados
+				ECELL
+				BCELL
+					para variar
+				ECELL
+				BCELL
+					ok
+				ECELL
+			EROW
+			BROW
+				BCELL
+					amostra
+				ECELL
+				BCELL
+					amostra2
+				ECELL
+				BCELL
+					amostra4
+				ECELL
+			EROW
+		ETABLE
+			BCAPTION
+				Legenda
+			ECAPTION
+		ECHAP
+	EBODY
+	BBM
+		BPARA
+			Exemplo de cenas
+		EPARA
+		BPARA
+			çukgfykhfçfk
+		EPARA
+	EBM
+EREPORT
+

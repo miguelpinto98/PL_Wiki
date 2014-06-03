@@ -1,0 +1,76 @@
+BREPORT
+	BFM
+		BTITLE
+			Um relatório em HTML
+		ETITLE
+		BSUBTITLE
+			Vamos aprender HTML
+		ESUBTITLE
+	BAUTHOR
+		BNAME
+		Serafim Pinto
+		ENAME
+		BNUMBER
+		61056
+		ENUMBER
+		BMAIL
+		smcp92@gmail.com
+		EMAIL
+	EAUTHOR
+	BAUTHOR
+		BNAME
+		asda Pinto
+		ENAME
+		BNUMBER
+		54654
+		ENUMBER
+		BMAIL
+		asda@gmail.com
+		EMAIL
+	EAUTHOR
+			TODAY
+	BINST
+		Universidade do Minho
+	EINST
+		KEYWORDS
+			yacc
+			flex
+			PL
+			LEI
+			Engenharia
+			Informatica
+		:KEYWORDS
+	BABS
+		BPARA
+			çoqwbfçoqefjk
+			BBOLD
+				dsasdfassfd
+			EBOLD
+			çoqwbfçoqefjk
+		EPARA
+		BPARA
+			çkgjçkgçkug
+		EPARA
+		BPARA
+			çkvcukfxhfkxfkx
+		EPARA
+	EABS
+	BAKN
+		BPARA
+			lyfluyfjy
+		EPARA
+		BPARA
+			çukgfykhfçfk
+		EPARA
+	EAKN
+	EFM
+	BBM
+		BPARA
+			Exemplo de cenas
+		EPARA
+		BPARA
+			çukgfykhfçfk
+		EPARA
+	EBM
+
+EREPORT

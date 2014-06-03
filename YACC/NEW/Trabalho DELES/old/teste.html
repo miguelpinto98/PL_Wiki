@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html><head><META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Um relatório em HTML</title>
+</head><body>
+<hr><h3><u>Title:</u> <k>Um relatório em HTML</k>
+</h3><h3><u>Subtitle:</u> <k>Vamos aprender HTML</k>
+</h3><h3><u>Authors:</u></h3><table border="2"><tr><td><b>Name</b></td><td><b>Number</b></td><td><b>Email</b></td></tr><tr><td>Serafim Pinto</td><td>61056</td><td>smcp92@gmail.com</td></tr><tr><td>asda Pinto</td><td>54654</td><td>asda@gmail.com</td></tr></table><h3><u>Date:</u></h3><script>var mydate=new Date()
+var year=mydate.getYear()
+if (year < 1000)
+year+=1900
+var day=mydate.getDay()
+var month=mydate.getMonth()
+var daym=mydate.getDate()
+if (daym<10)
+daym="0"+daym
+var dayarray=new
+Array("Domingo","Segunda-Feira","Terça-Feira","Quarta-Feira","Quinta-Feira","Sexta-Feira","Sábado")
+var montharray=new
+Array("Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro")
+document.write(""+dayarray[day]+", "+daym+" de "+montharray[month]+" de "+year+"</b></font></small>")
+</script>
+<hr><h1>Abstract</h1>Mais outro parágrafo
+
+
+
+</body></html>
