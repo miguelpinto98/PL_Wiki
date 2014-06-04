@@ -68,6 +68,15 @@ BREPORT
 				www.98.pt
 				EREF
 			EPARA
+			BPARA
+				VAI REBENTAR 
+				BBOLD
+				ISTO
+				EBOLD
+				BREF
+				www.98.pt
+				EREF
+			EPARA
 			BFIG
 				BGRAPH
 					BPATH
@@ -91,6 +100,15 @@ BREPORT
 			BTITLE
 				Para as Tabelas
 			ETITLE
+			BPARA
+				VAI REBENTAR 
+				BBOLD
+				ISTO
+				EBOLD
+				BREF
+				www.98.pt
+				EREF
+			EPARA
 			BTABLE
 				BCAPTION
 					Tabela 1

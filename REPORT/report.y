@@ -11,9 +11,14 @@
     extern int yylineno;
 
     LinkedList la = NULL;
-    Autor a = NULL;
+    LinkedList lp = NULL;
+    LinkedList lc = NULL;
 
+    Autor a = NULL;
     Report r = NULL;
+    Paragrafo p = NULL;
+    Elemento e = NULL;
+    Capitulo c = NULL;
 %}
 
 %token texto
@@ -53,7 +58,7 @@ Report : BEGINREPORT FrontMatter Body BackMatter ENDREPORT
 	   ;
 
 FrontMatter : BEGINFM Title SubTitle Authors Date Institution Keywords Abstract Aknowledgements Toc Lof Lot ENDFM
-			  { adicionaTitulo(r,$2); }
+			  { adicionaTitulo(r,$2); lp = createLinkedList(NULL,NULL); }
 			;
 
 /* BEGIN - FRONTMATTER */
@@ -141,14 +146,18 @@ ChapterList : ChapterList Chapter
             | Chapter
             ;
 
-Chapter : BEGINCHAP Title ElemList ENDCHAP
+Chapter : BEGINCHAP Title ElemList ENDCHAP	{ c = criaCapitulo($2,e); 
+											  insereCapitulo(lc,c);
+											  e = inicializaElemento();
+											  lp = createLinkedList(NULL,NULL);
+											}
 		;
 
 ElemList : ElemList Elem
 		 | Elem
 		 ;
 
-Elem : Paragraph
+Elem : Paragraph							{ setParagrafos(e,lp); listaElementos(e->parags); }
 	 | Float
 	 | List
 	 | CodeBlock
@@ -156,10 +165,10 @@ Elem : Paragraph
 	 | Summary 
 	 ;
 
-Paragraph : BEGINPARA ParaContent ENDPARA
+Paragraph : BEGINPARA ParaContent ENDPARA	{ insereParagrafo(lp,p); }
 		  ;
 
-ParaContent : ParaContent texto				{printf("PARA: %s\n",$2 );}
+ParaContent : ParaContent texto			{ p = inicializaParagrafo(0,$2); }
 			| ParaContent FreeElement
 			|
 			;
@@ -176,25 +185,25 @@ FreeElement : Footnote
 //			| Acronym
 			;
 
-Footnote : BEGINFOOT texto ENDFOOT
+Footnote : BEGINFOOT texto ENDFOOT		{ p = inicializaParagrafo(1,$2); }
 		 ;
 
-Ref : BEGINREF texto ENDREF 		{printf("%s\n",$2 );}
+Ref : BEGINREF texto ENDREF 			{ p = inicializaParagrafo(2,$2); }	
 	;
 
-Xref : BEGINXREF texto ENDXREF
+Xref : BEGINXREF texto ENDXREF			{ p = inicializaParagrafo(3,$2); }
 	 ;
 
-Citref : BEGINCIT texto ENDCIT
+Citref : BEGINCIT texto ENDCIT 			{ p = inicializaParagrafo(4,$2);}
 	   ;
 
-Iterm : BEGINITERM texto ENDITERM
+Iterm : BEGINITERM texto ENDITERM		{ p = inicializaParagrafo(5,$2); }
 	  ;
 
 Bold : BEGINBOLD BContent ENDBOLD
 	 ;
 
-BContent : BContent texto
+BContent : BContent texto				{ p = inicializaParagrafo(6,$2); }
 		 | BContent Italic
 		 | BContent Underline
 		 |
@@ -203,7 +212,7 @@ BContent : BContent texto
 Italic : BEGINITALIC IContent ENDITALIC
 	   ;
 
-IContent : IContent texto
+IContent : IContent texto				{ p = inicializaParagrafo(7,$2); }
 		 | IContent Bold
 		 | IContent Underline
 		 |
@@ -212,7 +221,7 @@ IContent : IContent texto
 Underline : BEGINUNDERLINE UContent ENDUNDERLINE
 		  ;
 
-UContent : UContent texto
+UContent : UContent texto				{ p = inicializaParagrafo(8,$2); }
 		 | UContent Bold
 		 | UContent Italic
 		 |
@@ -283,7 +292,12 @@ int yyerror(char *s) {
 
 int main(){
 	r = inicializaReport();
+	e = inicializaElemento();
+
 	la = createLinkedList(NULL,NULL);
+	lp = createLinkedList(NULL,NULL);
+	lc = createLinkedList(NULL,NULL);
+
 	FILE *file = fopen("exemplo1.txt", "r");
 	
 	if(file) {
