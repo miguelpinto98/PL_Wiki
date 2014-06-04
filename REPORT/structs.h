@@ -25,18 +25,21 @@ typedef struct sReport {
 	int lot;
 } *Report, NReport;
 
-typedef struct sCapitulo {
-	char *nome;
-	LinkedList elems;
-} *Capitulo, NCapitulo;
-
 typedef struct sParagrafo {
 	int id;
 	char *item;
 } *Paragrafo, NParagrafo;
 
-/* ABSTRACT AGRADECIMENTOS KEYWORDS */
+typedef struct sElemento {
+	LinkedList parags;
+} *Elemento, NElemento;
 
+typedef struct sCapitulo {
+	char *nome;
+	Elemento elem;
+} *Capitulo, NCapitulo;
+
+/* ABSTRACT AGRADECIMENTOS KEYWORDS */
 
 int insereAutor(LinkedList, Autor) ;
 Autor inicializaAutor() ;
@@ -55,7 +58,14 @@ void setTOC(Report ) ;
 void setLOF(Report ) ;
 void setLOT(Report ) ;
 
-Capitulo inicializaCapitulo() ;
+Paragrafo inicializaParagrafo(int , char*) ;
+int insereParagrafo(LinkedList , Paragrafo) ;
 
+Elemento inicializaElemento() ;
+void setParagrafos(Elemento , LinkedList ) ;
+void listaElementos(LinkedList ) ;
+
+Capitulo criaCapitulo(char *, Elemento) ;
+int insereCapitulo(LinkedList , Capitulo) ;
 
 #endif
