@@ -16,23 +16,23 @@ typedef struct sAutor {
 } *Autor, NAutor;
 
 typedef struct sReport {
-	char *titulo;
-	char *subtitulo;
-	char *date;
-	char *institution;
+	char* titulo;
+	char* subtitulo;
+	char* date;
+	char* institution;
 	int toc;
 	int lof;
 	int lot;
 } *Report, NReport;
 
 typedef struct sCapitulo {
-	char *nome;
+	char* nome;
 	LinkedList elems;
 } *Capitulo, NCapitulo;
 
 typedef struct sParagrafo {
 	int id;
-	char *item;
+	char* item;
 } *Paragrafo, NParagrafo;
 
 /* ABSTRACT AGRADECIMENTOS KEYWORDS */
