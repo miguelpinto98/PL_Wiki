@@ -1,0 +1,64 @@
+BREPORT
+	BFM
+		BTITLE
+			Report 2007
+		ETITLE
+		BSUBTITLE
+			Vamos escrever relatórios
+		ESUBTITLE
+	BAUTHOR
+		BNAME
+		Pedro Faria
+		ENAME
+		BNIDENT
+		60998
+		ENIDENT
+		BEMAIL
+		a60998@alunos.uminho.pt
+		EEMAIL
+	EAUTHOR
+	BAUTHOR
+		BNAME
+		Miguel Pinto
+		ENAME
+		BNIDENT
+		61049
+		ENIDENT
+		BEMAIL
+		a61049@alunos.uminho.pt
+		EEMAIL
+	EAUTHOR
+	BAUTHOR
+		BNAME
+		Mariana Medeiros
+		ENAME
+		BNIDENT
+		61041
+		ENIDENT
+		BEMAIL
+		a61041@alunos.uminho.pt
+		EEMAIL
+	EAUTHOR
+	BDATA
+	Braga,5 de Maio de 2014
+	EDATA
+	BINST
+		Universidade do Minho
+	EINST
+	BKEYWORDS
+			Yacc, Flex, PL.
+	EKEYWORDS
+	BABS
+		Este relatório descreve o processo de desenvolvimento e o resultado obtido, como consequência da resolução do enunciado do trabalho prático número dois da Unidade Curricular Processamento de Linguagens. O enunciado aqui resolvido é sobre o "Report 2007: vamos escrever relatórios". Este documento trata de analisar e explicar os objectivos deste segundo trabalho. Assim, falaremos das decisões tomadas, os principais obstáculos encontrados e os resultados obtidos. Para além dos conhecimentos que já eram necessários para o primeiro projecto, foi necessário demonstrar conhecimentos sobre ferramentas Flex e Yacc, conhecimentos estes que se mostraram muito úteis e interessantes.
+	EABS
+	BAKN
+		Por detrás das nossas realizações pessoais, além de um considerável esforço próprio, esconde-se normalmente um número muito grande de contribuições, apoios, sugestões, comentários ou críticas vindos de muitas pessoas. A sua importância assume no caso presente uma valia tão preciosa que, sem elas, com toda a certeza, teria sido muito difícil chegar a qualquer resultado digno de menção. Mencionar aqui o nome dessas pessoas constitui um preito de justiça e de homenagem sentida por parte dos autores deste trabalho.
+	EAKN
+	TOC
+	LOF
+	LOT
+	EFM
+	BBODY
+	Hello World!!!
+	EBODY
+EREPORT
