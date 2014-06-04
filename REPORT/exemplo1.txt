@@ -45,9 +45,71 @@ BREPORT
 			asdasdasdasd.
 		EABS
 		BAKN
-			kjhkhkjhjkhjkhjkkhjhjkhjkhjkhjkkhjhkjhkjhkjkhjkhhjkhjkhjkhkjjgjhgjhghjgj
+			kjhkhkjhjkhjkhjkkhjhjkhjkhjkhjkkhjhkjhkjhkjkhjkhhjk
+			adsasdadsads
 			O Mundo é lindo.
 		EAKN
 		TOC
 	EFM
+	BBODY
+		BCHAP
+			BTITLE
+				Primeiro Capitulo
+			ETITLE
+			BPARA
+				EU sou LINDO. O MUndo não era igual sem mim.
+			EPARA
+			BPARA
+				VAI REBENTAR 
+				BBOLD
+				ISTO
+				EBOLD
+				BREF
+				www.98.pt
+				EREF
+			EPARA
+			BFIG
+				BGRAPH
+					BPATH
+						images/frontmatter.png
+					EPATH
+					BFORMAT
+						50%
+					EFORMAT
+				EGRAPH
+				BCAPTION
+					Frontmatter
+				ECAPTION
+			EFIG
+			BLIST
+				list1
+				List2
+				List3
+			ELIST
+		ECHAP
+		BCHAP
+			BTITLE
+				Para as Tabelas
+			ETITLE
+			BTABLE
+				BCAPTION
+					Tabela 1
+				ECAPTION
+				BROW
+					BDATA
+						Coisa 1
+					EDATA
+					BDATA
+						Coisa 2
+					EDATA
+					BDATA
+						Coisa 3
+					EDATA
+				EROW
+			ETABLE
+		ECHAP
+	EBODY
+	BBM
+		asdasdsda
+	EBM
 EREPORT
