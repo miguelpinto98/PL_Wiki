@@ -1,0 +1,53 @@
+BREPORT
+	BFM
+		BTITLE
+			Report 2007
+		ETITLE
+		BAUTHOR
+			BNAME
+				Miguel Pinto
+			ENAME
+			BNID
+				98
+			ENID
+			BAFFILIATION
+				CeSIUM
+			EAFFILIATION
+		EAUTHOR
+		BAUTHOR
+			BNAME
+				Pedro Faria
+			ENAME
+			BEMAIL
+				pedro@barrigas.com
+			EEMAIL
+		EAUTHOR
+		BAUTHOR
+			BNAME
+				Mariana Medeiros
+			ENAME
+			BURL
+				http://mariana.frontend-developer.pt
+			EURL
+		EAUTHOR
+		BDATE
+			1 de Junho de 2014
+		EDATE
+		BINSTITUTION
+			Universidade do Minho
+		EINSTITUTION
+		BKEYWORD
+			YACC
+			FLEX
+		EKEYWORD
+		BABS
+			Como tal fomos incutidos.
+			asdasdasdasd.
+		EABS
+		BAKN
+			kjhkhkjhjkhjkhjkkhjhjkhjkhjkhjkkhjhkjhkjhkjkhjkhhjkhjkhjkhkjjgjhgjhghjgj
+			O Mundo é lindo.
+		EAKN
+		TOC
+	EFM
+EREPORT
