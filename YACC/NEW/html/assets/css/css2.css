@@ -12,21 +12,21 @@ img { border:0;}
 
 .cabecalho span{
 	padding-left: 20px;
-	color:#2ECC71;
+	color:#F39C12;
 }
 
 
 .titulo{
 	padding-bottom: 20px;
 	text-align: center;
-	color:#2ECC71;
+	color:#F39C12;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 2em;
 }
 
 .subtitulo{
 	text-align: center;
-	color:#2ECC71;
+	color:#2980B9;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 1.5em;
 }
@@ -41,36 +41,55 @@ img { border:0;}
 
 
 .autores{
-	min-height: 80px;
 	height: auto;
 	margin-top: 10%;
-	margin-bottom: 10px;
-	height: 30px;
-	text-align: center;
+	margin-bottom: 5%;
 }
 
-.autores ul{
-	text-align: center;
-}
-
-.autores ul li{
-
+.autores > ul{
+	height: auto;
 	text-align: center;
 	list-style: none;
+	margin-left: 0px;
 }
 
+
+.autores >ul>li{
+	display: inline-block;
+	margin:20px;
+	margin-right: 50px;
+	margin-left: 50px;
+	margin-bottom: 40px;
+}
+
+
+.indice >ul>li>a{
+	text-decoration: none;
+	color:#333;
+}
+
+.indice >ul>li>a:hover{
+	color: #E67E22;
+}
+
+.indice > ul>ul>li>a{
+	text-decoration: none;
+	color:#333;
+}
+
+.indice > ul>ul>li>a:hover{
+	color: #E67E22;
+}
+
+
 .divider{
-  height: 2px;
   width: 100%;
-  position:relative;
-  display:block;
-  z-index:99;
-  text-align: left;
   color: #fff;
-  background:#16A085;
+  background:#2980B9;
+  padding: 0;
+  margin-top: 30px;
   margin-bottom: 50px;
-
-
+  border-style:dashed;
 }
 
 
