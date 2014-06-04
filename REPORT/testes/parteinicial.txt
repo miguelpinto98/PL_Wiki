@@ -10,9 +10,9 @@ BREPORT
 		BNAME
 		Pedro Faria
 		ENAME
-		BNIDENT
+		BNID
 		60998
-		ENIDENT
+		ENID
 		BEMAIL
 		a60998@alunos.uminho.pt
 		EEMAIL
@@ -21,9 +21,9 @@ BREPORT
 		BNAME
 		Miguel Pinto
 		ENAME
-		BNIDENT
+		BNID
 		61049
-		ENIDENT
+		ENID
 		BEMAIL
 		a61049@alunos.uminho.pt
 		EEMAIL
@@ -32,9 +32,9 @@ BREPORT
 		BNAME
 		Mariana Medeiros
 		ENAME
-		BNIDENT
+		BNID
 		61041
-		ENIDENT
+		ENID
 		BEMAIL
 		a61041@alunos.uminho.pt
 		EEMAIL
