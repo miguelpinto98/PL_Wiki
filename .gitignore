@@ -11,8 +11,6 @@ YACC/y.tab.h
 
 YACC/config
 
-*.l
-
 *.c
 
 YACC/config.l

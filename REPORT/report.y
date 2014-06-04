@@ -2,7 +2,7 @@
 	#include <stdio.h>
 	#include <string.h>
 	#include "linkedlist/linkedlist.h"
-	#include "struct.h"
+	#include "structs.h"
 	
 	int yyerror(char *s);
     
@@ -10,7 +10,10 @@
     extern FILE* yyin;
     extern int yylineno;
 
-    LinkedList authors = NULL;
+    LinkedList la = NULL;
+    Autor a = NULL;
+
+    Report r = NULL;
 %}
 
 %token texto
@@ -42,8 +45,7 @@
 }
 
 %type<s> texto
-%type<s> Line
-%type<s> ParaList 
+%type<s> Title;
 
 %%
 
@@ -51,13 +53,14 @@ Report : BEGINREPORT FrontMatter Body BackMatter ENDREPORT
 	   ;
 
 FrontMatter : BEGINFM Title SubTitle Authors Date Institution Keywords Abstract Aknowledgements Toc Lof Lot ENDFM
+			  { adicionaTitulo(r,$2); }
 			;
 
 /* BEGIN - FRONTMATTER */
-Title : BEGINTITLE texto ENDTITLE { printf("Titulo: %s\n", $2); }
+Title : BEGINTITLE texto ENDTITLE 		{ $$=$2; }
 	  ;
 
-SubTitle : BEGINSUBTITLE texto ENDSUBTITLE { printf("Sub Titulo: %s\n", $2); }
+SubTitle : BEGINSUBTITLE texto ENDSUBTITLE	{ adicionaSubTitulo(r,$2); }
 		 |
 		 ;
 
@@ -66,33 +69,33 @@ Authors : Authors Author
 		;
 
 /* BEGIN - Dados Autor */
-Author : BEGINAUTHOR Name Nident Email Url Affiliation ENDAUTHOR
+Author : BEGINAUTHOR Name Nident Email Url Affiliation ENDAUTHOR	{ insereAutor(la,a); }
 	   ;
 
-Name : BEGINNAME texto ENDNAME	{printf("Autor Nome: %s\n", $2);}
+Name : BEGINNAME texto ENDNAME		{ a = inicializaAutor(); insereNome(a,$2); }
 	 ;
 
-Nident : BEGINNID texto ENDNID	{printf("Autor ID: %s\n", $2);}
-	 |
-	 ;
+Nident : BEGINNID texto ENDNID		{ insereID(a,$2); }
+	   |
+	   ;
 
-Email : BEGINEMAIL texto ENDEMAIL {printf("Autor EMAIL: %s\n", $2);}
+Email : BEGINEMAIL texto ENDEMAIL 	{ insereEmail(a,$2); }
 	  |
 	  ;
 
-Url : BEGINURL texto ENDURL {printf("Autor URL: %s\n", $2);}
+Url : BEGINURL texto ENDURL 		{ insereURL(a,$2); }
 	|
 	;
 
-Affiliation : BEGINAFFILIATION texto ENDAFFILIATION {printf("Autor Affiliation: %s\n", $2);}
+Affiliation : BEGINAFFILIATION texto ENDAFFILIATION		{ insereAfiliacao(a,$2); }
 			|
 			;
 /* END - Dados Autor */
 
-Date : BEGINDATE texto ENDDATE	{ printf("Data: %s\n", $2);}
+Date : BEGINDATE texto ENDDATE		{ adicionaDate(r,$2); }
 	 ;
 
-Institution : BEGININSTITUTION texto ENDINSTITUTION  {printf("Inst: %s\n", $2);}
+Institution : BEGININSTITUTION texto ENDINSTITUTION		{ adicionaInstitution(r,$2); }
 			|
 			;
 
@@ -118,15 +121,15 @@ Aknowledgements : BEGINAKN ParaList ENDAKN
 				|
 				;
 
-Toc : ICONTENT
+Toc : ICONTENT 		{ setTOC(r); }
 	|
 	;
 
-Lof : IFIGURE
+Lof : IFIGURE		{ setLOF(r); }
 	|
 	;
 
-Lot : ITABLE
+Lot : ITABLE		{ setLOT(r); }
 	|
 	;
 /* END - FRONTMATTER */
@@ -279,6 +282,8 @@ int yyerror(char *s) {
 }
 
 int main(){
+	r = inicializaReport();
+	la = createLinkedList(NULL,NULL);
 	FILE *file = fopen("exemplo1.txt", "r");
 	
 	if(file) {
