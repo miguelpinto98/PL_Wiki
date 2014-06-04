@@ -1,0 +1,276 @@
+\documentclass[12pt,letterpaper]{article}
+
+\usepackage[portuguese]{babel} 
+\usepackage[utf8x]{inputenc}       
+\usepackage{indentfirst}
+\usepackage{geometry}
+\usepackage{ucs}
+\usepackage{amsmath}      % Los paquetes ams son desarrollados por la American Mathematical
+\usepackage{amsfonts}     % Fórmulas Matematicas
+\usepackage{amssymb}
+\usepackage{graphicx}     % Para insertar gráficas
+\usepackage[lofdepth,lotdepth]{subfig}	% Para colocar varias figuras
+\usepackage{unitsdef}	  % Para la presentación correcta de unidades
+\usepackage{float}		
+\usepackage{booktabs}
+\usepackage{lastpage}
+\usepackage{fancyhdr}	
+\geometry{left=18mm,right=18mm,top=21mm,bottom=21mm} % Tamaño área de escritura de la página
+\renewcommand{\unitvaluesep}{\hspace*{4pt}}	% Redimensionamiento del espacio entre magnitud 
+\batchmode
+\bibliographystyle{plain} 
+\pagestyle{plain} 
+\pagenumbering{arabic}
+\pagestyle{fancy}	
+\usepackage{lmodern}
+\newcommand*{\escape}[1]{\texttt{\textbackslash#1}}
+\newcommand*{\escapeI}[1]{\texttt{\expandafter\string\csname #1\endcsname}}
+\newcommand*{\escapeII}[1]{\texttt{\char`\\#1}}
+
+%-----------------------------------------------------------------------------------------%
+%AUTORES
+\author{
+Mariana Medeiros\\ \texttt{A61041}\\ \texttt{e-mail}\\ \texttt{url}\\ \texttt{afilicação}\\
+  \and
+Pedro Faria\\ \texttt{A6009X}\\ \texttt{e-mail}\\ \texttt{url}\\ \texttt{afilicação}\\
+  \and
+Miguel Pinto\\ \texttt{A61049}\\ \texttt{e-mail}\\ \texttt{url}\\ \texttt{afilicação}
+  \vspace*{2.0in}
+}
+
+%TITULO E SUBTITULO
+\title{ Universidade do Minho\\
+    \vspace*{0.60in}
+    Título\\
+    {\small Sub-Título}
+    \vspace*{1.55in}}
+      
+%DATA
+\date{04/32/1232}
+
+
+%AMBIENTE PARA RESUMO
+\newenvironment{resumo}
+{	
+	\begin{center}
+	\begin{minipage}[t]{500 pt}
+	\vspace{5mm}
+	\emph{\textbf{Resumo}}
+	\\[-2mm]
+	\line(1,0){500}
+	\\[-4.25 mm]
+	\line(1,0){500}
+	\\
+}
+{
+	\normalsize
+	\\[2mm]
+	\footnotesize\textbf{Palavras-Chave: \footnotesize\@palabras}
+	\\[-2mm]
+	\line(1,0){500}
+	\\[0.5cm]
+	\end{minipage}
+	\end{center}
+}
+\def\palabras#1{\gdef\@palabras{#1}}
+\palabras{Palavras.}
+
+
+%CABEÇALHO
+\lhead{Título - SubTítulo}
+\rhead{Instituição}
+\cfoot{\thepage\ de \pageref{LastPage}}
+
+
+
+
+%---------------------------------------------------------------------------------------%
+\begin{document}
+
+\maketitle	
+
+\newpage
+\tableofcontents
+
+\newpage
+\listoffigures
+
+\newpage
+\listoftables
+
+\newpage
+\begin{resumo}
+O presente relatório descreve todo o processo de desenvolvimento, tomadas de decisão e resultados obtidos na resolução do primeiro projeto prático proposto no âmbito da Unidade Curricular de Processamento de Linguagens.
+O enunciado aqui resolvido aborda o tema referente ao processamento de informação extraída da Wikipédia - variante 1. O produto final obtido consiste num processador de ficheiros .xml, descarregados a partir da base de conhecimento da Wikipédia, cujo output são ficheiros .html que apresentam os dados obtidos de uma forma agradável e bem estruturada.
+\end{resumo}
+
+
+\newpage
+\section{Agradecimentos}
+O presente relatório descreve todo o processo de desenvolvimento, tomadas de decisão e resultados obtidos na resolução do primeiro projeto prático proposto no âmbito da Unidade Curricular de Processamento de Linguagens.
+O enunciado aqui resolvido aborda o tema referente ao processamento de informação extraída da Wikipédia - variante 1. O produto final obtido consiste num processador de ficheiros .xml, descarregados a partir da base de conhecimento da Wikipédia, cujo output são ficheiros .html que apresentam os dados obtidos de uma forma agradável e bem estruturada.
+
+
+\newpage
+\section{Introdução}
+\par Texto.
+\par Texto.
+
+
+\subsection{Descrição do Problema e Implementação}
+\par Texto.
+\par Texto.
+
+
+
+\begin{description}
+  \item[Título] {\tt <title>.*</title>}
+\end{description}
+
+\subsection{Estados da Aplicação}
+Para o desenvolvimento do analisador léxico recorremos a um autómato constituído por vários estados: \emph{PAGE, TITLE, REVISION, DATE, AUTHOR, LINKINT, LINKEXT, SECTION1, SECTION2, SECTION3}.\\
+
+{\bf Estado INITIAL}
+
+\par Neste estado procura-se pela {\it tag} {\tt <page>} e assim que ela é encontrada entramos no estado PAGE e é também inicializada a estrutura de dados \emph{Pagina pag}, que irá ser abordada mais adiante neste relatório.\\
+
+{\tt ''<page>'' \{ \par \hspace{1cm} BEGIN PAGE; pag = inicializaPagina(); \par \}\\}
+
+
+\newpage
+{\bf Estado PAGE}
+
+
+\par Quando é encontrada a {\it tag} {\tt </page>} é criada uma página {\it HTML} para a página analisada: é inserido o título da página numa lista ligada para no final ser criado um índice de todas as páginas processadas. No final é chamado o estado INITIAL para verificar, caso exista, uma nova página.\\
+ 
+{\tt 
+<PAGE>\{ \par
+\hspace{1cm}	''<title>'' \hspace{1.65cm} BEGIN TITLE; \par
+\hspace{1cm}    ''<revision>'' \hspace{1.05cm} BEGIN REVISION; \par
+\hspace{1cm}    .|[\escape{n}\escape{t}] \hspace{1.75cm} ; \par
+\hspace{1cm}	''</page>'' \hspace{1.65cm} criaFicheiroHTML(pag); insereTituloIndice(lpags,pag->titulo); BEGIN INITIAL; \par
+\}\\}
+
+{\bf Estado TITLE}
+
+\par Aqui encontramos o título da página que estamos a analisar e guardamo-lo na nossa estrutura. 
+
+\par De modo a evitar captar páginas que contém como título {\emph Categoria:Astronomia}, por exemplo, e que são irrelevantes pois apenas listam vários temas relacionados com Astronomia, usamos a expressão {\tt .*:.*} que se for coicidente descarta essa página, ou seja, vai verificar uma nova página (chamada do estado INITIAL).\\
+
+{\tt <TITLE>\{ \par
+\hspace{1cm}	.*:.*	\hspace{2.0cm} BEGIN INITIAL; \par
+\hspace{1cm}	[$ \wedge $<]*	\hspace{1.95cm} insereTitulo(pag,yytext); \par
+\hspace{1cm}	''</title>'' 	\hspace{1.0cm} BEGIN PAGE; \par
+\}\\}
+  
+
+
+
+{\bf Estado AUTHOR}
+\par Tal como com a data da última revisão, o valor obtido pela expressão é guardado e depois volta ao estado REVISION.\\
+
+{\tt <AUTHOR>\{ \par
+\hspace{1cm}	[$ \wedge $<]*	\hspace{1.8cm}		insereAutor(pag,yytext); \par
+\hspace{1cm}	"</username>"	\hspace{0.8cm}BEGIN REVISION; \par
+\}\\}
+
+
+
+{\bf Estados SECTION1, SECTION2, SECTION3 e SECTION4}
+
+\par Nestes estados são obtidos os nomes das secções existentes em cada página da Wikipédia. Como os estados são bastante parecidos decidimos agrupá-los. Existe ainda uma expressão que deteta quando uma secção está errada, voltando assim ao estado REVISION. 
+
+
+\par Cada secção originada é inserida numa lista de secções onde é identificado o tipo de secção.
+Finalmente, detetada a expressão regular final, volta ao estado REVISION.\\
+
+
+{\tt <SECTION1>\{ \par
+\hspace{1cm}	.|[\escape{n}\escape{t}]	\hspace{0.5cm}	BEGIN REVISION; \par
+\hspace{1cm}	[$ \wedge $=\escape{n}]*	\hspace{0.5cm}		insereSeccao(0,pag,yytext); \par
+\hspace{1cm}	== 	\hspace{1.55cm}		BEGIN REVISION;   \par
+\}\\} 
+
+{\tt<SECTION2>\{ \par
+\hspace{1cm}	[$ \wedge $=\&]+		\hspace{0.8cm}	insereSeccao(1,pag,yytext); \par
+\hspace{1cm}	.|[\escape{n}\escape{t}]	\hspace{0.5cm}	; \par
+\hspace{1cm}	=== 	\hspace{1.5cm}		BEGIN REVISION; \par
+\}\\}
+
+{\tt<SECTION3>\{ \par
+\hspace{1cm}	[$ \wedge $=]*		\hspace{0.5cm}	insereSeccao(2,pag,yytext); \par
+\hspace{1cm}	==== 	\hspace{0.8cm}	BEGIN REVISION; \par
+\}\\}
+
+{\tt<SECTION4>\{ \par
+\hspace{1cm}	[$ \wedge $=]*	\hspace{0.5cm}		insereSeccao(3,pag,yytext); \par
+\hspace{1cm}	===== 	\hspace{0.5cm}	BEGIN REVISION; \par
+\}\\}
+
+{\bf Estado LINKEXT}
+
+Aqui é obtido o URL total do link externo até encontrar um espaço. Depois de inserido na lista de links externos da página, o estado REVISION é chamado.\\
+
+{\tt <LINKEXT>\{ \par
+\hspace{1.0cm}	[a-zA-Z0-9/.-\_?=\&;+-\%]+	\hspace{0.5cm} insereLinkExt(pag,yytext); BEGIN REVISION;  \par
+\}\\}
+
+\subsection{Módulos da Aplicação}
+
+A aplicação {\emph PLIKIPÉDIA} desenvolvida tem por base os seguintes módulos:\\
+
+{\bf parserXML.fl} Encontra-se o código fonte para fazer a análise léxica aos ficheiros XML.\\
+
+{\bf linkedlist.h} Contém o código fonte das listas ligadas genéricas e suas funções.\\
+
+{\bf auxstruct.h} Tem o código para inserir dados na estrutura de dados Pagina.\\
+
+{\bf htmlpage.h} É onde se encontra o código que gera as páginas .html de cada página da Wikipédia, além do índice de títulos lidos.\\
+
+{\bf makefile} Ferramenta com a configuração de compilação dos ficheiros acima descritos.\\
+
+
+\subsection{Estruturas de Dados}
+
+Como verificamos\\
+
+
+{\tt
+typedef struct sPagina \{ \par
+\hspace{1cm}	char* titulo; \par
+\hspace{1cm}	char* data; \par
+\hspace{1cm}	char* autor; \par
+\hspace{1cm}	LinkedList seccoes; \par
+\hspace{1cm}	LinkedList linkint; \par
+\hspace{1cm}	LinkedList linkext; \par
+\} *Pagina, NPagina; \\
+}
+
+Depois de criada a página HTML referente à última página abordada a estrutura de dados é limpa e inicializada para recolher os novos dados de outra página, caso estes existam.\\
+
+\newpage
+\section{HTML}
+
+\par Cena
+
+
+
+
+
+
+
+
+
+\subsection{Grupo}
+\par Por fim, a última tab da barra de navegação rápida é a que apresenta os elementos do grupo que realizou este projeto prático.
+\par
+\begin{figure}[H]
+\includegraphics[scale=0.41]{images/grupo.png}
+\end{figure}
+\newpage
+
+\section{Conclusões}
+\par asdasdasd
+
+
+\end{document}
