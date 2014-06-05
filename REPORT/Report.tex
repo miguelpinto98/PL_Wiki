@@ -4,7 +4,10 @@
 \usepackage{indentfirst}
 \usepackage{geometry}
 \usepackage{ucs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{graphicx}
 \usepackage[lofdepth,lotdepth]{subfig}
 \usepackage{unitsdef}
 \usepackage{float}
@@ -21,17 +24,17 @@
 \usepackage{lmodern}
 \newcommand*{\escape}[1]{\texttt{\textbackslash#1}}
 \newcommand*{\escapeI}[1]{\texttt{\expandafter\string\csname #1\endcsname}}
-\newcommand*{\escapeII}[1]{\texttt{\char\#1}}
-\author{Pedro Faria\\\texttt{60998}\\\texttt{a60998@alunos.uminho.pt}\\\and\author{Miguel Pinto\\\texttt{61049}\\\texttt{a61049@alunos.uminho.pt}\\\and\author{Mariana Medeiros\\\texttt{61041}\\\texttt{a61041@alunos.uminho.pt}\\\and\vspace*{2.0in}
-\title{ Universidade do Minho\\vspace*{0.60in}Report 2007{\small Vamos escrever relatórios}\vspace*{1.55in}}\date{Braga,5 de Maio de 2014}
+\newcommand*{\escapeII}[1]{\texttt{\char`\\#1}}
+\author{Pedro Faria\\\texttt{60998}\\\texttt{a60998@alunos.uminho.pt}\\\andMiguel Pinto\\\texttt{61049}\\\texttt{a61049@alunos.uminho.pt}\\\andMariana Medeiros\\\texttt{61041}\\\texttt{a61041@alunos.uminho.pt}\\\and\\\vspace*{2.0in}
+}\title{ Universidade do Minho\\\vspace*{0.60in}Report 2007\\{\small Vamos escrever relatórios}\vspace*{1.55in}}\date{Braga,5 de Maio de 2014}
 \newenvironment{resumo}
 {
 \begin{center}
 \begin{minipage}[t]{500 pt}
 \vspace{5mm}
-\emph{	extbf{Resumo}}
+\emph{\textbf{Resumo}}
 \\[-2mm]
-\\line(1,0){500}
+\line(1,0){500}
 \\[-4.25 mm]
 \line(1,0){500}
 \\
@@ -39,13 +42,13 @@
 {
 \normalsize
 \\[2mm]
-\footnotesize\textbf{Palavras-Chave: \footnotesize\@palabras}\\[-2mm]\line(1,0){500}\\[0.5cm]\end{minipage}\end{center})\lhead{Report 2007 - Vamos escrever relatórios}\rhead{Universidade do Minho}\cfoot{	hepage\ de \pageref{LastPage}}
+\footnotesize\textbf{Palavras-Chave: \footnotesize\@palabras}\\[-2mm]\line(1,0){500}\\[0.5cm]\end{minipage}\end{center}}\lhead{Report 2007 - Vamos escrever relatórios}\rhead{Universidade do Minho}\cfoot{\thepage\ de \pageref{LastPage}}
 \begin{document}
 \maketitle
 \newpage
 \tableofcontents
-\newpage\tableoffigures
-\newpage\tableoftables
+\newpage\listoffigures
+\newpage\listoftables
 \newpage\begin{resumo}
 De forma a colocar em prática os conhecimentos adquiridos até ao momento nas aulas teóricas e teórico-práticas da já referida Unidade Curricular, fizemos uso, com maior destaque, das ferramentas Flex - The Fast Lexical Analyzer já abordada no primeiro trabalho e também Yacc - Yet Another Compiler Compiler. O enunciado que escolhemos foi "Report 2007: vamos escrever relatórios", no qual era pedido que se criasse um compilador capaz de aceitar e processar relatórios escritos numa determinada linguagem. No final, teria de gerar, de forma bem estruturada, a sua respetiva versão em formato HTML e LaTeX.\end{resumo}
 \newpage

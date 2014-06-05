@@ -123,7 +123,7 @@ void criaIndiceT(LinkedElem lp, FILE* fp){
   
   LinkedElem p = lp;
   while(p) {
-    fprintf(fp,"<li><a class=\"scroll\" href=\"#c%d\">%s</a></li>",c,p->data);
+    fprintf(fp,"<li><a class=\"scroll\">%s</a></li>",p->data);
     c++;
     
     /*
@@ -153,7 +153,7 @@ void criaIndiceF(LinkedElem lp, FILE* fp){
   
   LinkedElem p = lp;
   while(p) {
-    fprintf(fp,"<li><a class=\"scroll\" href=\"#c%d\">%s</a></li>",c,p->data);
+    fprintf(fp,"<li><a class=\"scroll\">%s</a></li>",p->data);
     c++;
     
     /*
@@ -224,8 +224,8 @@ void criaCapitulos(LinkedElem lc, FILE* fp){
   while(aux) {
     Capitulo cap = (Capitulo) aux->data;
 
-    fprintf(fp,"<div id=\"c%d\" class=\"row\">",c);
-    fputs("<div class=\"span11\">", fp);
+    fputs("<div class=\"row\">",fp);
+    fprintf(fp,"<div id=\"c%d\" class=\"span11\">",c);
     fputs("<h2 style=\"color:#F39C12; margin-bottom:10px;\">", fp);
     
     fprintf(fp,"<span>%d </span>%s</h2>",c,cap->nome);
