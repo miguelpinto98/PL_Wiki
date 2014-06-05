@@ -1,0 +1,131 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage[portuguese]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{indentfirst}
+\usepackage{geometry}
+\usepackage{ucs}
+\usepackage{amssymb}
+\usepackage[lofdepth,lotdepth]{subfig}
+\usepackage{unitsdef}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\geometry{left=18mm,right=18mm,top=21mm,bottom=21mm}
+\renewcommand{\unitvaluesep}{\hspace*{4pt}}
+\batchmode
+\bibliographystyle{plain}
+\pagestyle{plain}
+\pagenumbering{arabic}
+\pagestyle{fancy}
+\usepackage{lmodern}
+\newcommand*{\escape}[1]{\texttt{\textbackslash#1}}
+\newcommand*{\escapeI}[1]{\texttt{\expandafter\string\csname #1\endcsname}}
+\newcommand*{\escapeII}[1]{\texttt{\char\#1}}
+\author{Pedro Faria\\\texttt{60998}\\\texttt{a60998@alunos.uminho.pt}\\\and\author{Miguel Pinto\\\texttt{61049}\\\texttt{a61049@alunos.uminho.pt}\\\and\author{Mariana Medeiros\\\texttt{61041}\\\texttt{a61041@alunos.uminho.pt}\\\and\vspace*{2.0in}
+\title{ Universidade do Minho\\vspace*{0.60in}Report 2007{\small Vamos escrever relatórios}\vspace*{1.55in}}\date{Braga,5 de Maio de 2014}
+\newenvironment{resumo}
+{
+\begin{center}
+\begin{minipage}[t]{500 pt}
+\vspace{5mm}
+\emph{	extbf{Resumo}}
+\\[-2mm]
+\\line(1,0){500}
+\\[-4.25 mm]
+\line(1,0){500}
+\\
+}
+{
+\normalsize
+\\[2mm]
+\footnotesize\textbf{Palavras-Chave: \footnotesize\@palabras}\\[-2mm]\line(1,0){500}\\[0.5cm]\end{minipage}\end{center})\lhead{Report 2007 - Vamos escrever relatórios}\rhead{Universidade do Minho}\cfoot{	hepage\ de \pageref{LastPage}}
+\begin{document}
+\maketitle
+\newpage
+\tableofcontents
+\newpage\tableoffigures
+\newpage\tableoftables
+\newpage\begin{resumo}
+O presente relatorio descreve todo o processo de desenvolvimento, tomadas de decisão e o resultado obtido da resolução do enunciado do trabalho prático número dois da Unidade Curricular Processamento de Linguagens. O enunciado aqui resolvido é sobre o "Report 2007: vamos escrever relatórios". Este documento trata de analisar e explicar os objectivos deste segundo trabalho. Assim, falaremos das decisões tomadas, os principais obstáculos encontrados e os resultados obtidos. Para além dos conhecimentos que já eram necessários para o primeiro projecto, foi necessário demonstrar conhecimentos sobre ferramentas Flex e Yacc, conhecimentos estes que se mostraram muito úteis e interessantes.\end{resumo}
+\newpage
+\section{Introdução}
+que estão na base do desenvolvimento do nosso trabalho.
+
+HTML.
+
+HTML.
+
+) parecem-nos bastantes poderosas e com muitas potencialidades e não temos dúvidas que o facto de as sabermos usar se irá revelar muito benéfico.
+
+\newpage
+\section{Descrição das ferramentas utililizadas}
+, a linguagem C e a biblioteca glib.
+
+Assim, os dois primeiros componentes, como já foi referido, tratam-se de um analisador léxico e de um analisador sintáctico, respectivamente. Estes dois são utilizados, maioritariamente, em conjunto, isto é, o Yacc usa uma gramática formal de modo a analisar sintacticamente cada entrada enquanto que o Flex consegue fazer a distinção das expressões regulares. Estas expressões regulares distinguidas e Flex são reconhecidos como tokens pelo Yacc. O GCC, popular compilador da linguagem de programação C, é utilizado de modo a combinar o analisador léxico com o analisador sintáctico. A biblioteca glib do C, foi usada nas nossas estruturas de dados como se poderá ver mais adiante.
+
+Falta fazer uma pequena referência ao uso de LaTeX e HTML que foram gerados pelo compilador, com o objectivo de poder obter um relatório escrito nestas duas linguagens.
+
+\newpage
+\section{Descrição da Linguagem desenvolvida}
+FrontMatter, Body, BackMatter.
+
+Subtitle, Institution, Keywords, Aknowledgements, Table of contents, Table of figures e Table of tables.
+
+Por exemplo, cada vez que quisermos adicionar um autor ao nosso relatório, basta escrever BAUTHOR.
+
+E de seguida adicionar os campos definidos na estrutura. Na nossa linguagem apenas é obrigatório sempre que se inicia o BAUHTOR, adicionar o nome(BNAME nome ENAME). Isto porque nas regras do Yacc assim defenimos:
+
+A seguir, a parte principal do relatório que conterá o nosso Body:
+
+O Body será constituído por uma lista de Chapters, e estes terão um Title e uma ElemList. Estes elementos podem ser várias coisas: uma imagem, uma tabela, uma section, etc.
+
+Um parágrafo é uma lista de vários elementos, desde o texto até palavras em itálico ou negrito por exemplo. Para começar um parágrafo basta escrever "BPARA" e lá dentro inserir qualquer um dos elementos apresentados acima, iniciados respectivamente pela etiqueta. Outro tipo de elementos dentro do body podem ser as figuras e tabelas que serão iniciadas como BFIGURE, e BTABLE.
+
+Resumindo, o nossa linguagem é o esboço feito pelo professor, com mais algumas modificações que a tornam mais completa. De certo modo achamos que o que estava no enunciado era suficiente para tornar um relatório completo e usável. A nosso ver, não havia nada a faltar para acrescentar melhorias na linguagem.
+
+\newpage
+\section{Especificação do FLEX}
+Quanto ao prodecimento a desenvolver para tratar da análise lexical, achámos necessário definir quatro estados como fizemos anteriormente no primeiro trabalho prático:
+
+Ao introduzir estes quatro estados no Flex, conseguimos facilitar um pouco o nosso trabalho. No caso do codeblock, interessa-nos ter um estado porque isso nos permite guardar todo o que está dentro das etiquetas respectivas, inclusive outras etiquetas. Dentro do codeblock podemos fazer um BEGIN de outro tipo, sem compremeter o principal objectivo, que é colocar tudo o que está lá em formato de código. Para criar as tabelas, poupa-nos algum trabalho. Depois em relação aos estados list e keywords, que são muito parecidos, usamos estados porque assim basta inserir cada elemento da lista por linha sem precisar de usar algum tipo de separador, o que torna a nossa linguagem mai prática. Além de estados, o restante \textit{Flex} é bastante simples e intuitivo pois são apenas as etiquetas que nós definimos para a nossa linguagem. Como por exemplo, este exerto inicial:
+
+\newpage
+\section{Utilização do YACC}
+Aqui encontrar-se-ão referenciados todos os tokens deinidos na especificação FLEX e estes serão palavras reservadas da nossa própria linguagem. Cada token terá uma tarefa específicaca quanto ao processamento da linguagem em uso uma vez que cada palavra indica um tipo de instrucão diferente.
+
+Aqui é efetuada uma tradução direta entre os símbolos definidos na gramática apresentada e o código C. É desta forma que guardamos na estrutura de dados todo o conteúdo relevante e que nos permite gerar relatórios tanto em LaTeX como em HTML. Ao utilizar o YACC podemos definir código C a ser exucutado no momento em que cada regra da gramática definida é verificada. 
+
+\newpage
+\section{Estruturas na linguagem C}
+A utilização de Unions facilitou o processo de criação da linguagem e de facilitação do uso . A razão principal para o uso deste tipo de estruturas é a possibilidade de representar uma informação de mais do que uma maneira. Como é o caso da nossa linguagem, em que, por exemplo, um capítulo pode conter vários topos de elementos. Resta falar do uso da biblioteca do C, que foi recomendada pelos docentes, a glib. No primeiro trabalho prático, usamos módulos de listas ligadas feitos por nós e agora escolhemos usar esta biblioteca, e também porque nunca nenhum de nós tinha experimentado. Fica de notar que facilitou o processo, comparativamente a trabalhos anteriores, e será concerteza usada por nós futuro.  
+
+\newpage
+\section{Geração de Relatórios - Latex e Html}
+Nós optamos por dividir e minimizar ao máximo a complexidade das funções para posteriormente ser mais fácil resolver algum problema. Deste modo, evitamos a implementação de funções demasiado grandes. Fazendo a ligação das tags ao HTML, através da nossa linguagem decidimos o que gerar conforme o que definimos. A maioria das coisas já existiam no HTML, mas por exemplo para os índices não existe nada que os criem automaticamente. 
+
+www.uminho.pt
+
+\newpage
+\section{Makefile e Manpage}
+Para facilitar o processo de gestão quer de desenvolvimento quer de distribuição do software desenvolvido, seguimos os conselhos dos docentes e criamos um makefile com as funções mais comuns, tentado seguir os standards quer de nomenclatura quer das funcionalidades.Assim sendo criamos 4 opções mais distintas no makefile: install, clean, test e delete.
+
+, o que a sequência de comandos por nós definida faz é: compilar os ficheiros .c por ordem de dependência, fazer a linkagem, mover o escutável para a directoria /usr/bin e mover o ficheiro da man page para a directoria dos manuais. Além disso remove os ficeiros .o gerados durante o processo.
+
+A opção delete executa a seguinte sequência: eliminar o executável e o ficheiro da man page.
+
+A opção test corre corre o executável na diretoria atual utilizando como input um ficheiro que aparece na raiz da diretoria que contem os ficheiros com o código.
+
+A opção delete limpa a raiz da directoria alguns ficheiros que o compilador gera que que não interessam, com por exemplo o lex.yy.c, y.tab.c e o y.tab.h.
+
+Mais uma sugestão dada pelos docentes passava por criar uma manpage. Como o executável que criamos não tem opções ao executar pela linha de comandos, o manual que criámos é relativamente pobre e contem apenas uma descrição do trabalho. Para desenvolver esta parte utilizamos a aplicação para Mac OSX Mandrake.
+
+\newpage
+\section{Conclusão}
+Após terminarmos este trabalho pratico podemos retirar algumas conclusões, vendo o resultado final, visivelmente e esteticamente agradável.
+
+HTML.
+
+De forma a concluir podemos dizer que este enunciado pós em causa todos os conhecimentos/conceitos abordados nas aulas o que de certa ajudou a combater algumas dificuldades que foram aparecendo na respectiva resolução e que levou a que enriquecêssemos mais a esse mesmo nível.
+
+\end{document}
