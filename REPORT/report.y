@@ -359,6 +359,7 @@ int main(){
 		yyparse();
 	}
 	criaPagina(r,la,lkeys,lc);
+	criaPaginaPDF();
 
 
 	return 0;

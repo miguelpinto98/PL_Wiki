@@ -110,8 +110,12 @@ void criaIndice(LinkedElem lp, FILE* fp){
     p=p->next;
   }
   fputs("</ul>",fp);
-  fputs("</div></div></div>",fp);
+  fputs("</div></div>",fp);
   fputs("<div class=\"divider\"></div>",fp);
+}
+
+void fechaCaixa(FILE* fp){
+  fputs("</div>",fp);
 }
 /*
 void criaImagem(FILE* fp){
@@ -168,9 +172,11 @@ void criaPagina(Report r, LinkedList lautores, LinkedList lchaves, LinkedList lc
   criaAgradecimentos(r,fp);
   criaPalavras(lchaves,fp);
 
-  if(r->toc)
+  if(r->toc) {
     criaIndice(lcaps->elems,fp);
-
+    fechaCaixa(fp);
+  }
+  
   criaCapitulos(lcaps->elems,fp);
   
   fclose(fp);

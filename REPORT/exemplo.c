@@ -1,31 +1,32 @@
+#include "structs.h"
 
-void inserePackages(FILE* f){
-fputs("\\documentclass[12pt,letterpaper]{article}", f);
-fputs("\\usepackage[portuguese]{babel} ", f);
-fputs("\\usepackage[utf8x]{inputenc}", f);
-fputs("\\usepackage{indentfirst}", f);
-fputs("\\usepackage{geometry}", f);
-fputs("\\usepackage{ucs}", f);
-fputs("\\usepackage{amssymb}", f);
-fputs("\\usepackage[lofdepth,lotdepth]{subfig}", f);
-fputs("\\usepackage{unitsdef}", f);
-fputs("\\usepackage{float}", f);
-fputs("\\usepackage{booktabs}", f);
-fputs("\\usepackage{lastpage}", f);
-fputs("\\usepackage{fancyhdr}", f);
-fputs("\\geometry{left=18mm,right=18mm,top=21mm,bottom=21mm}", f);
-fputs("\\renewcommand{\\unitvaluesep}{\\hspace*{4pt}}", f);
-fputs("\\batchmode", f);
-fputs("\\bibliographystyle{plain}", f);
-fputs("\\pagestyle{plain}", f);
-fputs("\\pagenumbering{arabic}", f);
-fputs("\\pagestyle{fancy}", f);
-fputs("\\usepackage{lmodern}", f);
-fputs("\\newcommand*{\\escape}[1]{\\texttt{\\textbackslash#1}}", f);
-fputs("\\newcommand*{\\escapeI}[1]{\\texttt{\expandafter\\string\\csname #1\\endcsname}}", f);
-fputs("\\newcommand*{\\escapeII}[1]{\\texttt{\\char\\#1}}", f);
+void inserePackages(FILE* f) {
+	fputs("\\documentclass[12pt,letterpaper]{article}", f);
+	fputs("\\usepackage[portuguese]{babel} ", f);
+	fputs("\\usepackage[utf8x]{inputenc}", f);
+	fputs("\\usepackage{indentfirst}", f);
+	fputs("\\usepackage{geometry}", f);
+	fputs("\\usepackage{ucs}", f);
+	fputs("\\usepackage{amssymb}", f);
+	fputs("\\usepackage[lofdepth,lotdepth]{subfig}", f);
+	fputs("\\usepackage{unitsdef}", f);
+	fputs("\\usepackage{float}", f);
+	fputs("\\usepackage{booktabs}", f);
+	fputs("\\usepackage{lastpage}", f);
+	fputs("\\usepackage{fancyhdr}", f);
+	fputs("\\geometry{left=18mm,right=18mm,top=21mm,bottom=21mm}", f);
+	fputs("\\renewcommand{\\unitvaluesep}{\\hspace*{4pt}}", f);
+	fputs("\\batchmode", f);
+	fputs("\\bibliographystyle{plain}", f);
+	fputs("\\pagestyle{plain}", f);
+	fputs("\\pagenumbering{arabic}", f);
+	fputs("\\pagestyle{fancy}", f);
+	fputs("\\usepackage{lmodern}", f);
+	fputs("\\newcommand*{\\escape}[1]{\\texttt{\\textbackslash#1}}", f);
+	fputs("\\newcommand*{\\escapeI}[1]{\\texttt{\expandafter\\string\\csname #1\\endcsname}}", f);
+	fputs("\\newcommand*{\\escapeII}[1]{\\texttt{\\char\\#1}}", f);
 }
-     
+/*     
 void criaAutores(FILE* f, LinkedList la){
 	LinkedElem a = la->elems;
 
@@ -102,7 +103,6 @@ void criaResumo(char* resumo, FILE*f){
 	fputs("\\end{resumo}", f);
 }
 
-
 void criaSection(char* t, char* texto, FILE* f){
 	fputs("\\newpage", f);
 	fprintf(f,"\\section{%s}",t);
@@ -123,6 +123,17 @@ void criaFigure(char* img, FILE* f){
 
 void fechar(FILE* f){
 	fputs("\\end{document}", f);
+}
+*/
+
+criaPaginaPDF() {
+	FILE *fp = NULL;
+  	fp = fopen("zzz.tex", "w");
+
+  	inserePackages(fp);
+
+
+  	fclose(fp);
 }
 
 
