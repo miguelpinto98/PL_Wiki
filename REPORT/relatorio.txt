@@ -205,7 +205,7 @@ BREPORT
 				EFORMAT
 			EGRAPH
 			BCAPTION
-				Frontmatter
+				Body I
 			ECAPTION
 		EFIG
 		BFIG
@@ -218,7 +218,7 @@ BREPORT
 				EFORMAT
 			EGRAPH
 			BCAPTION
-				Frontmatter
+				Body II
 			ECAPTION
 		EFIG
 		BFIG
@@ -231,7 +231,7 @@ BREPORT
 				EFORMAT
 			EGRAPH
 			BCAPTION
-				Frontmatter
+				Body III
 			ECAPTION
 		EFIG
 		BPARA
@@ -261,7 +261,7 @@ BREPORT
 					EFORMAT
 				EGRAPH
 				BCAPTION
-					Frontmatter
+					Keywords
 				ECAPTION
 			EFIG
 			BFIG
@@ -274,7 +274,7 @@ BREPORT
 					EFORMAT
 				EGRAPH
 				BCAPTION
-					Frontmatter
+					Abstract
 				ECAPTION
 			EFIG
 			BFIG
@@ -287,7 +287,7 @@ BREPORT
 					EFORMAT
 				EGRAPH
 				BCAPTION
-					Frontmatter
+					Aknowledgements
 				ECAPTION
 			EFIG
 			BPARA
@@ -303,7 +303,7 @@ BREPORT
 					EFORMAT
 				EGRAPH
 				BCAPTION
-					Frontmatter
+					Flex I
 				ECAPTION
 			EFIG
 			BFIG
@@ -316,7 +316,7 @@ BREPORT
 					EFORMAT
 				EGRAPH
 				BCAPTION
-					Frontmatter
+					Flex II
 				ECAPTION
 			EFIG
 			BFIG
@@ -329,7 +329,7 @@ BREPORT
 					EFORMAT
 				EGRAPH
 				BCAPTION
-					Frontmatter
+					Flex III
 				ECAPTION
 			EFIG
 			BPARA
