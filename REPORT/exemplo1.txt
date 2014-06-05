@@ -42,12 +42,9 @@ BREPORT
 		EKEYWORD
 		BABS
 			Como tal fomos incutidos.
-			asdasdasdasd.
 		EABS
 		BAKN
-			kjhkhkjhjkhjkhjkkhjhjkhjkhjkhjkkhjhkjhkjhkjkhjkhhjk
-			adsasdadsads
-			O Mundo é lindo.
+			Agradeço por ser tão lindo.
 		EAKN
 		TOC
 	EFM

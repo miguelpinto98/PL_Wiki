@@ -20,6 +20,8 @@ typedef struct sReport {
 	char* subtitulo;
 	char* date;
 	char* institution;
+	char* resumo;
+	char* agradecimentos;
 	int toc;
 	int lof;
 	int lot;
@@ -49,10 +51,15 @@ typedef struct sData {
 	char *value;	
 } *Data, NData;
 
+typedef struct sList{
+	char *item;
+} *List, NList;
+
 typedef struct sElemento {
 	Paragrafo para;
 	Figura fig;
 	Tabela tab;
+	List list;
 } *Elemento, NElemento;
 
 typedef struct sCapitulo {
@@ -76,6 +83,8 @@ void adicionaTitulo(Report , char* ) ;
 void adicionaSubTitulo(Report , char* ) ;
 void adicionaDate(Report , char* ) ;
 void adicionaInstitution(Report , char* ) ;
+void adicionaResumo(Report, char*) ;
+void adicionaAgradece(Report, char* );
 void setTOC(Report ) ;
 void setLOF(Report ) ;
 void setLOT(Report ) ;

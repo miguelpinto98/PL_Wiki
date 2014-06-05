@@ -13,6 +13,7 @@
     LinkedList la = NULL;
     LinkedList le = NULL;
     LinkedList lc = NULL;
+    LinkedList lkeys = NULL;
 
     LinkedList tabs = NULL;
     LinkedList lrow = NULL;
@@ -57,7 +58,7 @@
 }
 
 %type<s> texto
-%type<s> Title Caption
+%type<s> Title Caption Line
 
 %%
 
@@ -112,20 +113,18 @@ Institution : BEGININSTITUTION texto ENDINSTITUTION		{ adicionaInstitution(r,$2)
 			;
 
 /* BEGIN - PALAVRAS CHAVE */
-Keywords : BEGINKEYWORD ParaList ENDKEYWORD
+Keywords : BEGINKEYWORD Keylist ENDKEYWORD
 		 |
 		 ;
 
-ParaList : ParaList Line	
-		 | Line		
-		 ;
+Keylist : Keylist Line 			{ tailInsertLinkedList(lkeys,strdup($2)); }
+		| Line 					{ tailInsertLinkedList(lkeys,strdup($1)); }
+		;
 
-Line : texto	{printf("X - %s\n",$1 );}
-	 ;
 /* END - PALAVRAS CHAVE */ 
 
 /* BEGIN - RESUMO */
-Abstract : BEGINABS ParaList ENDABS
+Abstract : BEGINABS texto ENDABS	{ adicionaResumo(r,$2); }
 		 ;
 
 /* BEGIN AGRADECIMENTOS */
@@ -175,7 +174,7 @@ Paragraph : BEGINPARA ParaContent ENDPARA	{ e = inicializaElemento(); }
 		  ;
 
 ParaContent : ParaContent texto				{ p = inicializaParagrafo(0,$2); }
-			| ParaContent FreeElement
+			| ParaContent FreeElement		/*{ setParagrafo(e,p); }*/
 			|
 			;
 
@@ -289,7 +288,12 @@ CodeBlock : BEGINCODE ParaList ENDCODE
 Section : BEGINSEC Title ParaList ENDSEC
 		;
 
+ParaList : ParaList Line	
+		 | Line		
+		 ;
 
+Line : texto	{ $$=$1; }
+	 ;
 /* END - BODY */
 
 /* BEGIN - BM */
@@ -312,6 +316,7 @@ int main(){
 	la = createLinkedList(NULL,NULL);
 	le = createLinkedList(NULL,NULL);
 	lc = createLinkedList(NULL,NULL);
+	lkeys = createLinkedList(NULL,NULL);
 
 	lrow = createLinkedList(NULL,NULL);
 	tabs = createLinkedList(NULL,NULL);
