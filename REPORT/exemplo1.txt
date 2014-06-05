@@ -78,7 +78,7 @@ BREPORT
 			BFIG
 				BGRAPH
 					BPATH
-						images/frontmatter.png
+						assets/img/user.png
 					EPATH
 					BFORMAT
 						50%
