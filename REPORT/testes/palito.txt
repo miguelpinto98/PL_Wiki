@@ -1,0 +1,197 @@
+BREPORT
+	BFM
+		BTITLE
+			Report 2007
+		ETITLE
+		BSUBTITLE
+			Vamos escrever relatórios
+		ESUBTITLE
+	BAUTHOR
+		BNAME
+		Manuel Palito
+		ENAME
+		BNUMBER
+		007
+		ENUMBER
+		BMAIL
+		desaparecido@fugitivos.pt
+		EMAIL
+		BURL
+		http://opalito.com
+		EURL
+		BAFFILIATION
+			Esconde-Esconde
+		EAFFILIATION
+	EAUTHOR
+	BDATA
+		05 de Junho de 2014
+	EDATA
+	BINST
+		Escola Profissional das Escondidas
+	EINST
+		KEYWORDS
+			Fugitivo
+			Crime
+			Policia
+		:KEYWORDS
+	BABS
+		BPARA
+		Neste relatório vamos dar a conhecer o magnata Manuel Palito.
+		EPARA
+	EABS
+	BAKN
+		BPARA
+			Obrigado a todos pelo apoio. Juntos faremos de Portugal um país melhor.
+		EPARA
+	EAKN
+	TOC
+	LOF
+	LOT
+	EFM
+	BBODY
+		BCHAP
+			BTITLE
+				Introdução
+			ETITLE
+		BPARA
+		O homem que esteve fugido 34 dias.
+		EPARA
+		ECHAP
+		BCHAP
+			BTITLE
+				Descrição
+			ETITLE
+		BPARA
+		Apesar de ser considerado perigoso pelas autoridades e estar fortemente indiciado pelos crimes, o homem também conhecido como 
+		BBOLD
+		Manuel “Palito”
+		EBOLD
+		, que esteve fugido 34 dias foi recebido como uma espécie de herói popular. À sua chegada, foi aclamado por mais de 
+		BUNDERLINE
+		200 habitantes locais
+		EUNDERLINE
+		, que o esperavam. Tiraram fotos com os telemóveis, bateram palmas e também assobiaram, mas numa manifestação de apoio.
+		BITALIC
+		Ninguém o criticava e alguns até o elogiavam.
+		EITALIC
+		EPARA
+		ECHAP
+		BCHAP
+			BTITLE
+				Imagens
+			ETITLE
+		BPARA
+			O homem, agricultor e com 61 anos, chegou a encontrar-se com famosos
+		EPARA
+		BFIG
+			BGRAPH
+				BPATH
+					images/cr.jpg
+				EPATH
+				BFORMAT
+					30%
+				EFORMAT
+			EGRAPH
+			BCAPTION
+				Cristiano Ronaldo Palito Irina
+			ECAPTION
+		EFIG
+		BFIG
+			BGRAPH
+				BPATH
+					images/selecção.jpg
+				EPATH
+				BFORMAT
+					30%
+				EFORMAT
+			EGRAPH
+			BCAPTION
+				Selecção nacional e Palito
+			ECAPTION
+		EFIG
+		BFIG
+			BGRAPH
+				BPATH
+					images/selecção2.jpg
+				EPATH
+				BFORMAT
+					30%
+				EFORMAT
+			EGRAPH
+			BCAPTION
+				Palito na Selecção
+			ECAPTION
+		EFIG
+		BLIST
+			Baleou a ex-sogra.
+			Baleou a tia.
+			Feriu a ex-mulher.
+			Feriu a filha.
+		ELIST
+		BTABLE
+			BCAPTION
+				Uma Tabela
+			ECAPTION
+			BROW
+				BDATA
+					Dados
+				EDATA
+				BDATA
+					Mais dados
+				EDATA
+				BDATA
+					Mais Mais dados
+				EDATA
+			EROW
+			BROW
+				BDATA
+					Teste
+				EDATA					
+				BDATA
+					Teste Teste
+				EDATA
+				BDATA
+					Teste Teste Teste
+				EDATA
+			EROW
+			BROW
+				BDATA
+					Coisas
+				EDATA
+				BDATA
+					Coisitas
+				EDATA
+				BDATA
+					Coisinhas
+				EDATA
+			EROW
+			BROW
+				BDATA
+					amostra
+				EDATA
+				BDATA
+					amostra2
+				EDATA
+				BDATA
+					amostra4
+				EDATA
+			EROW
+		ETABLE
+		ECHAP
+	EBODY
+	BBM
+		BPARA
+			BBOLD
+			BITALIC
+			BUNDERLINE
+			Sem mais nada a acrescentar, estamos prontos para escrever relatórios.
+			EUNDERLINE
+			EITALIC
+			EBOLD
+		EPARA
+	EBM
+EREPORT
+
+
+
+
