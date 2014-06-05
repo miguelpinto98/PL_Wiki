@@ -47,6 +47,7 @@ BREPORT
 			Agradeço por ser tão lindo.
 		EAKN
 		TOC
+		LOT
 	EFM
 	BBODY
 		BCHAP

@@ -36,7 +36,7 @@ void criaAutores(LinkedList la, FILE* fp){
       Autor a = (Autor) aux->data;
       
       fputs("<li><div class=\"nome\">",fp);
-      fprintf(fp,"<strong>%s</strong></div>",a->nome);
+      fprintf(fp,"<strong> %s </strong></div>",a->nome);
       if(a->id)
         fprintf(fp,"<div class=\"nid\">%s</div>",a->id);
       if(a->email)
