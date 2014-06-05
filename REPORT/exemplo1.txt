@@ -107,14 +107,36 @@ BREPORT
 				EREF
 			EPARA
 			BCODE
-				int main(){
-					printf("HELLO, WORLD!");
-				}
+int main(){
+	printf("HELLO, WORLD!");
+}
 			ECODE
 			BTABLE
 				BCAPTION
 					Tabela 1
 				ECAPTION
+				BROW
+					BDATA
+						Coisa 1
+					EDATA
+					BDATA
+						Coisa 2
+					EDATA
+					BDATA
+						Coisa 3
+					EDATA
+				EROW
+				BROW
+					BDATA
+						Coisa 1
+					EDATA
+					BDATA
+						Coisa 2
+					EDATA
+					BDATA
+						Coisa 3
+					EDATA
+				EROW
 				BROW
 					BDATA
 						Coisa 1

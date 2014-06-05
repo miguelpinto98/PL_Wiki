@@ -1,4 +1,4 @@
-SRC = linkedlist/linkedlist.c structs.c html.c latexFile.c
+SRC = linkedlist/linkedlist.c structs.c htmlFile.c latexFile.c
 CCFLAGS = -O2 -Wextra
 CCC = gcc
 FILE = REPORT

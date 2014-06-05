@@ -1,4 +1,4 @@
-#include "structs.h"
+#include "htmlFile.h"
 
 void criaHeader(char *tit, FILE* fp) {
   fputs("<!DOCTYPE html><html lang=\"pt\"><head>",fp);
@@ -118,47 +118,44 @@ void fechaCaixa(FILE* fp){
   fputs("<div class=\"divider\"></div>",fp);
 }
 
-
-/*
-void criaImagem(FILE* fp){
-  fprinf(fp,"<img src=\"%s\" height=\"%d\" width=\"%d\">",path, a,l);
+void Imagem(Figura f, FILE* fp){
+  fprintf(fp,"<img src=\"%s\" height=\"%s\" width=\"%s\">",f->path,f->format,f->format);
 }
-*/
 
-/*
 void criaTabela(Tabela lc, FILE* fp){
   int l1=0;
   fputs("<div class=\"table-responsive\">",fp);
   fputs("<table class=\"table table-bordered\">",fp);
-  LinkedList linhas = lc->rows;
-      if(linhas && l1 ==0){
-        fputs("<thead><tr>",fp);
-        Row colunas = (Row) linhas->data;
-          while(colunas){
-            fprintf(fp, "<th>%s</th>",colunas->data);
-            colunas=colunas->next;
-          }
-        l1=1;
-        fputs("</tr></thead>",fp);
-      }
+  
+  LinkedElem linhas = lc->rows->elems;
+  while(linhas) {
+    Row r = (Row) linhas->data;
+    LinkedElem aux = r->data->elems;
 
-      else {
-        while(linhas){
-          fputs("<tbody><tr>",fp);
-          Row colunas = (Row) linhas->data;
-          while(colunas){
-            fprintf(fp, "<td>%s</td>", );
-            colunas=colunas->next;
-          }
-          fputs("</tr></tbody>",fp);
-          linhas=linhas->next;
+    if(l1 == 0)
+      fputs("<thead><tr>",fp);
+    else
+      fputs("<tbody><tr>",fp);
+
+    while(aux) {
+      Data d = (Data) aux->data;
+        if(l1==0) {
+          fprintf(fp, "<th>%s</th>",d->value);
+        } else {
+          fprintf(fp, "<td>%s</td>",d->value);
         }
-      }
-        fputs("</table></div>",fp);    
-}*/
+      aux = aux->next;
+    }
+      if(l1==0)
+        fputs("</tr></thead>",fp);
+      else
+        fputs("</tr></tbody>",fp);
 
-
-
+    l1=1;
+    linhas=linhas->next;
+  }
+  fputs("</table></div>",fp); 
+}
 
 void criaCapitulos(LinkedElem lc, FILE* fp){
   int c=1, sc=1;
@@ -184,6 +181,17 @@ void criaCapitulos(LinkedElem lc, FILE* fp){
 
         fprintf(fp, "<p>%s</p>",p->item);
       }
+
+      if(e->tab) {
+        Tabela t = (Tabela) e->tab;
+        criaTabela(t,fp);
+      }
+
+      if(e->fig) {
+        Figura f = (Figura) e->fig;
+        Imagem(f,fp);
+      }
+      
         //PARAGRAFOS
         sc++;
         sub=sub->next;  
