@@ -16,10 +16,10 @@ typedef struct sAutor {
 } *Autor, NAutor;
 
 typedef struct sReport {
-	char *titulo;
-	char *subtitulo;
-	char *date;
-	char *institution;
+	char* titulo;
+	char* subtitulo;
+	char* date;
+	char* institution;
 	int toc;
 	int lof;
 	int lot;
@@ -27,7 +27,7 @@ typedef struct sReport {
 
 typedef struct sParagrafo {
 	int id;
-	char *item;
+	char* item;
 } *Paragrafo, NParagrafo;
 
 typedef struct sFigura {
@@ -61,6 +61,7 @@ typedef struct sCapitulo {
 } *Capitulo, NCapitulo;
 
 /* ABSTRACT AGRADECIMENTOS KEYWORDS */
+
 
 int insereAutor(LinkedList, Autor) ;
 Autor inicializaAutor() ;
