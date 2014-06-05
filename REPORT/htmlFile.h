@@ -8,6 +8,6 @@
 #include "linkedlist/linkedlist.h"
 #include "structs.h"
 
-void criaPagina(Report r, LinkedList lautores, LinkedList lchaves, LinkedList lcaps) ;
+void criaPagina(Report, LinkedList, LinkedList, LinkedList, LinkedList,LinkedList) ;
 
 #endif

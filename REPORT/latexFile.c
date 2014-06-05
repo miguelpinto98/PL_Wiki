@@ -174,7 +174,7 @@ void fechar(FILE* f){
 
 void criaPaginaPDF(LinkedList laut, Report r, LinkedList lcaps) {
 	FILE *fp = NULL;
-  	fp = fopen("zzz.tex", "w");
+  	fp = fopen("Report.tex", "w");
 
   	inserePackages(fp);
   	criaAutoresTex(fp,laut->elems);

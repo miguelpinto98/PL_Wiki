@@ -39,17 +39,17 @@ BREPORT
 			a61041@alunos.uminho.pt
 		EEMAIL
 	EAUTHOR
-	BDATA
+	BDATE
 		Braga,5 de Maio de 2014
-	EDATA
+	EDATE
 	BINSTITUTION
 			Universidade do Minho
 	EINSTITUTION
-	BKEYWORDS
+	BKEYWORD
 		YACC
 		FLEX
 		PL
-	EKEYWORDS
+	EKEYWORD
 	BABS
 		De forma a colocar em prática os conhecimentos adquiridos até ao momento nas aulas teóricas e teórico-práticas da já referida Unidade Curricular, fizemos uso, com maior destaque, das ferramentas Flex - The Fast Lexical Analyzer já abordada no primeiro trabalho e também Yacc - Yet Another Compiler Compiler. O enunciado que escolhemos foi "Report 2007: vamos escrever relatórios", no qual era pedido que se criasse um compilador capaz de aceitar e processar relatórios escritos numa determinada linguagem. No final, teria de gerar, de forma bem estruturada, a sua respetiva versão em formato HTML e LaTeX.
 	EABS
@@ -157,41 +157,18 @@ BREPORT
 		BPARA
 			Por exemplo, cada vez que quisermos adicionar um autor ao nosso relatório, basta escrever BAUTHOR.
 		EPARA
-		BCODE 
-			typedef struct sAutor {
-				char* nome;
-				char* id;
-				char* email;
-				char* url;
-				char* affiliation;
-			} *Autor, NAutor;
-		ECODE
+		BLIST
+typedef struct sAutor {
+char* nome;
+char* id;
+char* email;
+char* url;
+char* affiliation;
+} *Autor, NAutor;
+		ELIST
 		BPARA
 			E de seguida adicionar os campos definidos na estrutura. Na nossa linguagem apenas é obrigatório sempre que se inicia o BAUHTOR, adicionar o nome(BNAME nome ENAME). Isto porque nas regras do Yacc assim defenimos:
 		EPARA
-		BCODE 
-			Author : BEGINAUTHOR Name Nident Email Url Affiliation ENDAUTHOR	{ insereAutor(la,a); }
-				   ;
-
-			Name : BEGINNAME texto ENDNAME		{ a = inicializaAutor(); insereNome(a,$2); }
-				 ;
-
-			Nident : BEGINNID texto ENDNID		{ insereID(a,$2); }
-				   |
-				   ;
-
-			Email : BEGINEMAIL texto ENDEMAIL 	{ insereEmail(a,$2); }
-				  |
-				  ;
-
-			Url : BEGINURL texto ENDURL 		{ insereURL(a,$2); }
-				|
-				;
-
-			Affiliation : BEGINAFFILIATION texto ENDAFFILIATION		{ insereAfiliacao(a,$2); }
-						|
-						;
-		ECODE
 		BPARA
 			A seguir, a parte principal do relatório que conterá o nosso Body:
 		EPARA

@@ -248,7 +248,7 @@ Float : Figure									{ f=inicializaFigura(); e = inicializaElemento(); }
 	  | Table									{ t=inicializaTabela(); e = inicializaElemento(); }
 	  ;
 
-Figure : BEGINFIG Graphic Caption ENDFIG 		{ setCaption(f,$3); setFigura(e,f); insereElemento(le,e); }
+Figure : BEGINFIG Graphic Caption ENDFIG 		{ setCaption(f,$3); tailInsertLinkedList(lofs,$3); setFigura(e,f); insereElemento(le,e); }
 	   ;
 
 Graphic : BEGINGRAPH Path Format ENDGRAPH		
@@ -266,6 +266,7 @@ Caption : BEGINCAPTION texto ENDCAPTION			{ $$=$2; }
 Table : BEGINTABLE Caption TRowList ENDTABLE	{ setCaptionT(t,$2);
 												  setRows(t,tabs);
 												  setTabela(e,t);
+												  tailInsertLinkedList(lots,$2);
 												  insereElemento(le,e);
 												  tabs = createLinkedList(NULL,NULL);
 												}
@@ -338,33 +339,30 @@ int yyerror(char *s) {
     return 0;
 }
 
-int main(){
+int main(int argc, char *argv[]){
 	r = inicializaReport();
 	f = inicializaFigura();
-	//e = inicializaElemento();
-
 	la = createLinkedList(NULL,NULL);
 	le = createLinkedList(NULL,NULL);
 	lc = createLinkedList(NULL,NULL);
 	ls = createLinkedList(NULL,NULL);
 	lcodes = createLinkedList(NULL,NULL);
-
 	lkeys = createLinkedList(NULL,NULL);
-
 	lrow = createLinkedList(NULL,NULL);
 	tabs = createLinkedList(NULL,NULL);
+	lots = createLinkedList(NULL,NULL);
+	lofs = createLinkedList(NULL,NULL);
 
-	LinkedList lots = createLinkedList(NULL,NULL);
-	LinkedList lofs = createLinkedList(NULL,NULL);
-
-	FILE *file = fopen("exemplo1.txt", "r");
+	if(argc>1) {
+		FILE *file = fopen(argv[1], "r");
 	
-	if(file) {
-		yyin = file;
-		yyparse();
+		if(file) {
+			yyin = file;
+			yyparse();
+		
+			criaPagina(r,la,lkeys,lc,lots,lofs);
+			criaPaginaPDF(la,r,lc);
+		}
 	}
-	criaPagina(r,la,lkeys,lc);
-	criaPaginaPDF(la,r,lc);
-
 	return 0;
 }

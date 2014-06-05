@@ -138,9 +138,9 @@
 
 "BCODE"			{ BEGIN CODE; return BEGINCODE; }
 <CODE>{
+	[ \t\n]+ 	;
 	"ECODE"		BEGIN INITIAL; return ENDCODE;
 	[^}\n]+		yylval.s = yytext; return texto;
-	[ \t\n;]+ 	;
 }
 
 "BSEC"			{ return BEGINSEC; }

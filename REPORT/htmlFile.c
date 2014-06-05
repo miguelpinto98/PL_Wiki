@@ -113,6 +113,65 @@ void criaIndice(LinkedElem lp, FILE* fp){
   fputs("</div></div>",fp);
 }
 
+void criaIndiceT(LinkedElem lp, FILE* fp){
+  int c=1;
+  int sc=1;
+  fputs("<div class=\"row\" style=\"margin-bottom:60px;\">",fp);
+  fputs("<div class=\"span11 indice\">",fp);
+  fputs("<h2 style=\"color:#F39C12; margin-bottom:10px;\">Índice Tabelas</h2>",fp);
+  fputs("<ul>",fp);
+  
+  LinkedElem p = lp;
+  while(p) {
+    fprintf(fp,"<li><a class=\"scroll\" href=\"#c%d\">%s</a></li>",c,p->data);
+    c++;
+    
+    /*
+    LinkedElem sub = p->elems;
+    fputs("<ul>", fp);
+      while(sub){
+        fprintf(fp,"<li><a class=\"scroll\" href=\"relatorio.html#c%d%d\">%s</a></li>",c,sc,sub->nome);
+        sc++;
+        sub=sub->next;  
+      }
+    
+    fputs("</ul>", fp);*/
+    p=p->next;
+  }
+  fputs("</ul>",fp);
+  fputs("</div></div>",fp);
+}
+
+
+void criaIndiceF(LinkedElem lp, FILE* fp){
+  int c=1;
+  int sc=1;
+  fputs("<div class=\"row\" style=\"margin-bottom:60px;\">",fp);
+  fputs("<div class=\"span11 indice\">",fp);
+  fputs("<h2 style=\"color:#F39C12; margin-bottom:10px;\">Índice Figuras</h2>",fp);
+  fputs("<ul>",fp);
+  
+  LinkedElem p = lp;
+  while(p) {
+    fprintf(fp,"<li><a class=\"scroll\" href=\"#c%d\">%s</a></li>",c,p->data);
+    c++;
+    
+    /*
+    LinkedElem sub = p->elems;
+    fputs("<ul>", fp);
+      while(sub){
+        fprintf(fp,"<li><a class=\"scroll\" href=\"relatorio.html#c%d%d\">%s</a></li>",c,sc,sub->nome);
+        sc++;
+        sub=sub->next;  
+      }
+    
+    fputs("</ul>", fp);*/
+    p=p->next;
+  }
+  fputs("</ul>",fp);
+  fputs("</div></div>",fp);
+}
+
 void fechaCaixa(FILE* fp){
   fputs("</div>",fp);
   fputs("<div class=\"divider\"></div>",fp);
@@ -226,9 +285,9 @@ void criaScripts(FILE* fp){
 }
 
 
-void criaPagina(Report r, LinkedList lautores, LinkedList lchaves, LinkedList lcaps) {
+void criaPagina(Report r, LinkedList lautores, LinkedList lchaves, LinkedList lcaps, LinkedList lots, LinkedList lofs) {
   FILE *fp = NULL;
-  fp = fopen("teste.html", "w");
+  fp = fopen("Report.html", "w");
 
   criaHeader(r->titulo, fp);
   criaCabecalho(r, fp);
@@ -240,9 +299,14 @@ void criaPagina(Report r, LinkedList lautores, LinkedList lchaves, LinkedList lc
 
   if(r->toc) {
     criaIndice(lcaps->elems,fp);
-    fechaCaixa(fp);
   }
-  
+  if(r->lof) {
+    criaIndiceF(lofs->elems,fp);
+  }
+  if(r->lot) {
+    criaIndiceT(lots->elems,fp); 
+  }
+  fechaCaixa(fp);
   criaCapitulos(lcaps->elems,fp);
   fechaBody(fp);
   criaScripts(fp);
