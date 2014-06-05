@@ -3,6 +3,7 @@
 	#include <string.h>
 	#include "linkedlist/linkedlist.h"
 	#include "structs.h"
+
 	
 	int yyerror(char *s);
     
@@ -351,11 +352,14 @@ int main(){
 	lrow = createLinkedList(NULL,NULL);
 	tabs = createLinkedList(NULL,NULL);
 
-	FILE *file = fopen("exemplo1.txt", "r");
+	FILE *file = fopen("relatorio.txt", "r");
 	
 	if(file) {
 		yyin = file;
 		yyparse();
 	}
+	criaPagina(r,la,lkeys,lc);
+
+
 	return 0;
 }

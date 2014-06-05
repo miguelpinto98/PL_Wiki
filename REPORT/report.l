@@ -140,7 +140,7 @@
 <CODE>{
 	"ECODE"		BEGIN INITIAL; return ENDCODE;
 	[^}\n]+		yylval.s = yytext; return texto;
-	[ \t\n}]+ 	;
+	[ \t\n;]+ 	;
 }
 
 "BSEC"			{ return BEGINSEC; }
