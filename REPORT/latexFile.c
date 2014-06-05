@@ -7,7 +7,10 @@ void inserePackages(FILE* f) {
 	fputs("\\usepackage{indentfirst}\n", f);
 	fputs("\\usepackage{geometry}\n", f);
 	fputs("\\usepackage{ucs}\n", f);
+	fputs("\\usepackage{amsmath}\n", f);
+	fputs("\\usepackage{amsfonts}\n", f);
 	fputs("\\usepackage{amssymb}\n", f);
+	fputs("\\usepackage{graphicx}\n", f);
 	fputs("\\usepackage[lofdepth,lotdepth]{subfig}\n", f);
 	fputs("\\usepackage{unitsdef}\n", f);
 	fputs("\\usepackage{float}\n", f);
@@ -24,16 +27,14 @@ void inserePackages(FILE* f) {
 	fputs("\\usepackage{lmodern}\n", f);
 	fputs("\\newcommand*{\\escape}[1]{\\texttt{\\textbackslash#1}}\n", f);
 	fputs("\\newcommand*{\\escapeI}[1]{\\texttt{\\expandafter\\string\\csname #1\\endcsname}}\n", f);
-	fputs("\\newcommand*{\\escapeII}[1]{\\texttt{\\char\\#1}}\n", f);
+	fputs("\\newcommand*{\\escapeII}[1]{\\texttt{\\char`\\\\#1}}\n", f);
 }
     
 void criaAutoresTex(FILE* f, LinkedElem la){
 	LinkedElem aux = la;
-
+	fputs("\\author{", f);
 	while(aux) {
 		Autor a = (Autor) aux->data;
-
-		fputs("\\author{", f);
 		fprintf(f,"%s\\\\", a->nome);
 
 		if(a->id)
@@ -48,16 +49,18 @@ void criaAutoresTex(FILE* f, LinkedElem la){
 		fputs("\\and",f);
 		aux=aux->next;
 	}
+	fprintf(f,"%s\\\\", "");
 	fputs("\\vspace*{2.0in}\n", f);
+	fputs("}", f);
 }
 
 void criaTitulo(Report r, FILE*f){
 
 	if(r->institution) {
-		fprintf(f, "\\title{ %s\\",r->institution);
+		fprintf(f, "\\title{ %s\\\\",r->institution);
 		fputs("\\vspace*{0.60in}", f);
 	}
-	fprintf(f, "%s",r->titulo);
+	fprintf(f, "%s\\\\",r->titulo);
 	
 	if(r->subtitulo) {
 		fprintf(f, "{\\small %s}",r->subtitulo);
@@ -73,9 +76,9 @@ void ambienteResumo(FILE  *f) {
 	fputs("\\begin{center}\n", f);
 	fputs("\\begin{minipage}[t]{500 pt}\n", f);
 	fputs("\\vspace{5mm}\n", f);
-	fputs("\\emph{\textbf{Resumo}}\n", f);
+	fputs("\\emph{\\textbf{Resumo}}\n", f);
 	fputs("\\\\[-2mm]\n", f);
-	fputs("\\\\line(1,0){500}\n", f);
+	fputs("\\line(1,0){500}\n", f);
 	fputs("\\\\[-4.25 mm]\n", f);
 	fputs("\\line(1,0){500}\n", f);
 	fputs("\\\\\n", f);
@@ -89,7 +92,7 @@ void ambienteResumo(FILE  *f) {
 	fputs("\\\\[0.5cm]",f);
 	fputs("\\end{minipage}",f);
 	fputs("\\end{center}",f);
-	fputs(")",f);
+	fputs("}",f);
 }
 /*	
 \def\palabras#1{\gdef\@palabras{#1}}
@@ -100,7 +103,7 @@ void criaCabecalhoTEX(Report r, FILE* f) {
 	fprintf(f, "\\lhead{%s - %s}",r->titulo, r->subtitulo);
 	if(r->institution)
 		fprintf(f, "\\rhead{%s}",r->institution);
-	fputs("\\cfoot{\thepage\\ de \\pageref{LastPage}}\n", f);
+	fputs("\\cfoot{\\thepage\\ de \\pageref{LastPage}}\n", f);
 }
 
 
@@ -114,11 +117,11 @@ void criaResumoTEX(Report r, FILE*f){
 		fputs("\\newpage", f);
 	}
 	if(r->lof) {
-		fputs("\\tableoffigures\n", f);
+		fputs("\\listoffigures\n", f);
 		fputs("\\newpage", f);
 	}
 	if(r->lot) {
-		fputs("\\tableoftables\n", f);
+		fputs("\\listoftables\n", f);
 		fputs("\\newpage", f);
 	}
 	fputs("\\begin{resumo}\n", f);
