@@ -8,7 +8,7 @@
 %option noyywrap
 %option yylineno
 
-%x KEYWORD ABS AKN
+%x KEYWORD ABS AKN CODE
 
 %%
 
@@ -136,8 +136,12 @@
 "BLIST"			{ return BEGINLIST; }
 "ELIST"			{ return ENDLIST; }
 
-"BCODE"			{ return BEGINCODE; }
-"ECODE"			{ return ENDCODE; }
+"BCODE"			{ BEGIN CODE; return BEGINCODE; }
+<CODE>{
+	"ECODE"		BEGIN INITIAL; return ENDCODE;
+	[^}\n]+		yylval.s = yytext; return texto;
+	[ \t\n}]+ 	;
+}
 
 "BSEC"			{ return BEGINSEC; }
 "ESEC"			{ return ENDSEC; }

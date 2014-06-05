@@ -100,6 +100,28 @@ Paragrafo inicializaParagrafo(int n, char *str) {
 	return res;
 }
 
+Lista criaLista(LinkedList ls) {
+	Lista res;
+
+	res = (Lista)malloc(sizeof(NLista));
+	res->lista = ls;
+
+	return res;
+}
+
+int insereLista(LinkedList ll, Lista l) {
+	return tailInsertLinkedList(ll,l);
+}
+
+CodeBlock criaListaCode(LinkedList ll) {
+	CodeBlock res;
+
+	res = (CodeBlock)malloc(sizeof(NCodeBlock));
+	res->lista = ll;
+
+	return res;
+}
+
 Elemento inicializaElemento() {
 	Elemento res;
 
@@ -107,6 +129,9 @@ Elemento inicializaElemento() {
 	res->para = NULL;
 	res->fig = NULL;
 	res->tab = NULL;
+	res->lista = NULL;
+	res->code = NULL;
+	res->summ = NULL;
 
 	return res;
 }
@@ -121,6 +146,27 @@ void setFigura(Elemento e, Figura f) {
 
 void setTabela(Elemento e, Tabela t) {
 	e->tab = t;
+}
+
+void setLista(Elemento e, Lista l) {
+	e->lista = l;
+}
+
+void setCode(Elemento e, CodeBlock cd) {
+	e->code = cd;
+}
+
+void setSumario(Elemento e, Summary s) {
+	e->summ = s;
+}
+
+Summary criaSumario(char *str) {
+	Summary res;
+
+	res = (Summary)malloc(sizeof(NSummary));
+	res->item = strdup(str);
+
+	return res;
 }
 
 Tabela inicializaTabela() {

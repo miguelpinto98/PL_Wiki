@@ -51,15 +51,25 @@ typedef struct sData {
 	char *value;	
 } *Data, NData;
 
-typedef struct sList{
+typedef struct sLista{
+	LinkedList lista;
+} *Lista, NLista;
+
+typedef struct sCodeBlock {
+	LinkedList lista;
+} *CodeBlock, NCodeBlock;
+
+typedef struct sSummary {
 	char *item;
-} *List, NList;
+} *Summary, NSummary;
 
 typedef struct sElemento {
 	Paragrafo para;
 	Figura fig;
 	Tabela tab;
-	List list;
+	Lista lista;
+	CodeBlock code;
+	Summary summ;
 } *Elemento, NElemento;
 
 typedef struct sCapitulo {
@@ -91,6 +101,13 @@ void setLOT(Report ) ;
 
 Paragrafo inicializaParagrafo(int , char*) ;
 
+Lista criaLista(LinkedList );
+int insereLista(LinkedList, Lista );
+
+CodeBlock criaListaCode(LinkedList );
+
+Summary criaSumario(char *) ;
+
 Tabela inicializaTabela() ;
 void setCaptionT(Tabela , char *) ;
 void setRows(Tabela, LinkedList) ;
@@ -107,7 +124,10 @@ void setPath(Figura, char *) ;
 Elemento inicializaElemento() ;
 void setParagrafo(Elemento , Paragrafo ) ;
 void setFigura(Elemento , Figura ) ;
-void setTabela(Elemento, Tabela) ;
+void setTabela(Elemento, Tabela ) ;
+void setLista(Elemento, Lista ) ;
+void setCode(Elemento, CodeBlock ) ;
+void setSumario(Elemento, Summary) ;
 int insereElemento(LinkedList , Elemento ) ;
 
 Capitulo criaCapitulo(char *, LinkedList) ;

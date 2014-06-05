@@ -13,7 +13,13 @@
     LinkedList la = NULL;
     LinkedList le = NULL;
     LinkedList lc = NULL;
+    LinkedList ls = NULL;
+    LinkedList lcodes = NULL;
+
     LinkedList lkeys = NULL;
+
+    LinkedList tocs = NULL;
+
 
     LinkedList tabs = NULL;
     LinkedList lrow = NULL;
@@ -27,6 +33,9 @@
     Tabela t = NULL;
     Row row = NULL;
     Data dt = NULL;
+    Lista l = NULL;
+    Summary s = NULL;
+    CodeBlock code = NULL;
 %}
 
 %token texto
@@ -128,7 +137,7 @@ Abstract : BEGINABS texto ENDABS	{ adicionaResumo(r,$2); }
 		 ;
 
 /* BEGIN AGRADECIMENTOS */
-Aknowledgements : BEGINAKN ParaList ENDAKN 
+Aknowledgements : BEGINAKN texto ENDAKN 	{ adicionaAgradece(r,$2); }
 				|
 				;
 
@@ -276,23 +285,41 @@ ListData : ListData Data
 Data : BEGINDATA texto ENDDATA		{ dt = criaData($2); insereDataTabela(lrow,dt); }
 	 ;
 
-Summary : BEGINSUM texto ENDSUM
+Summary : BEGINSUM texto ENDSUM		{ s = criaSumario($2);
+									  setSumario(e,s);
+									  insereElemento(le,e);
+									  e = inicializaElemento();
+									}
 		;
 
-List : BEGINLIST ParaList ENDLIST
+List : BEGINLIST ParaList ENDLIST	{ l = criaLista(ls);
+									  setLista(e,l);
+									  insereElemento(le,e);
+									  ls = createLinkedList(NULL,NULL);
+									  e = inicializaElemento();
+									}
 	 ;
 
-CodeBlock : BEGINCODE ParaList ENDCODE
-		  ;
-
-Section : BEGINSEC Title ParaList ENDSEC
-		;
-
-ParaList : ParaList Line	
-		 | Line		
+ParaList : ParaList Line 			{ tailInsertLinkedList(ls,strdup($2)); }
+		 | Line						{ tailInsertLinkedList(ls,strdup($1)); }
 		 ;
 
 Line : texto	{ $$=$1; }
+
+CodeBlock : BEGINCODE ListCode ENDCODE { code = criaListaCode(lcodes);
+										 setCode(e,code);
+										 insereElemento(le,e);
+										 lcodes = createLinkedList(NULL,NULL);										 
+										 e = inicializaElemento();
+										}
+		  ;
+
+ListCode : ListCode Line 			{ tailInsertLinkedList(lcodes,strdup($2)); }
+		 | Line 					{ tailInsertLinkedList(lcodes,strdup($1)); }
+		 ;
+
+Section : BEGINSEC Title texto ENDSEC
+		;
 	 ;
 /* END - BODY */
 
@@ -316,6 +343,9 @@ int main(){
 	la = createLinkedList(NULL,NULL);
 	le = createLinkedList(NULL,NULL);
 	lc = createLinkedList(NULL,NULL);
+	ls = createLinkedList(NULL,NULL);
+	lcodes = createLinkedList(NULL,NULL);
+
 	lkeys = createLinkedList(NULL,NULL);
 
 	lrow = createLinkedList(NULL,NULL);
