@@ -1,24 +1,2 @@
 
-YACC/lex.yy.c
-
-YACC/config
-
-YACC/lex.yy.o
-
-YACC/y.tab.c
-
-YACC/y.tab.h
-
-YACC/config
-
-*.c
-
-YACC/config.l
-
-YACC/lex.yy.c
-
-pl1214-tp2.pdf
-
-YACC/VII Torneio COMmapa 2014.csv
-
-REPORT/y.tab.h
+OLD/lex.yy.c
