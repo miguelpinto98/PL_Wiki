@@ -4,6 +4,7 @@
 	#include "linkedlist/linkedlist.h"
 	#include "structs.h"
 	#include "latexFile.h"
+	#include "htmlFile.h"
 
 	int yyerror(char *s);
     
@@ -20,7 +21,8 @@
     LinkedList lkeys = NULL;
 
     LinkedList tocs = NULL;
-
+    LinkedList lots = NULL;
+	LinkedList lofs = NULL;
 
     LinkedList tabs = NULL;
     LinkedList lrow = NULL;
@@ -352,7 +354,10 @@ int main(){
 	lrow = createLinkedList(NULL,NULL);
 	tabs = createLinkedList(NULL,NULL);
 
-	FILE *file = fopen("relatorio.txt", "r");
+	LinkedList lots = createLinkedList(NULL,NULL);
+	LinkedList lofs = createLinkedList(NULL,NULL);
+
+	FILE *file = fopen("exemplo1.txt", "r");
 	
 	if(file) {
 		yyin = file;
