@@ -39,9 +39,9 @@ BREPORT
 		a61041@alunos.uminho.pt
 		EEMAIL
 	EAUTHOR
-	BDATA
+	BDATE
 	Braga,5 de Maio de 2014
-	EDATA
+	EDATE
 	BINST
 		Universidade do Minho
 	EINST

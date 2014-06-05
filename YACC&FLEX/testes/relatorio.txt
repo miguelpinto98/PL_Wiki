@@ -39,19 +39,19 @@ BREPORT
 			a61041@alunos.uminho.pt
 		EEMAIL
 	EAUTHOR
-	BDATA
+	BDATE
 		Braga,5 de Maio de 2014
-	EDATA
+	EDATE
 	BINSTITUTION
 			Universidade do Minho
 	EINSTITUTION
-	BKEYWORDS
+	BKEYWORD
 		YACC
 		FLEX
 		PL
-	EKEYWORDS
+	EKEYWORD
 	BABS
-		O presente relatorio descreve todo o processo de desenvolvimento, tomadas de decisão e o resultado obtido da resolução do enunciado do trabalho prático número dois da Unidade Curricular Processamento de Linguagens. O enunciado aqui resolvido é sobre o "Report 2007: vamos escrever relatórios". Este documento trata de analisar e explicar os objectivos deste segundo trabalho. Assim, falaremos das decisões tomadas, os principais obstáculos encontrados e os resultados obtidos. Para além dos conhecimentos que já eram necessários para o primeiro projecto, foi necessário demonstrar conhecimentos sobre ferramentas Flex e Yacc, conhecimentos estes que se mostraram muito úteis e interessantes.
+		De forma a colocar em prática os conhecimentos adquiridos até ao momento nas aulas teóricas e teórico-práticas da já referida Unidade Curricular, fizemos uso, com maior destaque, das ferramentas Flex - The Fast Lexical Analyzer já abordada no primeiro trabalho e também Yacc - Yet Another Compiler Compiler. O enunciado que escolhemos foi "Report 2007: vamos escrever relatórios", no qual era pedido que se criasse um compilador capaz de aceitar e processar relatórios escritos numa determinada linguagem. No final, teria de gerar, de forma bem estruturada, a sua respetiva versão em formato HTML e LaTeX.
 	EABS
 	BAKN
 		Por detrás das nossas realizações pessoais, além de um considerável esforço próprio, esconde-se normalmente um número muito grande de contribuições, apoios, sugestões, comentários ou críticas vindos de muitas pessoas. A sua importância assume no caso presente uma valia tão preciosa que, sem elas, com toda a certeza, teria sido muito difícil chegar a qualquer resultado digno de menção. Mencionar aqui essas pessoas constitui um preito de justiça e de homenagem sentida por parte dos autores deste trabalho.
@@ -66,34 +66,10 @@ BREPORT
 				Introdução
 			ETITLE
 		BPARA
-			Pretende-se com este segundo trabalho usar o conhecimento adquirido nas aulas teóricas e práticas, sobretudo o uso das ferramentas Flex -
-			BITALIC
-				The Fast Lexical Analyzer 
-			EITALIC
-			e Yacc - 
-			BITALIC
-				Yet Another Compiler Compiler 
-			EITALIC
-			que estão na base do desenvolvimento do nosso trabalho.
+			O presente relatório descreve todo o processo de desenvolvimento, as tomadas de decisão, os principais obstáculos encontrados e, finalmente, os resultados obtidos na resolução do enunciado do segundo trabalho prático da Unidade Curricular de Processamento de Linguagens.
 		EPARA
 		BPARA
-			Neste relatório serão apresentadas todas as escolha em detalhe seguidas pelo nosso grupo durante a realização deste projecto, bem como uma explicação das funcionalidades presentes na página 
-			BITALIC
-				HTML.
-			EITALIC
-		EPARA
-		BPARA
-			Assim sendo, temos como finalidade o desenvolvimento de um compilador que aceitará relatórios escritos numa determinada linguagem e gerará a respectiva versão
-			BITALIC
-				HTML.
-			EITALIC
-		EPARA
-		BPARA
-			À primeira vista, este trabalho pareceu-nos bastante interessante uma vez que, teremos que desenvolver um compilador que gera outra linguagem e estudar o seu funcionamento, e de todos os elementos do grupo esta é a primeira vez que qualquer um de nós fez algo parecido. Para além disto, as ferramentas que devemos utilizar (
-			BITALIC
-				Flex e Yacc
-			EITALIC
-			) parecem-nos bastantes poderosas e com muitas potencialidades e não temos dúvidas que o facto de as sabermos usar se irá revelar muito benéfico.
+			Vemos este projeto com grande entusiasmo porque consideramos que as ferramentas que precisamos de aplicar têm muita potencialidade e nos permitem fazer coisas muito interessantes. Para além disso, consideramos que é a melhor aproximação possível aos problemas da reais, em termos de complexidade, que podemos conseguir, mantendo, ainda assim, o nível de um exemplo académico.
 		EPARA
 		ECHAP
 		BCHAP
@@ -101,17 +77,16 @@ BREPORT
 				Descrição das ferramentas utililizadas
 			ETITLE
 		BPARA
-			Para o desenvolvimento deste projecto necessitamos de utilizar ferramentas diferentes, sendo elas o
-			BBOLD
-				Flex, o Yacc
-			EBOLD
-			, a linguagem C e a biblioteca glib.
+			Para o desenvolvimento deste projeto prático necessitamos das seguintes ferramentas: Flex (The Fast Lexical Analyzer), Yacc (Yet Another Compiler Compiler), a linguagem de programação C,  HTML e LaTeX.
 		EPARA
 		BPARA
-			Assim, os dois primeiros componentes, como já foi referido, tratam-se de um analisador léxico e de um analisador sintáctico, respectivamente. Estes dois são utilizados, maioritariamente, em conjunto, isto é, o Yacc usa uma gramática formal de modo a analisar sintacticamente cada entrada enquanto que o Flex consegue fazer a distinção das expressões regulares. Estas expressões regulares distinguidas e Flex são reconhecidos como tokens pelo Yacc. O GCC, popular compilador da linguagem de programação C, é utilizado de modo a combinar o analisador léxico com o analisador sintáctico. A biblioteca glib do C, foi usada nas nossas estruturas de dados como se poderá ver mais adiante.
+			Os dois primeiros componentes tratam-se, respetivamente, de um analisador léxico e de um analisador sintáctico. São utilizados, a maior parte das vezes, em conjunto, isto é, o Yacc usa uma gramática formal de modo a analisar sintaticamente cada entrada enquanto que o Flex é responsável por fazer a distinção das expressões regulares. Estas expressões regulares são reconhecidos como tokens pelo Yacc.
 		EPARA
 		BPARA
-			Falta fazer uma pequena referência ao uso de LaTeX e HTML que foram gerados pelo compilador, com o objectivo de poder obter um relatório escrito nestas duas linguagens.
+			O GCC, popular compilador da linguagem de programação C, é utilizado de modo a combinar o analisador léxico com o analisador sintáctico.
+		EPARA
+		BPARA
+			Por fim, foi também necessária a utilização de LaTeX e HTML, que foram gerados pelo compilador, com o objetivo de obter versões do relatório escrito em cada uma dessas linguagens.
 		EPARA
 		ECHAP
 		BCHAP
@@ -119,15 +94,15 @@ BREPORT
 				Descrição da Linguagem desenvolvida
 			ETITLE
 		BPARA
-			A nossa linguagem é baseada no esboço dado no enunciado, apenas com algumas coisas adicionais sugeridas pelo professor.O nosso relatório estará dividido em três partes,
-			BITALIC
-				FrontMatter, Body, BackMatter.
-			EITALIC
+			A nossa linguagem é maioritariamente baseada no esboço dado pelo enunciado mas conta, no entanto, com algumas variantes adicionais que decidimos acrescentar.
+		EPARA
+		BPARA
+			Tal como se pode ver na figura a seguir, a estrutura de um relatório pode ser dividida em três partes: uma parte inicial, um corpo e uma parte final correspondendo, respetivamente a: FrontMatter, Body e BackMatter. BREPORT e EREPORT são símbolos terminais constantes, isto é, palavras reservadas que servem, essencialmente, para representar o início e o fim da estrutura do relatório.
 		EPARA
 		BFIG
 			BGRAPH
 				BPATH
-					/imagens/report.jpg
+					assets/img/user.png
 				EPATH
 				BFORMAT
 					30%
@@ -142,15 +117,12 @@ BREPORT
 			BBOLD
 				FrontMatter
 			EBOLD
-			acrescentamos todos os não-terminais propostos no enunciado: 
-			BITALIC
-				Subtitle, Institution, Keywords, Aknowledgements, Table of contents, Table of figures e Table of tables.
-			EITALIC
+			uma vez mais, temos os símbolos terminais constantes BFM e EFM a sinalizar o início e o fim desta primeira parte do relatório.
 		EPARA
 		BFIG
 			BGRAPH
 				BPATH
-					/imagens/frontmatter.jpg
+					imagens/frontmatter.jpg
 				EPATH
 				BFORMAT
 					30%
@@ -160,93 +132,75 @@ BREPORT
 				Frontmatter
 			ECAPTION
 		EFIG
+		BPARA
+		A lista de todos os símbolos não-terminais considerados apresenta-se de seguida. O FrontMatter é constituído
+		EPARA
 		BLIST
-			Subtitle - Apenas texto normal.
-			Institution - Apenas texto normal.
-			Keywords - Uma lista de palavras-chave do documento.
-			Aknowledgements - Uma lista de parágrafos tal como o Abstract.
-			Tablex of contents - É um inteiro que indica se o relatório conterá os índices respectivos.
-			List of figures - Lista de iguras.
-			List of tables - Lista de tabelas.
+			Title - É representado por apenas texto normal;
+			Subtitle - Apenas texto normal;
+			Authors - Representa uma lista de autores;
+			Author;
+			Name;
+			Nident;
+			Email;
+			Url;
+			Affilliation;
+			Date - Apenas texto normal;
+			Institution - Apenas texto normal;
+			Keywords - Uma lista de palavras-chave do documento;
+			Abstract - Representa uma lista de parágrafos;
+			Aknowledgements - Uma lista de parágrafos tal como o Abstract;
+			Toc (Table Of Contents) - É um inteiro que indica se o relatório conterá os índices respectivos;
+			Lof (List Of Figures) - Lista de figuras.
+			Lot (List Of Tables) - Lista de tabelas.
 		ELIST
 		BPARA
 			Por exemplo, cada vez que quisermos adicionar um autor ao nosso relatório, basta escrever BAUTHOR.
 		EPARA
-		BCODE 
-			typedef struct sAutor {
-				char* nome;
-				char* id;
-				char* email;
-				char* url;
-				char* affiliation;
-			} *Autor, NAutor;
-		ECODE
 		BPARA
 			E de seguida adicionar os campos definidos na estrutura. Na nossa linguagem apenas é obrigatório sempre que se inicia o BAUHTOR, adicionar o nome(BNAME nome ENAME). Isto porque nas regras do Yacc assim defenimos:
 		EPARA
-		BCODE 
-			Author : BEGINAUTHOR Name Nident Email Url Affiliation ENDAUTHOR	{ insereAutor(la,a); }
-				   ;
-
-			Name : BEGINNAME texto ENDNAME		{ a = inicializaAutor(); insereNome(a,$2); }
-				 ;
-
-			Nident : BEGINNID texto ENDNID		{ insereID(a,$2); }
-				   |
-				   ;
-
-			Email : BEGINEMAIL texto ENDEMAIL 	{ insereEmail(a,$2); }
-				  |
-				  ;
-
-			Url : BEGINURL texto ENDURL 		{ insereURL(a,$2); }
-				|
-				;
-
-			Affiliation : BEGINAFFILIATION texto ENDAFFILIATION		{ insereAfiliacao(a,$2); }
-						|
-						;
-		ECODE
+		
 		BPARA
 			A seguir, a parte principal do relatório que conterá o nosso Body:
 		EPARA
 		BFIG
 			BGRAPH
 				BPATH
-					/imagens/body.jpg
+					/testes/imagens/body.jpg
 				EPATH
 				BFORMAT
 					30%
 				EFORMAT
 			EGRAPH
 			BCAPTION
-				Frontmatter
+				Body I
 			ECAPTION
 		EFIG
 		BFIG
 			BGRAPH
 				BPATH
-					/imagens/body2.jpg
+					/testes/imagens/body2.jpg
 				EPATH
 				BFORMAT
 					30%
 				EFORMAT
 			EGRAPH
 			BCAPTION
-				Frontmatter
+				Body II
 			ECAPTION
 		EFIG
 		BFIG
 			BGRAPH
 				BPATH
-					/imagens/body3.jpg
+					/testes/imagens/body3.jpg
 				EPATH
 				BFORMAT
 					30%
 				EFORMAT
 			EGRAPH
 			BCAPTION
-				Frontmatter
+				Body III
 			ECAPTION
 		EFIG
 		BPARA
@@ -258,44 +212,6 @@ BREPORT
 		BPARA
 			Resumindo, o nossa linguagem é o esboço feito pelo professor, com mais algumas modificações que a tornam mais completa. De certo modo achamos que o que estava no enunciado era suficiente para tornar um relatório completo e usável. A nosso ver, não havia nada a faltar para acrescentar melhorias na linguagem.
 		EPARA
-		BTABLE
-			BCAPTION
-				Olha uma tabela
-			ECAPTION
-			BROW
-				BDATA
-					Dados
-				EDATA
-				BDATA
-					Mais dados
-				EDATA
-				BDATA
-					More dados
-				EDATA
-			EROW
-			BROW
-				BDATA
-					Teste
-				EDATA					
-				BDATA
-					Teste2
-				EDATA
-				BDATA
-					Teste3
-				EDATA
-			EROW
-			BROW
-				BDATA
-					Coisas
-				EDATA
-				BDATA
-					Coisinhas
-				EDATA
-				BDATA
-					Baderouuuussssss
-				EDATA
-			EROW
-		ETABLE
 		ECHAP
 		BCHAP
 			BTITLE
@@ -307,40 +223,40 @@ BREPORT
 			BFIG
 				BGRAPH
 					BPATH
-						/imagens/keywords.jpg
+						/testes/imagens/keywords.jpg
 					EPATH
 					BFORMAT
 						30
 					EFORMAT
 				EGRAPH
 				BCAPTION
-					Frontmatter
+					Keywords
 				ECAPTION
 			EFIG
 			BFIG
 				BGRAPH
 					BPATH
-						/imagens/abs.jpg
+						/testes/imagens/abs.jpg
 					EPATH
 					BFORMAT
 						30
 					EFORMAT
 				EGRAPH
 				BCAPTION
-					Frontmatter
+					Abstract
 				ECAPTION
 			EFIG
 			BFIG
 				BGRAPH
 					BPATH
-						/imagens/akn.jpg
+						/testes/imagens/akn.jpg
 					EPATH
 					BFORMAT
 						30
 					EFORMAT
 				EGRAPH
 				BCAPTION
-					Frontmatter
+					Aknowledgements
 				ECAPTION
 			EFIG
 			BPARA
@@ -349,40 +265,40 @@ BREPORT
 			BFIG
 				BGRAPH
 					BPATH
-						/imagens/flex.jpg
+						/testes/imagens/flex.jpg
 					EPATH
 					BFORMAT
 						30
 					EFORMAT
 				EGRAPH
 				BCAPTION
-					Frontmatter
+					Flex I
 				ECAPTION
 			EFIG
 			BFIG
 				BGRAPH
 					BPATH
-						/imagens/flex2.jpg
+						/testes/imagens/flex2.jpg
 					EPATH
 					BFORMAT
 						30
 					EFORMAT
 				EGRAPH
 				BCAPTION
-					Frontmatter
+					Flex II
 				ECAPTION
 			EFIG
 			BFIG
 				BGRAPH
 					BPATH
-						/imagens/flex3.jpg
+						/testes/imagens/flex3.jpg
 					EPATH
 					BFORMAT
 						30
 					EFORMAT
 				EGRAPH
 				BCAPTION
-					Frontmatter
+					Flex III
 				ECAPTION
 			EFIG
 			BPARA
@@ -471,29 +387,10 @@ BREPORT
 		ECHAP
 		BCHAP
 			BTITLE
-				Makefile e Manpage
+				Makefile
 			ETITLE
 			BPARA
-				Para facilitar o processo de gestão quer de desenvolvimento quer de distribuição do software desenvolvido, seguimos os conselhos dos docentes e criamos um makefile com as funções mais comuns, tentado seguir os standards quer de nomenclatura quer das funcionalidades.Assim sendo criamos 4 opções mais distintas no makefile: install, clean, test e delete.
-			EPARA
-			BPARA
-			Em relação à opção 
-				BITALIC
-					install
-				EITALIC
-				, o que a sequência de comandos por nós definida faz é: compilar os ficheiros .c por ordem de dependência, fazer a linkagem, mover o escutável para a directoria /usr/bin e mover o ficheiro da man page para a directoria dos manuais. Além disso remove os ficeiros .o gerados durante o processo.
-			EPARA
-			BPARA
-				A opção delete executa a seguinte sequência: eliminar o executável e o ficheiro da man page.
-			EPARA
-			BPARA
-				A opção test corre corre o executável na diretoria atual utilizando como input um ficheiro que aparece na raiz da diretoria que contem os ficheiros com o código.
-			EPARA
-			BPARA
-				A opção delete limpa a raiz da directoria alguns ficheiros que o compilador gera que que não interessam, com por exemplo o lex.yy.c, y.tab.c e o y.tab.h.
-			EPARA
-			BPARA
-				Mais uma sugestão dada pelos docentes passava por criar uma manpage. Como o executável que criamos não tem opções ao executar pela linha de comandos, o manual que criámos é relativamente pobre e contem apenas uma descrição do trabalho. Para desenvolver esta parte utilizamos a aplicação para Mac OSX Mandrake.
+				Para facilitar o processo de gestão quer de desenvolvimento quer de distribuição do software desenvolvido, seguimos os conselhos dos docentes e criamos um makefile com as funções mais comuns, tentado seguir os standards quer de nomenclatura quer das funcionalidades.
 			EPARA
 		ECHAP
 		BCHAP

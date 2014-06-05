@@ -9,4 +9,4 @@ $(FILE): report.l report.y
 	$(CCC) -o $(FILE) $(CCFLAGS) lex.yy.c y.tab.c $(SRC)
 
 clean:
-	rm lex.yy.c y.tab.c report
+	rm lex.yy.c y.tab.c y.tab.h report *.lof *.log *.lot *.toc *.aux

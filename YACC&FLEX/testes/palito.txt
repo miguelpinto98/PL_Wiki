@@ -10,12 +10,12 @@ BREPORT
 		BNAME
 		Manuel Palito
 		ENAME
-		BNUMBER
-		007
-		ENUMBER
-		BMAIL
+		BNID
+			007
+		ENID
+		BEMAIL
 		desaparecido@fugitivos.pt
-		EMAIL
+		EEMAIL
 		BURL
 		http://opalito.com
 		EURL
@@ -23,26 +23,22 @@ BREPORT
 			Esconde-Esconde
 		EAFFILIATION
 	EAUTHOR
-	BDATA
+	BDATE
 		05 de Junho de 2014
-	EDATA
-	BINST
+	EDATE
+	BINSTITUTION
 		Escola Profissional das Escondidas
-	EINST
-		KEYWORDS
+	EINSTITUTION
+		BKEYWORD
 			Fugitivo
 			Crime
 			Policia
-		:KEYWORDS
+		EKEYWORD
 	BABS
-		BPARA
 		Neste relatório vamos dar a conhecer o magnata Manuel Palito.
-		EPARA
 	EABS
 	BAKN
-		BPARA
-			Obrigado a todos pelo apoio. Juntos faremos de Portugal um país melhor.
-		EPARA
+		Obrigado a todos pelo apoio. Juntos faremos de Portugal um país melhor.
 	EAKN
 	TOC
 	LOF
@@ -86,7 +82,7 @@ BREPORT
 		BFIG
 			BGRAPH
 				BPATH
-					images/cr.jpg
+					/testes/images/cr.jpg
 				EPATH
 				BFORMAT
 					30%
@@ -99,7 +95,7 @@ BREPORT
 		BFIG
 			BGRAPH
 				BPATH
-					images/selecção.jpg
+					/testes/images/selecção.jpg
 				EPATH
 				BFORMAT
 					30%
@@ -112,7 +108,7 @@ BREPORT
 		BFIG
 			BGRAPH
 				BPATH
-					images/selecção2.jpg
+					/testes/images/selecção2.jpg
 				EPATH
 				BFORMAT
 					30%
@@ -145,13 +141,13 @@ BREPORT
 			EROW
 			BROW
 				BDATA
-					Teste
-				EDATA					
-				BDATA
-					Teste Teste
+					Dados
 				EDATA
 				BDATA
-					Teste Teste Teste
+					Mais dados
+				EDATA
+				BDATA
+					Mais Mais dados
 				EDATA
 			EROW
 			BROW
@@ -180,15 +176,7 @@ BREPORT
 		ECHAP
 	EBODY
 	BBM
-		BPARA
-			BBOLD
-			BITALIC
-			BUNDERLINE
-			Sem mais nada a acrescentar, estamos prontos para escrever relatórios.
-			EUNDERLINE
-			EITALIC
-			EBOLD
-		EPARA
+		OLA
 	EBM
 EREPORT
 
