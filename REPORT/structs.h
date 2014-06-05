@@ -30,13 +30,34 @@ typedef struct sParagrafo {
 	char *item;
 } *Paragrafo, NParagrafo;
 
+typedef struct sFigura {
+	char *caption;
+	char *path;
+	char *format;
+} *Figura, NFigura;
+
+typedef struct sTabela {
+	char *caption;
+	LinkedList rows;
+} *Tabela, NTabela;
+
+typedef struct sRow {
+	LinkedList data;
+} *Row, NRow;
+
+typedef struct sData {
+	char *value;	
+} *Data, NData;
+
 typedef struct sElemento {
-	LinkedList parags;
+	Paragrafo para;
+	Figura fig;
+	Tabela tab;
 } *Elemento, NElemento;
 
 typedef struct sCapitulo {
 	char *nome;
-	Elemento elem;
+	LinkedList elementos;
 } *Capitulo, NCapitulo;
 
 /* ABSTRACT AGRADECIMENTOS KEYWORDS */
@@ -59,13 +80,30 @@ void setLOF(Report ) ;
 void setLOT(Report ) ;
 
 Paragrafo inicializaParagrafo(int , char*) ;
-int insereParagrafo(LinkedList , Paragrafo) ;
+
+Tabela inicializaTabela() ;
+void setCaptionT(Tabela , char *) ;
+void setRows(Tabela, LinkedList) ;
+Row iniciaRow(LinkedList ) ;
+int insereRow(LinkedList , Row ) ;
+Data criaData(char *) ;
+int insereDataTabela(LinkedList, Data) ;
+
+Figura inicializaFigura() ;
+void setCaption(Figura, char *) ;
+void setFormat(Figura, char *) ;
+void setPath(Figura, char *) ;
 
 Elemento inicializaElemento() ;
-void setParagrafos(Elemento , LinkedList ) ;
-void listaElementos(LinkedList ) ;
+void setParagrafo(Elemento , Paragrafo ) ;
+void setFigura(Elemento , Figura ) ;
+void setTabela(Elemento, Tabela) ;
+int insereElemento(LinkedList , Elemento ) ;
 
-Capitulo criaCapitulo(char *, Elemento) ;
+Capitulo criaCapitulo(char *, LinkedList) ;
 int insereCapitulo(LinkedList , Capitulo) ;
+
+void lista(LinkedElem ) ;
+
 
 #endif

@@ -11,14 +11,21 @@
     extern int yylineno;
 
     LinkedList la = NULL;
-    LinkedList lp = NULL;
+    LinkedList le = NULL;
     LinkedList lc = NULL;
+
+    LinkedList tabs = NULL;
+    LinkedList lrow = NULL;
 
     Autor a = NULL;
     Report r = NULL;
     Paragrafo p = NULL;
     Elemento e = NULL;
     Capitulo c = NULL;
+    Figura f = NULL;
+    Tabela t = NULL;
+    Row row = NULL;
+    Data dt = NULL;
 %}
 
 %token texto
@@ -50,15 +57,15 @@
 }
 
 %type<s> texto
-%type<s> Title;
+%type<s> Title Caption
 
 %%
 
-Report : BEGINREPORT FrontMatter Body BackMatter ENDREPORT
+Report : BEGINREPORT FrontMatter Body BackMatter ENDREPORT /*{lista(lc->elems);}*/ {lista(lc->elems);}
 	   ;
 
 FrontMatter : BEGINFM Title SubTitle Authors Date Institution Keywords Abstract Aknowledgements Toc Lof Lot ENDFM
-			  { adicionaTitulo(r,$2); lp = createLinkedList(NULL,NULL); }
+			  { adicionaTitulo(r,$2); t=inicializaTabela(); }
 			;
 
 /* BEGIN - FRONTMATTER */
@@ -146,29 +153,28 @@ ChapterList : ChapterList Chapter
             | Chapter
             ;
 
-Chapter : BEGINCHAP Title ElemList ENDCHAP	{ c = criaCapitulo($2,e); 
+Chapter : BEGINCHAP Title ElemList ENDCHAP	{ c = criaCapitulo($2,le);
 											  insereCapitulo(lc,c);
-											  e = inicializaElemento();
-											  lp = createLinkedList(NULL,NULL);
+											  le = createLinkedList(NULL,NULL);
 											}
 		;
 
-ElemList : ElemList Elem
-		 | Elem
+ElemList : ElemList Elem 					{  e = inicializaElemento(); }
+		 | Elem 							{  e = inicializaElemento(); }
 		 ;
 
-Elem : Paragraph							{ setParagrafos(e,lp); listaElementos(e->parags); }
-	 | Float
+Elem : Paragraph							{ setParagrafo(e,p); insereElemento(le,e); /*lista(le->elems);*/ }
+	 | Float								{ }
 	 | List
 	 | CodeBlock
 	 | Section
 	 | Summary 
 	 ;
 
-Paragraph : BEGINPARA ParaContent ENDPARA	{ insereParagrafo(lp,p); }
+Paragraph : BEGINPARA ParaContent ENDPARA	{ e = inicializaElemento(); }
 		  ;
 
-ParaContent : ParaContent texto			{ p = inicializaParagrafo(0,$2); }
+ParaContent : ParaContent texto				{ p = inicializaParagrafo(0,$2); }
 			| ParaContent FreeElement
 			|
 			;
@@ -227,40 +233,48 @@ UContent : UContent texto				{ p = inicializaParagrafo(8,$2); }
 		 |
 		 ;
 
-Float : Figure
-	  | Table
+Float : Figure									{ f=inicializaFigura(); e = inicializaElemento(); }
+	  | Table									{ t=inicializaTabela(); e = inicializaElemento(); }
 	  ;
 
-Figure : BEGINFIG Graphic Caption ENDFIG
+Figure : BEGINFIG Graphic Caption ENDFIG 		{ setCaption(f,$3); setFigura(e,f); insereElemento(le,e); }
 	   ;
 
-Graphic : BEGINGRAPH Path Format ENDGRAPH
+Graphic : BEGINGRAPH Path Format ENDGRAPH		
 		;
 
-Path : BEGINPATH texto ENDPATH 
+Path : BEGINPATH texto ENDPATH 					{ setPath(f,$2); }
 	 ;
 
-Format : BEGINFORMAT texto ENDFORMAT
+Format : BEGINFORMAT texto ENDFORMAT			{ setFormat(f,$2); }
 	   ;
 
-Caption : BEGINCAPTION texto ENDCAPTION
+Caption : BEGINCAPTION texto ENDCAPTION			{ $$=$2; }
 		;
 
-Table : BEGINTABLE Caption TRowList ENDTABLE
+Table : BEGINTABLE Caption TRowList ENDTABLE	{ setCaptionT(t,$2);
+												  setRows(t,tabs);
+												  setTabela(e,t);
+												  insereElemento(le,e);
+												  tabs = createLinkedList(NULL,NULL);
+												}
 	  ;
 
 TRowList : TRowList TRow
 		 | TRow
 		 ;
 
-TRow : BEGINROW ListData ENDROW
+TRow : BEGINROW ListData ENDROW		{ row = iniciaRow(lrow);
+									  insereRow(tabs,row);
+									  lrow = createLinkedList(NULL,NULL);
+									}
 	 ;
 
 ListData : ListData Data
 	  	 | Data
 	  	 ;
 
-Data : BEGINDATA texto ENDDATA
+Data : BEGINDATA texto ENDDATA		{ dt = criaData($2); insereDataTabela(lrow,dt); }
 	 ;
 
 Summary : BEGINSUM texto ENDSUM
@@ -292,11 +306,15 @@ int yyerror(char *s) {
 
 int main(){
 	r = inicializaReport();
-	e = inicializaElemento();
+	f = inicializaFigura();
+	//e = inicializaElemento();
 
 	la = createLinkedList(NULL,NULL);
-	lp = createLinkedList(NULL,NULL);
+	le = createLinkedList(NULL,NULL);
 	lc = createLinkedList(NULL,NULL);
+
+	lrow = createLinkedList(NULL,NULL);
+	tabs = createLinkedList(NULL,NULL);
 
 	FILE *file = fopen("exemplo1.txt", "r");
 	
