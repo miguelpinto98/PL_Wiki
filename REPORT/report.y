@@ -3,8 +3,8 @@
 	#include <string.h>
 	#include "linkedlist/linkedlist.h"
 	#include "structs.h"
+	#include "latexFile.h"
 
-	
 	int yyerror(char *s);
     
     extern int yylex();
@@ -359,8 +359,7 @@ int main(){
 		yyparse();
 	}
 	criaPagina(r,la,lkeys,lc);
-	//criaPaginaPDF();
-
+	criaPaginaPDF(la,r,lc);
 
 	return 0;
 }
