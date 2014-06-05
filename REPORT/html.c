@@ -104,24 +104,62 @@ void criaIndice(LinkedElem lp, FILE* fp){
         fprintf(fp,"<li><a class=\"scroll\" href=\"relatorio.html#c%d%d\">%s</a></li>",c,sc,sub->nome);
         sc++;
         sub=sub->next;  
-      }*/
+      }
     
-    fputs("</ul>", fp);
+    fputs("</ul>", fp);*/
     p=p->next;
   }
   fputs("</ul>",fp);
   fputs("</div></div>",fp);
-  fputs("<div class=\"divider\"></div>",fp);
 }
 
 void fechaCaixa(FILE* fp){
   fputs("</div>",fp);
+  fputs("<div class=\"divider\"></div>",fp);
 }
+
+
 /*
 void criaImagem(FILE* fp){
   fprinf(fp,"<img src=\"%s\" height=\"%d\" width=\"%d\">",path, a,l);
 }
 */
+
+/*
+void criaTabela(Tabela lc, FILE* fp){
+  int l1=0;
+  fputs("<div class=\"table-responsive\">",fp);
+  fputs("<table class=\"table table-bordered\">",fp);
+  LinkedList linhas = lc->rows;
+      if(linhas && l1 ==0){
+        fputs("<thead><tr>",fp);
+        Row colunas = (Row) linhas->data;
+          while(colunas){
+            fprintf(fp, "<th>%s</th>",colunas->data);
+            colunas=colunas->next;
+          }
+        l1=1;
+        fputs("</tr></thead>",fp);
+      }
+
+      else {
+        while(linhas){
+          fputs("<tbody><tr>",fp);
+          Row colunas = (Row) linhas->data;
+          while(colunas){
+            fprintf(fp, "<td>%s</td>", );
+            colunas=colunas->next;
+          }
+          fputs("</tr></tbody>",fp);
+          linhas=linhas->next;
+        }
+      }
+        fputs("</table></div>",fp);    
+}*/
+
+
+
+
 void criaCapitulos(LinkedElem lc, FILE* fp){
   int c=1, sc=1;
   fputs("<div class=\"container well\">",fp);
@@ -130,7 +168,7 @@ void criaCapitulos(LinkedElem lc, FILE* fp){
   while(aux) {
     Capitulo cap = (Capitulo) aux->data;
 
-    fprintf(fp,"<div id=\"%d\" class=\"row\" style=\"margin-bottom:60px;\">",c);
+    fprintf(fp,"<div id=\"c%d\" class=\"row\">",c);
     fputs("<div class=\"span11\">", fp);
     fputs("<h2 style=\"color:#F39C12; margin-bottom:10px;\">", fp);
     
@@ -144,8 +182,7 @@ void criaCapitulos(LinkedElem lc, FILE* fp){
       if(e->para) {
         Paragrafo p = (Paragrafo) e->para;
 
-        fputs("<h3 style=\"color:#F39C12; margin-bottom:10px;\">", fp);
-        fprintf(fp, "<span></span>%s</h3>",p->item);
+        fprintf(fp, "<p>%s</p>",p->item);
       }
         //PARAGRAFOS
         sc++;
@@ -156,7 +193,28 @@ void criaCapitulos(LinkedElem lc, FILE* fp){
     
     aux=aux->next;
   }
-  fputs("</div></div></body></html>", fp);
+  fputs("</div></div></div>", fp);
+}
+
+void fechaBody(FILE* fp){
+   fputs("</body></html>", fp);
+}
+
+void criaScripts(FILE* fp){
+  fputs("<script src=\"assets/js/jquery.js\"></script>", fp);
+  fputs("<script src=\"assets/js/bootstrap-alert.js\"></script>", fp);
+  fputs("<script src=\"assets/js/bootstrap-collapse.js\"></script>", fp);
+  fputs("<script src=\"assets/js/bootstrap-dropdown.js\"></script>", fp);
+
+  fputs("<script src=\"assets/js/bootstrap-modal.js\"></script>", fp);
+  fputs("<script src=\"assets/js/bootstrap-tab.js\"></script>", fp);
+  fputs("<script src=\"assets/js/bootstrap-prettify.js\"></script>", fp);
+  fputs("<script src=\"assets/js/bootstrap-tooltip.js\"></script>", fp);
+
+  fputs("<script src=\"assets/js/bootstrap-transition.js\"></script>", fp);
+  fputs("<script src=\"assets/js/bootstrap-typeahead.js\"></script>", fp);
+  fputs("<script src=\"assets/js/5f4fd25b.vendor-util.js\"></script>", fp);
+  fputs("<script src=\"assets/js/5f4fd25b.5917523f.main.js\"></script>", fp);
 }
 
 
@@ -178,6 +236,10 @@ void criaPagina(Report r, LinkedList lautores, LinkedList lchaves, LinkedList lc
   }
   
   criaCapitulos(lcaps->elems,fp);
+  fechaBody(fp);
+  criaScripts(fp);
   
   fclose(fp);
 }
+
+
